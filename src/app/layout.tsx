@@ -17,7 +17,7 @@ import '@/site/styles/site.css';
 import '@/site/styles/frame.css';
 import '@/site/styles/header.css';
 import { getSite } from '@/lib/content';
-import { organizationSchema, websiteSchema } from '@/lib/seo';
+import { organizationSchema, socialMetadata, websiteSchema } from '@/lib/seo';
 
 /** Shared font and metadata infrastructure; the beta owns its page shell. */
 const sans = Figtree({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-sans', display: 'swap' });
@@ -30,6 +30,7 @@ export const metadata: Metadata = {
   title: { default: site.seo.defaultTitle, template: site.seo.titleTemplate },
   description: site.seo.defaultDescription,
   applicationName: site.brand.name,
+  ...socialMetadata(),
 };
 
 export const viewport: Viewport = { themeColor: '#FCFBFE', width: 'device-width', initialScale: 1, colorScheme: 'light' };

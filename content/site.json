@@ -21,6 +21,7 @@
     "defaultTitle": "Exekova - Get the task. Set the repo. Work done.",
     "defaultDescription": "exekova is an autonomous work execution platform that turns scoped engineering tasks into independently reviewed, verified pull requests.",
     "ogImage": "/brand/og-default.png",
+    "ogImageAlt": "exekova: from business intent to verified outcome.",
     "twitter": "@exekova"
   },
   "nav": {

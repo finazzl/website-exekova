@@ -68,6 +68,14 @@ With the preview running, use `npm run test:cloudflare` in another terminal to c
 
 The current access/contact forms prepare email drafts or downloads, and sign-in links to the team's WhatsApp access flow. The static export preserves those behaviours; no server-based authentication, CRM submission or payment endpoint is introduced.
 
+## Social sharing previews
+
+Sharing metadata is rendered into each page's initial HTML head. Open Graph and X cards use the public `1200 × 630` PNG at `/brand/og-default.png`, with an HTTPS URL, image type, dimensions and alternative text. Page-specific titles and descriptions are preserved; the root layout supplies defaults.
+
+With the static preview running, run `npm run test:sharing`. After deploying, run `npm run test:sharing -- --url=https://exekova.com`. This checks the raw HTML and image responses using WhatsApp, Meta, X and LinkedIn crawler user agents. It does not simulate the apps' caches or originate requests from their infrastructure.
+
+If the website checks pass but WhatsApp shows no card, check **WhatsApp → Settings → Privacy → Advanced → Disable link previews** is off. Paste the URL into a new message and allow the preview to load before sending. A previously sent message is not a reliable retest. [WhatsApp's preview setting](https://faq.whatsapp.com/445453537819972).
+
 ## Rebuild for another public domain
 
 ```sh

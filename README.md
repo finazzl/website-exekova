@@ -85,6 +85,18 @@ npm run test:cloudflare
 
 Upload `dist/cloudflare/exekova-cloudflare.zip` or the `dist/cloudflare/site/` folder. Cloudflare serves the files over HTTPS without an application port or start command. The export builds in an isolated copy so the working development server stays usable. See [deployment settings and upload instructions](deployment/cloudflare/README.md).
 
+To deploy that export directly from your terminal to Cloudflare Workers:
+
+```sh
+npx wrangler login
+npx wrangler whoami
+npm run build:cloudflare
+npm run check:deploy:cloudflare  # validates without publishing
+npm run deploy:cloudflare       # publishes the built assets
+```
+
+The account, Worker name (`exekova`) and asset directory are set in [wrangler.jsonc](wrangler.jsonc). Confirm the Worker name matches the intended Cloudflare project before publishing. Rebuild before deploying later website changes.
+
 ## Review
 
 See [the beta audit](src/beta/REVIEW.md) for capability evidence, the Wispr Flow / xAI Bot reference application, preservation details and validation coverage. The current design closely matches the requested reference's layout while using the approved Figtree / EB Garamond typography and exekova’s colours, content and brand assets. Geometry checks are not a claim of pixel identity across different content and artwork.
