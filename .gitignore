@@ -17,6 +17,9 @@ dist/
 # Deployment
 .vercel
 .netlify
+.wrangler/
+.dev.vars
+.dev.vars.*
 
 # TypeScript
 *.tsbuildinfo

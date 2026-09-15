@@ -1,4 +1,35 @@
-# Cloudflare production upload
+# Cloudflare production deployment
+
+## Deploy from your local terminal with Wrangler
+
+The root `wrangler.jsonc` deploys the generated static website to **Cloudflare Workers**. It targets account `5972ca5f219d1c60c42dd24fa4232927` from the supplied dashboard URL, Worker name `exekova`, and asset directory `dist/cloudflare/site`. If the dashboard already has this site under a different Worker name, change `name` in that file before deploying so updates reach the intended site.
+
+Wrangler is installed as a development dependency. From the project root:
+
+```sh
+cd /Users/neeki/Documents/exekova
+npx wrangler login
+npx wrangler whoami
+```
+
+Complete the browser login and confirm the account above appears in `whoami`. Then build the latest production assets and validate the deployment configuration:
+
+```sh
+npm run build:cloudflare
+npm run check:deploy:cloudflare
+```
+
+The check runs `wrangler deploy --dry-run` without uploading or publishing. To publish the built assets:
+
+```sh
+npm run deploy:cloudflare
+```
+
+This runs `wrangler deploy` and creates or updates the named Worker. Wrangler prints the live `https://exekova.<your-subdomain>.workers.dev` URL. The deploy command uses the last generated export; rebuild after website changes before deploying again.
+
+To attach the production domain, open **Workers & Pages → exekova → Settings → Domains & Routes → Add → Custom Domain**, then add `exekova.com`. Canonical URLs in the current export already use `https://exekova.com`. No application port or Node.js start command is required on Cloudflare. The local static preview remains on port `3211`.
+
+This configuration serves assets only, with clean HTML URLs and the exported 404 page. The package's `_headers` and `_redirects` remain active. `wrangler deploy` targets Workers; an existing **Pages** project uses the separate `wrangler pages deploy` workflow.
 
 ## Settings recorded before generating the upload
 
@@ -47,6 +78,9 @@ This is a build-time setting: changing a Cloudflare environment variable after u
 
 ## Cloudflare references
 
+- [Wrangler deploy command](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy).
+- [Wrangler login and account commands](https://developers.cloudflare.com/workers/wrangler/commands/general/).
+- [Workers static assets configuration](https://developers.cloudflare.com/workers/static-assets/binding/).
 - [Pages direct upload](https://developers.cloudflare.com/pages/get-started/direct-upload/): folders or ZIPs; dashboard limit of 1,000 files and 25 MiB per file.
 - [Next.js static exports on Cloudflare](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/).
 - [Static asset redirects](https://developers.cloudflare.com/workers/static-assets/redirects/).
