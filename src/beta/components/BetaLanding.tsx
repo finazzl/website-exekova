@@ -23,7 +23,7 @@ export default function BetaLanding() {
   const site = getSite();
   const email = (site.footer.contact.href as string).replace('mailto:', '');
   const c = content.hero;
-  return <div className="beta-page">
+  return <div className="beta-page beta-home">
     <section className="beta-hero" aria-labelledby="beta-title"><div className="shell">
       <div className="hero-copy"><span className="beta-label"><span className="beta-dot"/>{c.eyebrow}</span>
         <h1 id="beta-title"><span>{c.headline[0]}</span>{' '}<em>{c.headline[1]}</em></h1>

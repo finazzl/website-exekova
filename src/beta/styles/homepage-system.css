@@ -50,8 +50,9 @@
 .beta-page .outcome-note h3>em { color: var(--wz-violet); font-weight: inherit; }
 .beta-page :is(.industry-window-main,.industry-acceptance-receipt)>h4>em { color: var(--wz-green); font-style: normal; }
 
-/* Equal chapter insets and equal heading-to-content gaps. */
-.beta-page>section:not(.beta-hero),
+/* Equal chapter insets and equal heading-to-content gaps.
+   Keep section spacing on the homepage when this CSS persists after navigation. */
+.beta-home>section:not(.beta-hero),
 .beta-page .beta-product-section { padding-block: var(--home-section-space); margin-block: 0; }
 .beta-page>.beta-hero { padding-top: var(--home-section-space); }
 .beta-page>.beta-closing .closing-copy { padding: 0 20px var(--home-content-space); }

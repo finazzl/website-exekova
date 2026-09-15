@@ -1,18 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Icon from '@/components/Icon';
-import ConnectorMark from '@/beta/components/ConnectorMark';
 import content from '@/beta/content/beta.json';
 import { governanceRules } from '@/beta/content/chapters';
-import { CONNECTORS, STATUS_LABEL } from '@/beta/data/connectors';
 import { schemaForPage } from '@/lib/seo';
 import { faqGroups } from '@/site/data/faq';
+import { featuredIntegrations } from '@/site/data/integrationIntake';
+import { integrationsIndex } from '@/site/data/integrations';
 import { contentPage, metadataFor } from '@/site/lib/meta';
 import { REQUEST_ACCESS } from '@/site/nav';
 import JsonLd from '@/site/components/JsonLd';
 import PageHero from '@/site/components/PageHero';
 import Heading from '@/site/components/Heading';
 import RecordCard from '@/site/components/RecordCard';
+import Cards from '@/site/components/Cards';
 import StepsBand from '@/site/components/StepsBand';
 import FeatureRows from '@/site/components/FeatureRows';
 import FaqAccordion from '@/site/components/FaqAccordion';
@@ -21,6 +22,12 @@ import CtaBand from '@/site/components/CtaBand';
 import ComplianceLine from '@/site/components/ComplianceLine';
 
 export const metadata: Metadata = metadataFor('/platform');
+
+/** How many systems the catalogue lists, across every category. */
+const catalogueSystems = integrationsIndex.categories.reduce((total, category) => total + category.integrations.length, 0);
+
+/** The catalogue mark for a featured integration, by name. */
+const logoFor = (name: string) => integrationsIndex.categories.flatMap(category => category.integrations).find(item => item.name === name)?.logo;
 
 export default function PlatformPage() {
   const demo = content.demo;
@@ -48,9 +55,21 @@ export default function PlatformPage() {
     </div></section>
 
     <section className="site-section" id="integrations" aria-labelledby="integrations-title"><div className="shell">
-      <Heading id="integrations-title" centered label={map.eyebrow} title={map.headline[0]} accent={map.headline[1]} body={map.delivery}/>
-      <ul className="site-integrations" aria-label="Integration availability">{CONNECTORS.map(item => <li key={item.name} data-status={item.status}><ConnectorMark connector={item} size={20}/>{item.name}<small>{STATUS_LABEL[item.status]}</small></li>)}</ul>
-      <p className="site-note"><Icon name="grid" size={15}/>{map.foot} {map.legend.available.replace(/\.$/, '')} is what “{STATUS_LABEL.available}” means; “{STATUS_LABEL.planned}” means {map.legend.planned.toLowerCase()} <Link href="/#sources">See the full integration map.</Link></p>
+      <Heading id="integrations-title" centered label={map.eyebrow} title={map.headline[0]} accent={map.headline[1]} body={map.body}/>
+      <Cards columns={2} items={[
+        { icon: 'file', title: 'Where the task starts', body: 'Human intent arrives as one scoped task with acceptance criteria, from the tool your team already uses.', points: ['Jira issues with their acceptance criteria', 'The exekova Work Intent form', 'Requests raised in Slack or Microsoft Teams'] },
+        { icon: 'branch', title: 'Where the outcome lands', body: 'A pull request on an isolated branch in the GitHub repository you approve, carrying everything a reviewer needs.', points: ['Independent review result', 'Required test and check results', 'Acceptance record for the reviewed revision'] },
+      ]}/>
+      <div style={{ marginTop: 18 }}><Cards columns={4} items={featuredIntegrations.map(item => ({ image: logoFor(item.name), kicker: item.category, title: item.name, body: item.description, href: `/integrations/${item.slug}`, linkLabel: `How exekova works with ${item.name}` }))}/></div>
+      <aside className="site-callout" aria-labelledby="catalogue-callout-title">
+        <div className="site-callout-copy">
+          <span className="beta-label">THE CATALOGUE</span>
+          <h3 id="catalogue-callout-title"><span className="site-nowrap">{catalogueSystems} systems.</span> <span className="site-nowrap">{integrationsIndex.categories.length} categories.</span> <em>One workflow.</em></h3>
+          <p>Every tool exekova works with, from where a task starts to where the outcome lands, with a page for each. Connectors are switched on with your team, inside the scope you grant.</p>
+        </div>
+        <ul className="site-callout-chips" aria-label="Catalogue categories">{integrationsIndex.categories.map(category => <li key={category.id}>{category.title}<small>{category.integrations.length}</small></li>)}</ul>
+        <Link href="/integrations" className="beta-button">Browse the integrations catalogue<Icon name="arrow" size={17}/></Link>
+      </aside>
     </div></section>
 
     <section className="site-section is-tight" id="boundaries" aria-labelledby="boundaries-title"><div className="shell">

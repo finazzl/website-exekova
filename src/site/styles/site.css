@@ -96,6 +96,18 @@ a.site-card:hover { border-color: color-mix(in srgb, var(--wz-violet) 40%, var(-
 .site-row-copy ul { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
 .site-row-copy > a { display: inline-flex; align-items: center; gap: 8px; min-height: 24px; }
 .site-note a { display: inline-flex; align-items: center; min-height: 24px; }
+/* A closing callout: counts from the data, the categories as chips, one action. */
+.site-callout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px 40px; align-items: center; margin-top: 28px; padding: 34px 36px; border: 1px solid var(--wz-line); border-radius: 28px; background: var(--wz-ink); color: white; }
+.site-callout .beta-label { display: block; margin-bottom: 12px; color: #c9bcdf; }
+.site-callout h3 { font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -.03em; font-weight: 500; }
+.site-nowrap { white-space: nowrap; }
+.site-callout h3 em { font-family: var(--font-display), Georgia, serif; font-style: italic; font-weight: 400; color: #c9bcff; }
+.site-callout p { margin-top: 12px; max-width: 520px; font-size: 15px; line-height: 1.6; color: #d6cbe8; }
+.site-callout-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.site-callout-chips li { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 6px 12px; border: 1px solid #ffffff24; border-radius: 99px; background: #ffffff0f; font-size: 13px; font-weight: 500; color: white; }
+.site-callout-chips li small { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding-inline: 6px; border-radius: 99px; background: var(--wz-green); color: var(--wz-ink); font-size: 11px; font-weight: 700; }
+.site-callout > .beta-button { grid-column: 1 / -1; justify-self: start; }
+@media (max-width: 860px) { .site-callout { grid-template-columns: minmax(0, 1fr); gap: 22px; padding: 26px 22px; border-radius: 22px; } .site-callout > .beta-button { width: 100%; justify-content: center; } }
 .site-sources a { display: inline-flex; align-items: center; min-height: 24px; }
 .site-row-copy li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--wz-ink); }
 .site-row-copy li svg { color: var(--beta-success); margin-top: 3px; }

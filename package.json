@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "next dev -p 3200",
     "build": "next build",
+    "build:cloudflare": "node scripts/build-cloudflare.mjs",
+    "preview:cloudflare": "node scripts/preview-cloudflare.mjs",
     "start": "next start -p 3200",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

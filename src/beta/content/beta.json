@@ -110,13 +110,7 @@
     "headline": [
       "Start where the task is.",
       "Finish where your code lives."
-    ],
-    "delivery": "GitHub pull requests today. GitLab merge requests and Bitbucket pull requests are planned.",
-    "legend": {
-      "available": "Live in production.",
-      "planned": "Roadmap only; no committed date."
-    },
-    "foot": "Jira and the Work Intent form feed GitHub tasks today. Slack, Teams, Excel, Linear, and CSV task intake are planned."
+    ]
   },
   "pricing": {
     "eyebrow": "PAY FOR ACCEPTED WORK",

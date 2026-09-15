@@ -10,6 +10,8 @@ import { scenarios } from '@/site/data/scenarios';
 import { useCases } from '@/site/data/useCases';
 import { siteBase } from '@/site/lib/meta';
 
+export const dynamic = 'force-static';
+
 /** Every public route. Cookie settings is left out: it is a per-visitor page. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteBase();

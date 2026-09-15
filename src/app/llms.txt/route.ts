@@ -14,7 +14,7 @@ export const dynamic = 'force-static';
 
 export async function GET() {
   const site = getSite();
-  const base = site.brand.url as string;
+  const base = (process.env.NEXT_PUBLIC_SITE_URL ?? site.brand.url) as string;
   const pages = new Map(getAllPages().filter(page => !page.meta.noindex).map(page => [page.slug, page]));
   const row = (slug: string, title: string, description: string) => `- [${title}](${base}${slug}): ${description}`;
   const known = (slug: string) => {
