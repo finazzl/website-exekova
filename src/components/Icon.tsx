@@ -1,0 +1,48 @@
+import type { CSSProperties } from 'react';
+
+const paths: Record<string, React.ReactNode> = {
+  arrow: <path d="M4 12h16m-6-6 6 6-6 6" />,
+  menu: <path d="M3 5h18M3 12h18M3 19h18" />,
+  check: <path d="m5 12 4 4L19 6" />,
+  play: <path d="m9 5 10 7-10 7Z" />,
+  pause: <><path d="M8 5v14M16 5v14" /></>,
+  reset: <><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6" /></>,
+  branch: <><circle cx="6" cy="5" r="2" /><circle cx="18" cy="6" r="2" /><circle cx="6" cy="19" r="2" /><path d="M6 7v10m0-5h5a7 7 0 0 0 7-4" /></>,
+  shield: <><path d="m12 3 8 3v5c0 5-8 10-8 10S4 16 4 11V6Z" /><path d="m8 11 3 3 5-5" /></>,
+  file: <><path d="M14 3H5v18h14V8Zm0 0v5h5M8 12h8M8 16h6" /></>,
+  layers: <><path d="m12 3 9 5-9 5-9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></>,
+  clock: <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>,
+  grid: <><rect x="4" y="4" width="6" height="6" rx="1" /><rect x="14" y="4" width="6" height="6" rx="1" /><rect x="4" y="14" width="6" height="6" rx="1" /><rect x="14" y="14" width="6" height="6" rx="1" /></>,
+  code: <><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-4 16" /></>,
+  lock: <><rect x="5" y="10" width="14" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3" /></>,
+  plus: <path d="M12 4v16M4 12h16" />,
+  close: <path d="m6 6 12 12M6 18 18 6" />,
+  search: <><circle cx="11" cy="11" r="6" /><path d="m20 20-4.5-4.5" /></>,
+  users: <><circle cx="9" cy="8" r="3.5" /><path d="M3 20a6 6 0 0 1 12 0M16 4.5a3.5 3.5 0 0 1 0 7M21 20a6 6 0 0 0-4-5.6" /></>,
+  gear: <><circle cx="12" cy="12" r="3" /><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8" /></>,
+  eye: <><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" /><circle cx="12" cy="12" r="3" /></>,
+  eyeoff: <><path d="M4 4l16 16M9.9 5.9A9.6 9.6 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 0 1-2.7 3.5M6.3 8.1A17.4 17.4 0 0 0 2.5 12S6 18.5 12 18.5c1.2 0 2.3-.2 3.3-.6" /><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2" /></>,
+  mail: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></>,
+  bug: <><path d="M8 9a4 4 0 0 1 8 0v6a4 4 0 0 1-8 0ZM9 6l-1.5-2M15 6l1.5-2M4 13h4M16 13h4M5 19l3-2M19 19l-3-2M5 8l3 1.5M19 8l-3 1.5" /></>,
+  flask: <><path d="M9.5 3h5M10 3v6l-5.5 9.5A1.5 1.5 0 0 0 5.8 21h12.4a1.5 1.5 0 0 0 1.3-2.5L14 9V3M7.5 15h9" /></>,
+  cloud: <><path d="M7 18a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 17 8.5a4.5 4.5 0 0 1 .5 9.5Z" /></>,
+  chart: <><path d="M4 20h16M7 16v-5M12 16V6M17 16v-8" /></>,
+  send: <><path d="m3 11 18-8-8 18-2-8Z" /><path d="m11 13 10-10" /></>,
+  coins: <><ellipse cx="9" cy="7" rx="6" ry="3" /><path d="M3 7v5c0 1.7 2.7 3 6 3s6-1.3 6-3V7M3 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5M15 10.5c3.3.2 6 1.4 6 3s-2.7 3-6 3" /></>,
+  landmark: <><path d="M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-6 10 6Z" /></>,
+  umbrella: <><path d="M3 13a9 9 0 0 1 18 0ZM12 13v5a2 2 0 0 0 4 0M12 4V3" /></>,
+  cart: <><circle cx="9" cy="20" r="1.5" /><circle cx="17" cy="20" r="1.5" /><path d="M3 4h2l2.4 11h11.2L21 8H7" /></>,
+  heart: <><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" /><path d="M8 12h2l1.5-3 2 6 1.5-3h2" /></>,
+  signal: <><path d="M4 20V14M9 20V10M14 20V6M19 20V3" /></>,
+  truck: <><path d="M3 6h11v10H3ZM14 10h4l3 3v3h-7" /><circle cx="7" cy="18" r="2" /><circle cx="17" cy="18" r="2" /></>,
+  plane: <><path d="m10 14-6 2 1-3 6-4V3.5a1.5 1.5 0 0 1 3 0V9l6 4 1 3-6-2-1 5-2 1-1-6-1 6-2-1Z" /></>,
+  bolt: <><path d="M13 2 4 14h7l-1 8 9-12h-7Z" /></>,
+  factory: <><path d="M3 21V10l6 4v-4l6 4v-4l6 4v7ZM3 21h18M6 10V4h3v6" /></>,
+  database: <><ellipse cx="12" cy="6" rx="7" ry="3" /><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3" /></>,
+  building: <><rect x="4" y="3" width="16" height="18" rx="1" /><path d="M9 21v-4h6v4M8 7h2m4 0h2M8 11h2m4 0h2M8 15h2m4 0h2" /></>,
+  graduation: <><path d="m2 9 10-5 10 5-10 5ZM6 11v6c3 3 9 3 12 0v-6M22 9v7" /></>,
+};
+
+export default function Icon({ name, size = 20, className, style }: { name: string; size?: number; className?: string; style?: CSSProperties }) {
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={className} style={style}>{paths[name] ?? paths.layers}</svg>;
+}

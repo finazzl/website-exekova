@@ -1,0 +1,17 @@
+{
+  "slug": "/platform",
+  "meta": {
+    "title": "The exekova platform | Task to verified pull request",
+    "description": "Get the task. Set the repo. Done, verified. How exekova takes a scoped task from Jira or the Work Intent form to a reviewed pull request with evidence.",
+    "keywords": [
+      "autonomous work execution platform",
+      "Jira to GitHub",
+      "independent code review",
+      "verified AI code"
+    ],
+    "schema": [
+      "WebPage"
+    ]
+  },
+  "sections": []
+}

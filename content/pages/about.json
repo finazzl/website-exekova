@@ -1,0 +1,17 @@
+{
+  "slug": "/about",
+  "meta": {
+    "title": "About exekova | An autonomous work execution platform",
+    "description": "exekova turns scoped engineering tasks into independently reviewed, verified pull requests. What we do, how we work and where the product is going.",
+    "keywords": [
+      "about exekova",
+      "autonomous work execution platform",
+      "verified outcomes"
+    ],
+    "schema": [
+      "WebPage",
+      "FAQPage"
+    ]
+  },
+  "sections": []
+}

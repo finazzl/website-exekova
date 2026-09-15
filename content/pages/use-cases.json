@@ -1,0 +1,17 @@
+{
+  "slug": "/use-cases",
+  "meta": {
+    "title": "Enterprise use cases - one platform, end to end | exekova",
+    "description": "Fifty-six problems across thirteen industries and seven functions, each run on one platform: planned, executed, independently reviewed and accepted.",
+    "keywords": [
+      "bug fix automation",
+      "small feature delivery",
+      "regression test coverage"
+    ],
+    "schema": [
+      "WebPage",
+      "FAQPage"
+    ]
+  },
+  "sections": []
+}

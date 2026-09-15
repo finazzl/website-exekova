@@ -1,0 +1,16 @@
+{
+  "slug": "/signin",
+  "meta": {
+    "title": "Sign in | exekova workspace access",
+    "description": "Sign in to your exekova workspace. Access is arranged personally over WhatsApp, so a person sets up your workspace before your first task.",
+    "keywords": [
+      "exekova sign in",
+      "exekova workspace"
+    ],
+    "schema": [
+      "WebPage"
+    ],
+    "noindex": true
+  },
+  "sections": []
+}

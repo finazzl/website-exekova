@@ -1,0 +1,15 @@
+{
+  "slug": "/cookie-settings",
+  "meta": {
+    "title": "Cookie settings | Control what exekova stores",
+    "description": "Review and change what this website may store on your device. exekova sets no advertising cookies and keeps your choice only in your own browser.",
+    "keywords": [
+      "exekova cookie settings"
+    ],
+    "schema": [
+      "WebPage"
+    ],
+    "noindex": true
+  },
+  "sections": []
+}

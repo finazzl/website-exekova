@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="2 16 62 32" role="img" aria-label="Exekova">
+  <title>Exekova</title>
+  <!--
+    The Exekova brand mark: scattered work on the left resolving through a
+    continuous execution loop into a verified outcome on the right.
+
+    Rebuilt as geometry rather than traced from public/brand/exekova-mark.png.
+    The loop is two circles of r=11 centred at (27,32) and (49,32), meeting at
+    (38,32); everything else is positioned off those anchors. The viewBox is
+    cropped to the artwork, so the mark has no built-in padding - give it its own
+    clear space in layout.
+
+    For the square favicon use src/app/icon.svg instead: it drops the fragment
+    field and fills the frame, which is what survives at 16px.
+  -->
+  <style>
+    /* The loop's interior is transparent, so the check sits on whatever surface
+       the mark is placed over. This keeps it legible on both. */
+    .exekova-check { stroke: #16A34A; }
+    @media (prefers-color-scheme: dark) { .exekova-check { stroke: #4ADE80; } }
+  </style>
+  <defs>
+    <linearGradient id="exekova-ribbon" x1="16" y1="40" x2="60" y2="24" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563EB"/>
+      <stop offset="0.28" stop-color="#7C3AED"/>
+      <stop offset="0.52" stop-color="#22D3EE"/>
+      <stop offset="0.74" stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#22C55E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fragmented input: unstructured work before the platform takes it. -->
+  <g>
+    <rect x="12.2" y="17.4" width="4.2" height="4.2" rx="1.1" fill="#2563EB"/>
+    <rect x="6.4" y="21.6" width="3.2" height="3.2" rx="0.9" fill="#22D3EE" opacity="0.85"/>
+    <rect x="10.4" y="25.6" width="5.4" height="5.4" rx="1.4" fill="#4F46E5"/>
+    <circle cx="4.6" cy="28.4" r="1.9" fill="#A78BFA" opacity="0.9"/>
+    <rect x="11.0" y="33.4" width="4.6" height="4.6" rx="1.2" fill="#7C3AED"/>
+    <circle cx="6.2" cy="35.4" r="2.4" fill="#2563EB"/>
+    <rect x="6.6" y="39.8" width="3.4" height="3.4" rx="0.9" fill="#14B8A6" opacity="0.9"/>
+    <rect x="12.6" y="41.2" width="3.0" height="3.0" rx="0.8" fill="#3B82F6" opacity="0.8"/>
+  </g>
+
+  <!-- The execution loop: continuous, no start or end state. -->
+  <path
+    d="M27 21
+       C33.08 21 38 25.93 38 32
+       C38 38.07 42.93 43 49 43
+       C55.07 43 60 38.07 60 32
+       C60 25.93 55.07 21 49 21
+       C42.93 21 38 25.93 38 32
+       C38 38.07 33.07 43 27 43
+       C20.93 43 16 38.07 16 32
+       C16 25.93 20.93 21 27 21
+       Z"
+    fill="none"
+    stroke="url(#exekova-ribbon)"
+    stroke-width="6.4"
+    stroke-linejoin="round"/>
+
+  <!-- Verified outcome: the check sits inside the closing loop. -->
+  <path
+    d="M44.9 32.3 L47.8 35.2 L53.2 28.6"
+    fill="none"
+    class="exekova-check"
+    stroke-width="3.4"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,412 @@
+[
+  {
+    "name": "Cloudflare",
+    "file": "cloudflare.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/cloudflare.svg"
+  },
+  {
+    "name": "Android",
+    "file": "android.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/android-icon.svg"
+  },
+  {
+    "name": "Apache Kafka",
+    "file": "apache-kafka.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/apache-kafka-light.svg"
+  },
+  {
+    "name": "MongoDB",
+    "file": "mongodb.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/mongodb-icon-light.svg"
+  },
+  {
+    "name": "PostgreSQL",
+    "file": "postgresql.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/postgresql.svg"
+  },
+  {
+    "name": "MySQL",
+    "file": "mysql.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/mysql-icon-light.svg"
+  },
+  {
+    "name": "Windsurf",
+    "file": "windsurf.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/windsurf-light.svg"
+  },
+  {
+    "name": "JetBrains Junie",
+    "file": "jetbrains-junie.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/jetbrains.svg"
+  },
+  {
+    "name": "Google Chat",
+    "file": "google-chat.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/google-chat.svg"
+  },
+  {
+    "name": "Zoom",
+    "file": "zoom.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/zoom.svg"
+  },
+  {
+    "name": "Proton Mail",
+    "file": "proton-mail.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/protonmail.svg"
+  },
+  {
+    "name": "Telegram",
+    "file": "telegram.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/telegram.svg"
+  },
+  {
+    "name": "Microsoft OneDrive",
+    "file": "microsoft-onedrive.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/microsoft-onedrive.svg"
+  },
+  {
+    "name": "Microsoft SharePoint",
+    "file": "microsoft-sharepoint.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/microsoft-sharepoint.svg"
+  },
+  {
+    "name": "Dropbox",
+    "file": "dropbox.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/dropbox.svg"
+  },
+  {
+    "name": "BMC Helix",
+    "file": "bmc-helix.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/bmcsoftware.svg"
+  },
+  {
+    "name": "PayPal",
+    "file": "paypal.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/paypal.svg"
+  },
+  {
+    "name": "Adobe Commerce",
+    "file": "adobe-commerce.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/adobe.svg"
+  },
+  {
+    "name": "Netlify",
+    "file": "netlify.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/netlify.svg"
+  },
+  {
+    "name": "Render",
+    "file": "render.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/render_black.svg"
+  },
+  {
+    "name": "Grafana",
+    "file": "grafana.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/grafana.svg"
+  },
+  {
+    "name": "Algolia",
+    "file": "algolia.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/algolia.svg"
+  },
+  {
+    "name": "MariaDB",
+    "file": "mariadb.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/mariadb.svg"
+  },
+  {
+    "name": "Microsoft Dynamics 365",
+    "file": "microsoft-dynamics-365.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/microsoft.svg"
+  },
+  {
+    "name": "Semantic Kernel",
+    "file": "semantic-kernel.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/microsoft.svg"
+  },
+  {
+    "name": "iOS",
+    "file": "ios.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/ios.svg"
+  },
+  {
+    "name": "Zoho CRM",
+    "file": "zoho-crm.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/zoho.svg"
+  },
+  {
+    "name": "Zoho Mail",
+    "file": "zoho-mail.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/zoho.svg"
+  },
+  {
+    "name": "Signal",
+    "file": "signal.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/signal.svg"
+  },
+  {
+    "name": "Viber",
+    "file": "viber.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/viber.svg"
+  },
+  {
+    "name": "Box",
+    "file": "box.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/box.svg"
+  },
+  {
+    "name": "Coda",
+    "file": "coda.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/coda.svg"
+  },
+  {
+    "name": "Adyen",
+    "file": "adyen.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/adyen.svg"
+  },
+  {
+    "name": "Square",
+    "file": "square.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/square.svg"
+  },
+  {
+    "name": "BigCommerce",
+    "file": "bigcommerce.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/bigcommerce.svg"
+  },
+  {
+    "name": "WooCommerce",
+    "file": "woocommerce.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/woocommerce.svg"
+  },
+  {
+    "name": "Fastly",
+    "file": "fastly.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/fastly.svg"
+  },
+  {
+    "name": "Akamai",
+    "file": "akamai.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/akamai.svg"
+  },
+  {
+    "name": "Podman",
+    "file": "podman.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/podman.svg"
+  },
+  {
+    "name": "containerd",
+    "file": "containerd.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/containerd.svg"
+  },
+  {
+    "name": "HashiCorp Nomad",
+    "file": "hashicorp-nomad.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/nomad.svg"
+  },
+  {
+    "name": "New Relic",
+    "file": "new-relic.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/newrelic.svg"
+  },
+  {
+    "name": "Splunk",
+    "file": "splunk.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/splunk.svg"
+  },
+  {
+    "name": "Fluentd",
+    "file": "fluentd.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/fluentd.svg"
+  },
+  {
+    "name": "Fluent Bit",
+    "file": "fluent-bit.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/fluentbit.svg"
+  },
+  {
+    "name": "OpenTelemetry Collector",
+    "file": "opentelemetry-collector.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/opentelemetry.svg"
+  },
+  {
+    "name": "Couchbase",
+    "file": "couchbase.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/couchbase.svg"
+  },
+  {
+    "name": "Apache Pulsar",
+    "file": "apache-pulsar.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/apachepulsar.svg"
+  },
+  {
+    "name": "RabbitMQ",
+    "file": "rabbitmq.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/rabbitmq.svg"
+  },
+  {
+    "name": "OpenSearch",
+    "file": "opensearch.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/opensearch.svg"
+  },
+  {
+    "name": "Apache Solr",
+    "file": "apache-solr.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/apachesolr.svg"
+  },
+  {
+    "name": "HarmonyOS",
+    "file": "harmonyos.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/harmonyos.svg"
+  },
+  {
+    "name": "KaiOS",
+    "file": "kaios.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/kaios.svg"
+  },
+  {
+    "name": "Elastic Agent",
+    "file": "elastic-agent.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/elastic.svg"
+  },
+  {
+    "name": "Oracle",
+    "file": "oracle.png",
+    "source": "https://github.com/oracle.png?size=128"
+  },
+  {
+    "name": "Azure DevOps",
+    "file": "azure-devops.svg",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/azuredevops/azuredevops-original.svg"
+  },
+  {
+    "name": "Amazon DynamoDB",
+    "file": "amazon-dynamodb.svg",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dynamodb/dynamodb-original.svg"
+  },
+  {
+    "name": "Microsoft SQL Server",
+    "file": "microsoft-sql-server.svg",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
+  },
+  {
+    "name": "Dynatrace",
+    "file": "dynatrace.svg",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dynatrace/dynatrace-original.svg"
+  },
+  {
+    "name": "Tabnine",
+    "file": "tabnine.png",
+    "source": "https://www.tabnine.com/wp-content/uploads/2024/09/cropped-tabnine-favicon-192x192.png"
+  },
+  {
+    "name": "Freshdesk",
+    "file": "freshdesk.svg",
+    "source": "https://www.freshworks.com/beta/icons/template-2026/freshdesk-logo-icon.svg"
+  },
+  {
+    "name": "Freshservice",
+    "file": "freshservice.svg",
+    "source": "https://www.freshworks.com/beta/icons/template-2026/freshservice-logo-icon.svg"
+  },
+  {
+    "name": "Smartsheet",
+    "file": "smartsheet.png",
+    "source": "https://github.com/smartsheet.png?size=128",
+    "note": "Official organization mark."
+  },
+  {
+    "name": "CRI-O",
+    "file": "cri-o.png",
+    "source": "https://github.com/cri-o.png?size=128",
+    "note": "Official organization mark."
+  },
+  {
+    "name": "Bugsnag",
+    "file": "bugsnag.png",
+    "source": "https://github.com/bugsnag.png?size=128",
+    "note": "Official organization mark."
+  },
+  {
+    "name": "Rollbar",
+    "file": "rollbar.png",
+    "source": "https://github.com/rollbar.png?size=128",
+    "note": "Official organization mark."
+  },
+  {
+    "name": "incident.io",
+    "file": "incident-io.png",
+    "source": "https://github.com/incident-io.png?size=128",
+    "note": "Official organization mark."
+  },
+  {
+    "name": "FireHydrant",
+    "file": "firehydrant.png",
+    "source": "https://firehydrant.com/apple-touch-icon.png"
+  },
+  {
+    "name": "Rootly",
+    "file": "rootly.svg",
+    "source": "https://cdn.prod.website-files.com/65eb28a668c15a253c5417a6/6914d3cdf2b405d3d668acfc_rootly-favicon.svg"
+  },
+  {
+    "name": "Vector",
+    "file": "vector.png",
+    "source": "https://github.com/vectordotdev.png?size=128",
+    "note": "Official organization mark."
+  },
+  {
+    "name": "Cribl",
+    "file": "cribl.png",
+    "source": "https://github.com/criblio.png?size=128",
+    "note": "Official organization mark."
+  },
+  {
+    "name": "Redpanda",
+    "file": "redpanda.png",
+    "source": "https://github.com/redpanda-data.png?size=128",
+    "note": "Official organization mark."
+  },
+  {
+    "name": "Activepieces",
+    "file": "activepieces.png",
+    "source": "https://github.com/activepieces.png?size=128",
+    "note": "Official organization mark."
+  },
+  {
+    "name": "Workato",
+    "file": "workato.png",
+    "source": "https://github.com/workato.png?size=128",
+    "note": "Official organization mark."
+  },
+  {
+    "name": "Elasticsearch",
+    "file": "elasticsearch.svg",
+    "source": "https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt36f2da8d650732a0/5d0823c3d8ff351753cbc99f/logo-elasticsearch-32-color.svg"
+  },
+  {
+    "name": "Kibana",
+    "file": "kibana.svg",
+    "source": "https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt4466841eed0bf232/5d082a5e97f2babb5af907ee/logo-kibana-32-color.svg"
+  },
+  {
+    "name": "Logstash",
+    "file": "logstash.svg",
+    "source": "https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt8d79255492e03260/5d0cfe54561b9b0b537f94e8/logo-logstash-64-color.svg"
+  },
+  {
+    "name": "Beats",
+    "file": "beats.svg",
+    "source": "https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt4da03cec7fcabcac/5d0cfe4b77f34fd55839b480/logo-beats-64-color.svg"
+  },
+  {
+    "name": "Elastic APM",
+    "file": "elastic-apm.svg",
+    "source": "https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltbf6ba0d0e0e1e5ab/5e20f19a2aa8e40a75136318/logo-observability-32-color.svg"
+  },
+  {
+    "name": "Cloud Firestore",
+    "file": "cloud-firestore.svg",
+    "source": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/firebase.svg"
+  }
+]

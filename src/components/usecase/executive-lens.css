@@ -1,0 +1,26 @@
+/* One run, read from five chairs. Closes each use case in place of the old rubric. */
+.xl-lens { padding:92px 0; background:#faf9fc; border-top:1px solid #eee9f3; }
+.xl-head { max-width:760px; }
+.xl-kicker { display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:#513cec; }
+.xl-head h2 { margin-top:16px; font-size:clamp(30px,3.5vw,44px); line-height:1.08; letter-spacing:-.04em; font-weight:500; color:#1d155b; }
+.xl-head h2 span,.xl-head h2 em { display:block; }
+.xl-head h2 em { font-family:var(--font-display),Georgia,serif; font-style:italic; font-weight:400; color:#513cec; letter-spacing:-.03em; }
+.xl-head p { margin-top:18px; max-width:620px; font-size:16px; line-height:1.75; color:#5f5470; }
+
+.xl-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px; margin-top:44px; align-items:stretch; }
+.xl-grid li { display:flex; flex-direction:column; padding:24px 22px 20px; border-radius:18px; background:#fff; border:1px solid #eceaf5; transition:border-color .2s,box-shadow .2s,transform .2s; }
+.xl-grid li:hover { border-color:color-mix(in srgb,var(--role-hue) 38%,#eceaf5); box-shadow:0 22px 46px -34px #39215966; transform:translateY(-2px); }
+.xl-role { display:flex; align-items:center; gap:10px; }
+.xl-role-icon { display:grid; place-items:center; width:36px; height:36px; border-radius:11px; background:color-mix(in srgb,var(--role-hue) 12%,#fff); color:var(--role-ink); flex-shrink:0; }
+.xl-role strong { font-size:14px; font-weight:700; letter-spacing:.04em; color:var(--role-ink); }
+.xl-question { margin-top:16px; font-size:15px; line-height:1.4; letter-spacing:-.015em; font-weight:600; color:#1d155b; }
+.xl-answer { margin-top:9px; font-size:13.5px; line-height:1.65; color:#5f5470; flex:1; }
+.xl-link { display:inline-flex; align-items:center; gap:6px; margin-top:16px; padding-top:14px; border-top:1px solid #f0ebf5; font-size:12.5px; font-weight:600; color:var(--role-ink); text-decoration:none; }
+.xl-link:hover { text-decoration:underline; text-underline-offset:3px; }
+.xl-note { display:flex; align-items:flex-start; gap:9px; margin-top:26px; max-width:820px; font-size:13px; line-height:1.65; color:#5f5470; }
+.xl-note>svg { flex-shrink:0; margin-top:2px; color:#513cec; }
+
+@media(max-width:1100px) { .xl-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media(max-width:900px) { .xl-lens { padding:68px 0; } .xl-grid { grid-template-columns:1fr 1fr; margin-top:34px; } }
+@media(max-width:640px) { .xl-lens { padding:56px 0; } .xl-grid { grid-template-columns:1fr; gap:12px; } .xl-grid li { padding:20px 18px; } }
+@media(prefers-reduced-motion:reduce) { .xl-grid li:hover { transform:none; } }

@@ -1,0 +1,197 @@
+/* Outcome pricing, executive value, industry context, governance, and vision. */
+.accepted-work-story { margin-top:72px; }
+.acceptance-comparison { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.acceptance-card { display:flex; flex-direction:column; text-align:left; padding:34px; border:2px solid transparent; border-radius:24px; background:var(--wz-paper); transition:border-color .2s,transform .2s; }
+.acceptance-card[data-outcome=accepted] { background:var(--wz-mint); }
+.acceptance-card[aria-pressed=true] { border-color:var(--wz-violet); }
+.acceptance-card:hover { transform:translateY(-3px); }
+.acceptance-card-label { display:flex; align-items:center; gap:10px; font-size:17px; }
+.acceptance-card[data-outcome=accepted] .acceptance-card-label svg { color:#077e52; }
+.acceptance-card>strong { font-family:var(--font-display),Georgia,serif; font-size:88px; line-height:1; font-weight:400; margin-top:25px; letter-spacing:-.035em; }
+.acceptance-card>strong>small { font-family:var(--font-sans),sans-serif; font-size:12px; letter-spacing:0; margin-left:12px; color:var(--wz-ink-muted); }
+.acceptance-unit { font-size:13px; color:var(--wz-violet); margin-top:13px; }
+.acceptance-card>p { font-size:14px; line-height:1.55; max-width:390px; margin-top:20px; }
+.acceptance-card-action { display:flex; align-items:center; gap:10px; font-size:12px; margin-top:auto; padding-top:28px; }
+.accepted-work-meter { background:var(--wz-ink); border-radius:24px; color:var(--wz-paper); padding:32px 38px; margin-top:24px; }
+.meter-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.meter-heading>.beta-label { color:#d4ccfa; }
+.meter-heading>span:last-child { font-size:11px; color:#beb6d6; }
+.meter-reading { display:grid; grid-template-columns:1fr 1.4fr 1fr; align-items:center; gap:45px; margin-top:26px; }
+.meter-reading>div:first-child { display:flex; align-items:baseline; gap:14px; }
+.meter-reading strong { font-family:var(--font-display),Georgia,serif; font-size:80px; line-height:1; font-weight:400; }
+.meter-reading>div:first-child>span { font-size:12px; color:#d4cde4; }
+.meter-track { display:flex; align-items:center; gap:8px; }
+.meter-track :is(span,i) { flex:1; height:55px; border-radius:6px; background:#ffffff15; border:1px solid #ffffff18; }
+.meter-track span { transition:background .3s,border-color .3s; }
+.meter-track span[data-filled=true] { background:var(--wz-green); border-color:var(--wz-green); }
+.meter-amount { text-align:right; }
+.meter-amount>span { display:block; font-size:11px; color:#c5bed8; margin-bottom:9px; }
+.meter-amount strong { font-size:65px; }
+.meter-amount small { font-family:var(--font-sans),sans-serif; font-size:11px; margin-left:10px; color:#c5bed8; }
+.beta-page .meter-explanation { color:#c5bed8; font-size:12px; line-height:1.6; margin-top:25px; padding-top:23px; border-top:1px solid #ffffff1f; }
+.beta-team { padding-block:110px; }
+.beta-team .beta-heading h2,.beta-industries .beta-heading h2,.beta-vision .beta-heading h2 { font-size:75px; line-height:1; }
+.beta-team .beta-heading>p,.beta-industries .beta-heading>p,.beta-vision .beta-heading>p { max-width:620px; margin-inline:auto; font-size:17px; line-height:1.5; }
+.team-role-buttons { display:flex; justify-content:center; gap:12px; margin:45px auto 35px; }
+.team-role-buttons button { display:flex; align-items:center; justify-content:center; gap:12px; min-height:55px; min-width:132px; border:1px solid var(--wz-line); border-radius:99px; font-size:15px; background:white; transition:background .2s,color .2s; }
+.team-role-buttons button[aria-pressed=true] { background:var(--wz-violet); color:white; border-color:var(--wz-violet); }
+.team-value-panel { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+.team-value-copy { padding:40px 30px 40px 0; }
+.team-value-copy>h3 { font-family:var(--font-display),Georgia,serif; font-size:48px; font-weight:400; line-height:1.05; max-width:470px; margin-top:23px; }
+.team-value-copy>p { max-width:470px; font-size:16px; margin-top:20px; }
+.team-value-copy>.team-pain { color:var(--wz-ink); }
+.team-value-copy>a { display:inline-flex; align-items:center; gap:12px; font-size:14px; margin-top:30px; color:var(--wz-violet); }
+.team-outcome-visual { border-radius:28px; background:var(--wz-lilac); padding:55px 35px; }
+.team-outcome-record { padding:28px; background:white; border:1px solid var(--wz-line); border-radius:17px; box-shadow:0 15px 45px #14112d07; }
+.team-outcome-record>div { display:flex; align-items:center; gap:7px; margin-bottom:27px; font-size:11px; }
+.team-outcome-record .beta-badge { margin-left:auto; font-size:11px; }
+.team-outcome-record>.beta-label { font-size:11px; }
+.team-outcome-record>h3 { font-family:var(--font-display),Georgia,serif; font-size:32px; line-height:1.1; font-weight:400; margin-top:13px; }
+.team-outcome-record ul { display:grid; gap:15px; margin-top:29px; font-size:12px; }
+.team-outcome-record li { display:flex; align-items:center; gap:8px; }
+.team-outcome-record li svg { color:#077e52; }
+.team-record-note { display:block; font-size:11px; color:var(--wz-ink-muted); padding-top:23px; margin-top:25px; border-top:1px solid var(--wz-line); }
+.beta-industries { background:var(--wz-lilac); border-radius:80px; padding-block:110px; }
+.industry-scope { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:12px; text-align:center; font-size:12px; margin-bottom:35px; }
+.industry-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+.industry-card { display:flex; flex-direction:column; padding:30px; border-radius:24px; background:var(--wz-paper); }
+.industry-icon { display:grid; place-items:center; width:54px; height:54px; border:1px solid #ded7ed; border-radius:14px; color:var(--wz-violet); }
+.industry-card h3 { font-family:var(--font-display),Georgia,serif; font-size:32px; font-weight:400; margin-top:23px; }
+.industry-card>.industry-task { color:var(--wz-ink); font-size:16px; line-height:1.45; margin-top:16px; }
+.industry-card>p { font-size:13px; line-height:1.6; margin-top:14px; }
+.industry-card>a { display:flex; align-items:center; gap:12px; font-size:12px; margin-top:auto; padding-top:25px; color:var(--wz-violet); }
+.beta-page .industry-vision-note { max-width:690px; text-align:center; font-size:12px; margin:30px auto 0; }
+.industry-vision-note a { color:var(--wz-violet); text-decoration:underline; text-underline-offset:3px; }
+.governance-eyebrow { display:block; text-align:center; margin-bottom:28px; }
+.beta-trust { padding-top:110px; }
+.governance-detail { display:grid; grid-template-columns:1fr 1fr; gap:75px; margin-top:45px; }
+.governance-record { background:var(--wz-mint); border-radius:25px; padding:38px; }
+.governance-detail h3 { font-family:var(--font-display),Georgia,serif; font-size:40px; font-weight:400; line-height:1.05; }
+.governance-record h3 { margin-top:20px; }
+.governance-record ul { margin-top:30px; }
+.governance-record li { display:flex; align-items:center; gap:10px; padding:15px 0; border-top:1px solid #cfdfd5; font-size:13px; }
+.governance-record li>svg:first-child { color:var(--wz-ink-muted); }
+.governance-record li>svg:last-child { margin-left:auto; color:#077e52; }
+.governance-record>p { font-size:11px; margin-top:20px; }
+.governance-rules { padding-top:30px; }
+.governance-rules dl { margin:25px 0 0; }
+.governance-rules dl>div { display:grid; grid-template-columns:100px 1fr; gap:15px; padding:15px 0; border-top:1px solid var(--wz-line); font-size:13px; line-height:1.5; }
+.governance-rules dt { font-weight:500; }
+.governance-rules dd { margin:0; color:var(--wz-ink-muted); }
+.governance-rules>a { display:flex; align-items:center; gap:10px; font-size:13px; color:var(--wz-violet); margin-top:20px; }
+.beta-vision { padding:130px 0 100px; text-align:center; }
+.vision-panels { display:grid; grid-template-columns:1fr 1fr; text-align:left; gap:24px; margin-top:55px; }
+.vision-panels article { padding:38px; border:1px solid var(--wz-line); border-radius:28px; background:var(--wz-mint); }
+.vision-panels .vision-tomorrow { background:var(--wz-lilac); border-style:dashed; border-color:#bdb1e3; }
+.vision-panels article>svg { display:block; color:var(--wz-violet); margin-top:28px; }
+.vision-panels h3 { font-family:var(--font-display),Georgia,serif; font-size:40px; line-height:1.05; font-weight:400; margin-top:22px; }
+.vision-panels p { font-size:15px; line-height:1.6; margin-top:22px; }
+.vision-panels ul { display:grid; gap:14px; margin-top:25px; font-size:12px; }
+.vision-panels li { display:flex; align-items:center; gap:8px; }
+.vision-panels li svg { color:#077e52; }
+.vision-badge { display:inline-flex; border:1px dashed #b0a2df; color:var(--wz-violet); border-radius:5px; font-size:11px; line-height:1; padding:5px 8px; }
+.vision-domains { display:flex; flex-wrap:wrap; gap:8px; margin-top:25px; }
+.vision-domains>span { border:1px solid #d2c8e8; border-radius:99px; padding:6px 11px; font-size:11px; }
+.vision-panels .vision-boundary { font-size:11px; color:var(--wz-violet); margin-top:25px; }
+.vision-journey { font-size:13px; margin:35px auto 25px; }
+@media(max-width:1000px) {
+  .meter-reading { gap:25px; grid-template-columns:1fr 1fr 1fr; }
+  .team-value-panel { gap:35px; }
+  .team-outcome-visual { padding:35px 24px; }
+  .team-outcome-record { padding:23px; }
+  .industry-card { padding:24px; }
+  .governance-detail { gap:35px; }
+  .governance-record { padding:30px; }
+}
+@media(max-width:800px) {
+  .acceptance-card { padding:27px; }
+  .meter-reading { grid-template-columns:1fr 1fr; }
+  .meter-track { grid-column:1/-1; grid-row:2; }
+  .meter-track :is(span,i) { height:25px; }
+  .team-value-panel { grid-template-columns:1fr; max-width:600px; margin:auto; }
+  .team-value-copy { padding:10px 20px; }
+  .team-value-copy>h3,.team-value-copy>p { max-width:none; }
+  .team-outcome-visual { padding:40px; }
+  .industry-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .governance-detail { grid-template-columns:1fr; max-width:650px; margin-inline:auto; }
+  .governance-rules { padding-inline:20px; }
+  .vision-panels article { padding:28px; }
+  .vision-panels h3 { font-size:34px; }
+}
+@media(max-width:600px) {
+  .accepted-work-story { margin-top:40px; }
+  .acceptance-comparison { gap:13px; }
+  .acceptance-card { padding:20px 15px; border-radius:16px; }
+  .acceptance-card-label { flex-direction:column; align-items:flex-start; font-size:13px; gap:8px; }
+  .acceptance-card>strong { font-size:65px; margin-top:20px; }
+  .acceptance-card>strong>small { display:block; font-size:11px; margin:4px 0 0; }
+  .acceptance-unit { font-size:11px; }
+  .acceptance-card>p { font-size:11px; line-height:1.5; margin-top:15px; }
+  .acceptance-card-action { font-size:11px; padding-top:20px; gap:6px; }
+  .acceptance-card-action svg { width:13px; }
+  .accepted-work-meter { padding:25px 21px; border-radius:18px; margin-top:16px; }
+  .meter-heading { align-items:flex-start; flex-direction:column; gap:6px; }
+  .meter-heading>.beta-label { font-size:11px; }
+  .meter-heading>span:last-child { font-size:11px; }
+  .meter-reading { gap:22px; margin-top:25px; }
+  .meter-reading>div:first-child { align-items:flex-start; flex-direction:column; gap:7px; }
+  .meter-reading strong { font-size:65px; }
+  .meter-reading>div:first-child>span { font-size:11px; }
+  .meter-amount>span { font-size:11px; }
+  .meter-amount strong { font-size:55px; }
+  .meter-amount small { display:block; font-size:11px; margin:6px 0 0; }
+  .beta-page .meter-explanation { font-size:11px; margin-top:20px; padding-top:18px; }
+  .beta-team,.beta-industries,.beta-vision { padding-block:65px; }
+  .beta-team .beta-heading h2,.beta-industries .beta-heading h2,.beta-vision .beta-heading h2 { font-size:45px; }
+  .beta-team .beta-heading>p,.beta-industries .beta-heading>p,.beta-vision .beta-heading>p { font-size:15px; }
+  .team-role-buttons { gap:7px; margin:30px auto; }
+  .team-role-buttons button { min-width:0; flex:1; min-height:48px; gap:6px; font-size:12px; }
+  .team-role-buttons svg { width:16px; }
+  .team-value-copy { padding:0 5px; }
+  .team-value-copy>h3 { font-size:37px; margin-top:20px; }
+  .team-value-copy>p { font-size:14px; }
+  .team-value-copy>a { font-size:12px; margin-top:24px; }
+  .team-outcome-visual { padding:25px 20px; border-radius:20px; }
+  .team-outcome-record { padding:22px; }
+  .team-outcome-record>div { flex-wrap:wrap; font-size:11px; gap:5px; }
+  .team-outcome-record .beta-badge { font-size:11px; }
+  .team-outcome-record>h3 { font-size:29px; }
+  .team-outcome-record ul { font-size:11px; }
+  .beta-industries { border-radius:40px; }
+  .industry-scope { font-size:11px; gap:10px; }
+  .industry-grid { grid-template-columns:1fr; gap:16px; }
+  .industry-card { padding:27px; border-radius:20px; }
+  .industry-card h3 { font-size:34px; margin-top:20px; }
+  .industry-card>.industry-task { font-size:17px; margin-top:13px; }
+  .industry-card>a { padding-top:22px; }
+  .beta-page .industry-vision-note { font-size:11px; margin-top:25px; }
+  .beta-trust { padding-top:65px; }
+  .governance-eyebrow { font-size:11px !important; }
+  .governance-detail { margin-top:25px; gap:25px; }
+  .governance-record { padding:27px; border-radius:20px; }
+  .governance-detail h3 { font-size:35px; }
+  .governance-record>.beta-label { font-size:11px; }
+  .governance-record li { font-size:11px; gap:7px; }
+  .governance-rules { padding:10px 5px; }
+  .governance-rules dl>div { grid-template-columns:80px 1fr; font-size:12px; gap:10px; }
+  .vision-panels { grid-template-columns:1fr; margin-top:35px; gap:18px; }
+  .vision-panels article { border-radius:20px; padding:28px; }
+  .vision-panels h3 { font-size:35px; }
+  .vision-panels p { font-size:14px; }
+  .vision-panels ul { font-size:11px; }
+  .vision-journey { font-size:11px; max-width:335px; margin-top:30px; }
+  .beta-vision .beta-button { font-size:13px; }
+}
+@media(max-width:360px) {
+  .acceptance-card { padding:18px 12px; }
+  .acceptance-card-label { font-size:12px; }
+  .acceptance-card>strong { font-size:57px; }
+  .acceptance-card-action { flex-direction:column; align-items:flex-start; }
+  .team-role-buttons button { font-size:11px; gap:5px; }
+  .team-role-buttons svg { width:14px; }
+  .team-outcome-visual { padding:20px 15px; }
+  .team-outcome-record { padding:19px; }
+  .team-outcome-record .beta-badge { margin-left:0; }
+  .beta-team .beta-heading h2,.beta-industries .beta-heading h2,.beta-vision .beta-heading h2 { font-size:40px; }
+  .governance-record { padding:22px; }
+}

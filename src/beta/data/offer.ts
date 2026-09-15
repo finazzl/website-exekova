@@ -1,0 +1,13 @@
+/** Current offer; no checkout on the landing page. */
+import { WORKFLOW_SUMMARY } from './workflow';
+export const taskOffer = { current: 19, standard: 29 } as const;
+export const taskFaq = [
+  { q: 'What is exekova?', a: `exekova is an autonomous work execution platform. It turns a scoped engineering task into a verified outcome in three steps: ${WORKFLOW_SUMMARY} The outcome is a GitHub pull request with the code change, independent review, and check evidence. Your team owns the merge.` },
+  { q: 'What work can I give exekova?', a: 'Start with a small bug fix, a small feature, or focused test coverage with clear acceptance criteria. Use Jira or our Work Intent form, exekova’s own form for describing the task and what done means. Task eligibility and repository access are confirmed before work starts. Broad projects need smaller tasks.' },
+  { q: 'Which integrations can I use today?', a: 'Jira, exekova’s Work Intent form, and GitHub are available today. Task intake from Slack, Microsoft Teams, Excel, Linear, and CSV is planned. GitLab and Bitbucket repositories are also planned, with no committed availability date.' },
+  { q: 'What does a verified outcome include?', a: 'A code change, an independent review, the required test and check results, and an acceptance record for the reviewed revision. A completion claim alone cannot produce acceptance. Your team receives a GitHub pull request to review.' },
+  { q: 'What happens if review or verification fails?', a: 'The attempt is rejected and returned for correction, within a limited number of attempts. The corrected work must pass review and verification again. If it still does not pass, there is no accepted outcome. The evidence of the attempts is retained.' },
+  { q: 'What does it cost?', a: `The current price is $${taskOffer.current} USD per accepted task. Rejected attempts count as zero accepted tasks and cost $0. Accepted tasks are invoiced against the acceptance record. The planned standard price is $${taskOffer.standard}; the price agreed for your task stays with that task.` },
+  { q: 'Will exekova merge or deploy my code?', a: 'No. exekova delivers a pull request on an isolated branch. Your team owns code review, merging, and production deployment. exekova works within the task projects and repositories you approve.' },
+  { q: 'How do I request access?', a: 'Choose Request access and share your work email, team, task source, repository provider, task, and acceptance criteria. The form prepares an email request for you to review and send, with a download option. exekova confirms eligibility and access before work starts; submitting interest does not guarantee admission.' },
+];

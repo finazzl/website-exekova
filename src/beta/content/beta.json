@@ -1,0 +1,198 @@
+{
+  "hero": {
+    "eyebrow": "AUTONOMOUS WORK EXECUTION PLATFORM",
+    "headline": [
+      "Task. Repo.",
+      "Done."
+    ],
+    "support": "Get a verified outcome from your task.",
+    "detail": "We execute the work, review it independently, and deliver the evidence.",
+    "ctaPrimary": "Request access",
+    "footnote": "GET · SET · DONE",
+    "ctaSecondary": "See it in action"
+  },
+  "nav": [
+    {
+      "label": "How it works",
+      "href": "#how-it-works"
+    },
+    {
+      "label": "Integrations",
+      "href": "#sources"
+    },
+    {
+      "label": "Pricing",
+      "href": "#pricing"
+    },
+    {
+      "label": "FAQ",
+      "href": "#faq"
+    }
+  ],
+  "demo": {
+    "eyebrow": "A TASK IN. A VERIFIED OUTCOME OUT.",
+    "caption": "Product demo · No live connection",
+    "input": "Your task",
+    "output": "Your outcome",
+    "repo": "acme/checkout",
+    "key": "ENG-142",
+    "criteria": "Done means",
+    "checks": [
+      "Independent review",
+      "Tests & checks",
+      "Acceptance criteria"
+    ],
+    "ready": "Ready for your team's review",
+    "pending": "The pull request takes shape here.",
+    "controls": "Explore the workflow",
+    "play": "Play demo",
+    "pause": "Pause demo",
+    "replay": "Replay demo",
+    "next": "Next step"
+  },
+  "how": {
+    "eyebrow": "HOW IT WORKS",
+    "headline": [
+      "Get the task. Set the repo.",
+      "Come back to a verified outcome."
+    ]
+  },
+  "proof": {
+    "eyebrow": "DONE COMES WITH EVIDENCE",
+    "headline": [
+      "A code change is a start.",
+      "A verified outcome is the point."
+    ],
+    "body": "exekova checks the work independently, then verifies the reviewed revision against the agreed criteria.",
+    "note": "Your team decides what to merge and deploy.",
+    "label": "CHECKOUT VALIDATION · EXAMPLE REVIEW",
+    "tabs": [
+      "Review finds an issue",
+      "After correction"
+    ],
+    "finding": "Postcode validation misses a country change.",
+    "corrected": "Country changes now trigger postcode validation.",
+    "rows": [
+      "Independent review",
+      "Regression tests",
+      "Acceptance criteria"
+    ],
+    "rejected": "Changes needed",
+    "accepted": "Verified outcome",
+    "retry": "Returned for correction",
+    "ready": "Pull request ready",
+    "foot": "If required checks fail, the attempt is rejected. Corrections are reviewed and verified again."
+  },
+  "compare": {
+    "eyebrow": "LESS TO COORDINATE",
+    "headline": [
+      "Keep the decisions.",
+      "Hand over the task."
+    ],
+    "beforeLabel": "Coordinating it yourself",
+    "before": [
+      "Define the task",
+      "Coordinate the code change",
+      "Collect review and test evidence"
+    ],
+    "afterLabel": "With exekova",
+    "after": [
+      "One scoped task",
+      "One reviewed outcome"
+    ],
+    "afterNote": "A verified outcome includes the code change, independent review, and verification evidence.",
+    "boundary": "You own the scope, exceptions, merge, and release."
+  },
+  "map": {
+    "eyebrow": "YOUR TOOLS. ONE WORKFLOW.",
+    "body": "Bring a task from Jira or your Work Intent form. Get a verified pull request in GitHub.",
+    "cta": "Get started with exekova",
+    "headline": [
+      "Start where the task is.",
+      "Finish where your code lives."
+    ],
+    "delivery": "GitHub pull requests today. GitLab merge requests and Bitbucket pull requests are planned.",
+    "legend": {
+      "available": "Live in production.",
+      "planned": "Roadmap only; no committed date."
+    },
+    "foot": "Jira and the Work Intent form feed GitHub tasks today. Slack, Teams, Excel, Linear, and CSV task intake are planned."
+  },
+  "pricing": {
+    "eyebrow": "PAY FOR ACCEPTED WORK",
+    "headline": [
+      "One accepted task.",
+      "One clear price."
+    ],
+    "body": "Start with a bug fix, a small feature, or a focused test change. We confirm eligibility before execution.",
+    "label": "CURRENT PRICE",
+    "unit": "USD / accepted task",
+    "standard": "Planned standard price",
+    "features": [
+      "Code change on an isolated branch",
+      "Independent review and verification",
+      "Pull request with evidence"
+    ],
+    "rejected": "Rejected attempts count as $0.",
+    "fine": "Accepted tasks are invoiced against the acceptance record. No subscription or payment details on this page.",
+    "cta": "Bring your first task",
+    "exampleTitle": "Provider API deprecations",
+    "exampleBody": "A payment provider deprecates an endpoint on their calendar, not yours."
+  },
+  "faq": {
+    "eyebrow": "A FEW GOOD QUESTIONS",
+    "headline": [
+      "Clear before",
+      "you start."
+    ]
+  },
+  "request": {
+    "eyebrow": "LET’S START WITH ONE TASK",
+    "title": "Make room for the next thing.",
+    "copy": "Tell us about your team and one task. We’ll confirm fit, repository access, and next steps.",
+    "email": "Work email",
+    "company": "Company or team",
+    "source": "Task source",
+    "provider": "Code repository",
+    "task": {
+      "label": "What needs to get done?",
+      "placeholder": "e.g. Keep selected filters when moving to the next page."
+    },
+    "criteria": {
+      "label": "What does done look like?",
+      "placeholder": "e.g. Filters persist across pages. Reset returns to page one. Regression test passes."
+    },
+    "repo": {
+      "label": "Repository name (optional)",
+      "placeholder": "e.g. your-team/web-app"
+    },
+    "submit": "Open email request",
+    "download": "Download request",
+    "fine": "Review and send the request in your email app. This page does not start work or take payment. Do not include credentials or private code.",
+    "signin": "Already have access? Sign in",
+    "confirmation": "Access and task eligibility are confirmed before work starts.",
+    "downloaded": "Request downloaded; it has not been sent.",
+    "prepared": "Your request has not been sent yet. Review and send the draft in your email app.",
+    "invalid": "Add a valid work email, your team, the task, and its acceptance criteria.",
+    "planned": "This combination includes a planned integration. Your request will register interest; it cannot start a task yet.",
+    "sidePoints": [
+      "One well-scoped engineering task",
+      "Jira or our Work Intent form → GitHub",
+      "Your team approves the merge"
+    ],
+    "contactHint": "No email app? Download your request and send it to"
+  },
+  "footer": {
+    "note": "Autonomous work execution platform. Human-owned decisions.",
+    "links": [
+      {
+        "label": "Privacy",
+        "href": "/privacy"
+      },
+      {
+        "label": "Terms",
+        "href": "/terms"
+      }
+    ]
+  }
+}

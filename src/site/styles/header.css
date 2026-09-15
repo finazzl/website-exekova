@@ -1,0 +1,80 @@
+/* The exekova.com header, ported from apps/site (experience.css and
+   navigation.css): a full-width sticky bar, mega menus on desktop, a drawer
+   under 1100px. Colours are the main site's own. */
+.site-header { position: sticky; top: 0; z-index: 60; background: #fcfbfdf5; border-bottom: 1px solid #e8e3ed; backdrop-filter: blur(18px); box-shadow: none; color: #31283a; transition: box-shadow .2s; --wz-header-h: 74px; }
+.site-header.is-scrolled { box-shadow: 0 4px 16px #20112808; }
+.navigation-bar { position: relative; display: flex; align-items: center; gap: 36px; width: 100%; max-width: 1200px; height: var(--wz-header-h); margin: auto; padding: 0 32px; }
+.navigation-brand { display: flex; flex-shrink: 0; align-items: center; }
+.navigation-brand img { height: 34px; width: auto; }
+.navigation-desktop { display: flex; align-items: center; gap: 5px; height: 100%; margin-right: auto; }
+.navigation-item { display: flex; align-items: center; height: 100%; }
+.navigation-link { position: relative; display: inline-flex; align-items: center; gap: 7px; padding: 12px 10px; border-radius: 5px; font-size: 14px; line-height: 20px; font-weight: 500; color: #504456; white-space: nowrap; transition: color .15s, background .15s; }
+.navigation-link:hover, .navigation-link[aria-expanded=true], .navigation-link[aria-current=page], .navigation-link.is-current { color: #513cec; background: #f0eaf6; }
+.navigation-chevron { flex-shrink: 0; color: #9b89a8; transition: transform .15s; }
+.navigation-link[aria-expanded=true] .navigation-chevron { transform: rotate(180deg); color: #513cec; }
+.navigation-actions { display: flex; flex-shrink: 0; align-items: center; gap: 10px; }
+.navigation-signin, .navigation-cta { display: inline-flex; align-items: center; justify-content: center; gap: 15px; min-height: 38px; padding: 8px 15px; border-radius: 5px; font-size: 13px; line-height: 20px; font-weight: 500; white-space: nowrap; transition: background .15s, border-color .15s; }
+.navigation-signin { border: 1px solid #eceaf5; background: #fcfbfd; color: #665470; }
+.navigation-signin:hover { background: #f2edf7; border-color: #c3bfe3; }
+.navigation-cta { border: 1px solid var(--wz-cta-background); background: var(--wz-cta-background); color: var(--wz-cta-foreground); }
+.navigation-cta:hover { background: var(--wz-cta-background-hover); border-color: var(--wz-cta-background-hover); }
+.navigation-panel { position: absolute; top: calc(100% - 4px); left: 180px; right: 32px; max-width: 960px; max-height: calc(100dvh - 115px); overflow: auto; border: 1px solid #dcd3e4; border-radius: 9px; background: #fff; box-shadow: 0 20px 50px -15px #35214425; overscroll-behavior: contain; scrollbar-width: thin; }
+.navigation-feature { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding: 25px 30px; background: radial-gradient(ellipse at right, #eceaf5, transparent 70%), #f7f3fb; border-bottom: 1px solid #eceaf5; color: #2411b0; }
+.navigation-eyebrow { font-size: 11px; line-height: 20px; letter-spacing: .1em; color: #897199; }
+.navigation-feature h2 { margin: 8px 0; font-size: 22px; font-weight: 500; letter-spacing: -.025em; line-height: 1.25; }
+.navigation-feature p { max-width: 640px; font-size: 14px; line-height: 21px; color: #7b678a; }
+.navigation-feature-arrow { display: grid; flex-shrink: 0; place-items: center; width: 42px; height: 42px; border: 1px solid #c3bfe3; border-radius: 6px; transition: background .15s; }
+.navigation-feature:hover .navigation-feature-arrow { background: #eceaf5; }
+.navigation-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; padding: 24px 22px; }
+.navigation-columns[data-columns="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.navigation-column h3 { margin-bottom: 9px; padding: 0 10px; font-size: 11px; letter-spacing: .08em; line-height: 20px; text-transform: uppercase; color: #8c7a97; }
+.navigation-column ul { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.navigation-column a { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 10px; border-radius: 5px; transition: background .15s; }
+.navigation-column strong { display: block; font-size: 15px; font-weight: 500; line-height: 22px; color: #4d3c5a; }
+.navigation-column a span { display: block; margin-top: 3px; font-size: 13px; line-height: 20px; color: #87728f; }
+.navigation-column a > svg { flex-shrink: 0; color: #513cec; opacity: 0; transform: translateX(-3px); transition: opacity .15s, transform .15s; }
+.navigation-column a:hover, .navigation-column a[aria-current=page] { background: #f5f0fa; }
+.navigation-column a:hover > svg, .navigation-column a:focus-visible > svg { opacity: 1; transform: none; }
+.navigation-panel-footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 15px 30px; border-top: 1px solid #eceaf5; background: #fcfafd; font-size: 12px; line-height: 20px; color: #897396; }
+.navigation-panel-footer a { display: inline-flex; align-items: center; gap: 10px; font-weight: 500; color: #513cec; }
+.navigation-toggle, .navigation-mobile { display: none; }
+.site-header a:focus-visible, .site-header button:focus-visible { outline: 2px solid #513cec; outline-offset: 3px; }
+
+@media (max-width: 1250px) {
+  .navigation-bar { gap: 18px; }
+  .navigation-link { padding: 10px 8px; font-size: 13px; }
+  .navigation-brand img { height: 31px; }
+  .navigation-actions { gap: 8px; }
+  .navigation-signin, .navigation-cta { padding: 8px 12px; }
+  .navigation-panel { left: 155px; right: 24px; }
+}
+@media (max-width: 1100px) {
+  .site-header { --wz-header-h: 68px; }
+  .navigation-bar { justify-content: space-between; gap: 20px; }
+  .navigation-desktop, .navigation-actions, .navigation-panel { display: none; }
+  .navigation-toggle { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid #eceaf5; border-radius: 5px; background: #fcfbfd; color: #775488; }
+  .navigation-mobile { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100dvh - var(--navigation-bottom, 105px)); overflow: auto; overscroll-behavior: contain; padding: 15px 24px 25px; background: #fcfbfd; border-top: 1px solid #eceaf5; border-bottom: 1px solid #c3bfe3; box-shadow: 0 20px 30px #38204510; }
+  .navigation-mobile-links { width: 100%; max-width: 700px; margin: 0 auto; }
+  .navigation-mobile-item { border-bottom: 1px solid #eceaf5; }
+  .navigation-mobile-item > button, .navigation-mobile-item > a { display: flex; align-items: center; justify-content: space-between; gap: 15px; width: 100%; padding: 19px 3px; text-align: left; font-size: 18px; line-height: 24px; color: #5d426d; }
+  .navigation-mobile-item > button[aria-expanded=true], .navigation-mobile-item > button.is-current { color: #513cec; }
+  .navigation-mobile-item > button[aria-expanded=true] .navigation-chevron { transform: rotate(180deg); }
+  .navigation-mobile-item > a > svg { color: #c3bfe3; }
+  .navigation-mobile-group { padding: 0 10px 23px; }
+  .navigation-mobile-overview { display: flex; align-items: center; gap: 12px; margin: 0 0 19px; font-size: 14px; line-height: 21px; color: #513cec; }
+  .navigation-mobile-group h3 { margin: 19px 0 5px; font-size: 11px; letter-spacing: .07em; line-height: 20px; text-transform: uppercase; color: #9479a5; }
+  .navigation-mobile-group ul { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+  .navigation-mobile-group li > a { display: block; padding: 10px 0; }
+  .navigation-mobile-group strong { display: block; font-size: 15px; font-weight: 500; line-height: 22px; color: #695075; }
+  .navigation-mobile-group li > a > span { display: block; margin-top: 3px; font-size: 13px; line-height: 20px; color: #8b719a; }
+  .navigation-mobile-group a[aria-current=page] strong { color: #513cec; }
+  .navigation-mobile-actions { display: flex; gap: 12px; width: 100%; max-width: 700px; margin: 23px auto 0; }
+  .navigation-mobile-actions a { flex: 1; min-height: 44px; }
+}
+@media (max-width: 639px) {
+  .navigation-bar { padding: 0 20px; }
+  .navigation-brand img { height: 31px; }
+  .navigation-mobile { padding: 10px 20px 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .site-header * { transition: none !important; } }
+@media print { .site-header { display: none !important; } }

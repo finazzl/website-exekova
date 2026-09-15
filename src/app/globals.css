@@ -1,0 +1,56 @@
+/* Exekova beta - the site tokens and the few shared classes the beta page
+   relies on, written as plain CSS so this app needs no Tailwind. Values match
+   apps/site/src/app/{globals,experience}.css in the monorepo. */
+:root {
+  --wz-violet: #513cec;
+  --wz-cta-background: var(--wz-violet);
+  --wz-cta-background-hover: #2411b0;
+  --wz-cta-foreground: #fff;
+  --wz-violet-bright: #705ff2;
+  --wz-ink: #14112d;
+  --wz-ink-muted: #6b6484;
+  --wz-green: #05cc83;
+  --wz-azure: #1370fb;
+  --wz-teal: #08e2db;
+  --wz-paper: #faf9fc;
+  --wz-dark: #14112d;
+  --wz-muted: #716c7e;
+  --wz-line: #e8e4ee;
+  --wz-purple: #513cec;
+  --wz-lilac: #f0eafa;
+  --wz-mint: #e9f4ee;
+  --wz-header-h: 76px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { color-scheme: light; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; scroll-behavior: smooth; scroll-padding-top: 100px; }
+body { margin: 0; background: var(--wz-paper); color: var(--wz-ink); font-family: var(--font-sans), "Figtree", system-ui, sans-serif; font-size: 16px; line-height: 1.3; }
+h1, h2, h3, h4, p { margin: 0; }
+h1, h2, h3, h4 { text-wrap: balance; }
+p { text-wrap: pretty; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+img, svg { display: inline-block; vertical-align: middle; }
+img { max-width: 100%; height: auto; }
+ul, ol { margin: 0; padding: 0; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+::selection { background: #c3bfe3; }
+:focus-visible { outline: 2px solid var(--wz-violet-bright); outline-offset: 3px; border-radius: 6px; }
+
+/* The only gutter authority: 1200px, 20px on phones, 32px from 640px up. */
+.shell { margin-inline: auto; width: 100%; max-width: 1200px; padding-inline: 20px; }
+@media (min-width: 640px) { .shell { padding-inline: 32px; } }
+
+.chip { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; border: 1px solid; padding: 4px 10px; font-size: 12px; font-weight: 500; line-height: 1; }
+.chip-available { border-color: #c6efdc; background: #e9f6ef; color: #077e52; }
+.chip-beta { border-color: #c9dcfb; background: #eef4ff; color: #0352c9; }
+.chip-planned { border-color: #e8e4ee; background: #f7f5f1; color: #6b6484; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.skip:focus { position: fixed; left: 16px; top: 16px; z-index: 100; width: auto; height: auto; margin: 0; padding: 8px 16px; clip: auto; border-radius: 999px; background: #fff; box-shadow: 0 10px 30px #3624761f; }
+
+.accent { font-family: var(--font-display), Georgia, serif; font-style: italic; font-weight: 400; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}

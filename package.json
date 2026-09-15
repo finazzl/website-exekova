@@ -1,0 +1,37 @@
+{
+  "name": "exekova-beta",
+  "version": "0.1.0",
+  "private": true,
+  "description": "EXEKOVA private beta landing page: scoped engineering tasks to independently reviewed, verified pull requests.",
+  "scripts": {
+    "dev": "next dev -p 3200",
+    "build": "next build",
+    "start": "next start -p 3200",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:browser": "node src/beta/tests/browser-qa.cjs",
+    "test:design": "node src/beta/tests/design-reference-qa.cjs",
+    "test:flow": "node src/beta/tests/flow-qa.cjs",
+    "test:chapters": "node src/beta/tests/business-qa.cjs --url=http://localhost:3203",
+    "test:tools": "node src/beta/tests/tools-qa.cjs --url=http://localhost:3203",
+    "test:presentation": "node src/beta/tests/presentation-qa.cjs --url=http://localhost:3203",
+    "test:how": "node src/beta/tests/how-story-qa.cjs --url=http://localhost:3203"
+  },
+  "dependencies": {
+    "framer-motion": "13.2.0",
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.12.0",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "^4.7.0",
+    "jsdom": "^26.1.0",
+    "playwright-core": "^1.63.0",
+    "typescript": "5.6.3",
+    "vitest": "^3.2.4"
+  }
+}

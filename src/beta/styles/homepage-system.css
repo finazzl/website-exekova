@@ -1,0 +1,141 @@
+/* Measured Wispr display hierarchy, with one EXEKOVA spacing and colour system.
+   These rules apply only to the homepage; product mockups retain their UI type. */
+.beta-page {
+  --home-display: 120px;
+  --home-hero: 96px;
+  --home-chapter: 75px;
+  --home-section: 64px;
+  --home-subheading: 48px;
+  --home-card: 32px;
+  --home-section-space: 112px;
+  --home-content-space: 64px;
+  --home-copy-space: 24px;
+  --home-grid-gap: 24px;
+  --home-heading: var(--wz-ink);
+  --home-heading-accent: var(--wz-violet);
+}
+.beta-page :is(.beta-product-chapter,.pricing-reference-story,.beta-integrations,.beta-outcomes) {
+  --home-heading: var(--wz-paper);
+  --home-heading-accent: var(--wz-green);
+}
+
+/* Matching type roles, rather than unrelated per-section overrides. */
+.beta-page :is(#beta-title,#product-title,#how-title,#pricing-title,#features-title,#integrations-title,#team-title,#industries-title,#trust-title,#outcomes-title,#vision-title,#faq-title,#closing-title) {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -.03em;
+  color: var(--home-heading);
+}
+.beta-page :is(#beta-title,#product-title,#how-title,#pricing-title,#features-title,#integrations-title,#team-title,#industries-title,#trust-title,#outcomes-title,#vision-title,#faq-title,#closing-title)>em {
+  color: var(--home-heading-accent);
+  font-size: inherit;
+  font-weight: 400;
+  line-height: inherit;
+}
+.beta-page :is(#beta-title,#product-title) { font-size: var(--home-hero); line-height: .95; }
+.beta-page :is(#industries-title,#closing-title) { font-size: var(--home-display); line-height: .85; }
+.beta-page :is(#features-title,#team-title,#outcomes-title,#vision-title,#faq-title) { font-size: var(--home-chapter); line-height: 1; }
+.beta-page :is(#how-title,#pricing-title,#integrations-title) { font-size: var(--home-section); line-height: .95; }
+.beta-page #trust-title { font-size: var(--home-subheading); line-height: .95; }
+.beta-page .feature-story-copy>h3,
+.beta-page .team-reference-story .team-value-copy>h3,
+.beta-page .governance-detail h3 { font-size: var(--home-subheading); line-height: .95; }
+.beta-page .industry-delivery>h3,
+.beta-page .industry-delivery-copy>h4 { font-size: var(--home-section); line-height: .95; }
+.beta-page :is(.governance-detail,.industry-delivery-copy) :is(h3,h4)>em {
+  color: var(--wz-violet); font-family: inherit; font-weight: inherit;
+}
+.beta-page .industry-delivery>h3>em { color: var(--wz-violet); }
+.beta-page .beta-integrations article h3>em { color: var(--wz-green); }
+.beta-page .outcome-note h3>em { color: var(--wz-violet); font-weight: inherit; }
+.beta-page :is(.industry-window-main,.industry-acceptance-receipt)>h4>em { color: var(--wz-green); font-style: normal; }
+
+/* Equal chapter insets and equal heading-to-content gaps. */
+.beta-page>section:not(.beta-hero),
+.beta-page .beta-product-section { padding-block: var(--home-section-space); margin-block: 0; }
+.beta-page>.beta-hero { padding-top: var(--home-section-space); }
+.beta-page>.beta-closing .closing-copy { padding: 0 20px var(--home-content-space); }
+.beta-page .beta-heading.is-centered { margin-bottom: var(--home-content-space); }
+.beta-page .beta-heading>.beta-label { margin-bottom: var(--home-copy-space); font-size: 14px; line-height: 1.3; letter-spacing: 1px; }
+.beta-page .beta-heading>p { margin-top: var(--home-copy-space); line-height: 1.3; }
+.beta-page .beta-heading>.beta-button { margin-top: var(--home-copy-space); }
+.beta-page .beta-heading>p,
+.beta-page .closing-copy>p { font-size: 20px; }
+.beta-page .closing-copy>p { margin-top: var(--home-copy-space); margin-bottom: var(--home-copy-space); }
+.beta-page .hero-copy .hero-lede { max-width:600px; margin-top:var(--home-copy-space); font-size:20px; font-weight:500; line-height:1.4; }
+.beta-page .pricing-reference-story .accepted-work-story { margin-top: 0; }
+.beta-page .industry-reference-story .industry-groups { margin-top: 0; row-gap: var(--home-content-space); }
+.beta-page .industry-delivery { margin-top: var(--home-section-space); }
+.beta-page .industry-delivery>h3 { margin-bottom: var(--home-content-space); }
+.beta-page .industry-reference-story .industry-vision-note { margin-top: var(--home-section-space); }
+.beta-page .governance-detail { margin-top: var(--home-content-space); }
+.beta-page .pricing-reference-story .task-fit { margin-top: var(--home-content-space); }
+.beta-page .pricing-detail { margin-top: var(--home-copy-space); }
+.beta-page .industry-reference-story .industry-scope { margin-top: var(--home-copy-space); }
+.beta-page .industry-reference-story .beta-heading>.industry-scope { font-size: 12px; }
+.beta-page :is(.feature-story-copy,.team-value-copy)>p { line-height: 1.3; }
+.beta-page .feature-story-copy>p { margin-top: var(--home-copy-space); }
+.beta-page :is(.vision-panels,.industry-groups) { column-gap: var(--home-grid-gap); }
+body:has(.beta-page) .site-footer { padding-top: 112px; }
+body:has(.beta-page) .site-footer :is(.footer-links h2,.footer-links li a,.footer-brand-block>p) { font-size: 16px; line-height: 1.3; }
+body:has(.beta-page) .site-footer :is(.footer-legal a,.footer-base p) { font-size: 14px; line-height: 1.3; }
+
+@media (max-width: 1200px) and (min-width: 768px) {
+  .beta-page { --home-display: 96px; }
+}
+@media (max-width: 767px) {
+  .beta-page {
+    --home-display: 56px;
+    --home-hero: 48px;
+    --home-chapter: 40px;
+    --home-section: 40px;
+    --home-subheading: 32px;
+    --home-section-space: 72px;
+    --home-content-space: 48px;
+  }
+  .beta-page .beta-heading>.beta-label { font-size: 12px; }
+  .beta-page .beta-heading>p,.beta-page .closing-copy>p { font-size: 18px; }
+  .beta-page .team-reference-story .team-role-story { margin-top: var(--home-content-space); }
+  .beta-page .team-reference-story .team-role-story:first-child { margin-top: 0; }
+  .beta-page .industry-reference-story .industry-groups { gap: var(--home-content-space); }
+  .beta-page .industry-reference-story .industry-group>h3 { margin-bottom: var(--home-copy-space); }
+  body:has(.beta-page) .site-footer { padding-top: 72px; }
+  body:has(.beta-page) .site-footer :is(.footer-links h2,.footer-links li a,.footer-brand-block>p) { font-size: 14px; }
+  body:has(.beta-page) .site-footer :is(.footer-legal a,.footer-base p) { font-size: 11px; }
+}
+@media (max-width: 360px) {
+  .beta-page { --home-display: 48px; }
+}
+
+/* A clear benefit, supporting detail, one primary action and readable pricing. */
+.beta-page .hero-detail { max-width:520px; margin:8px auto 0; color:var(--wz-ink-muted); font-size:16px; line-height:1.5; }
+.beta-page .hero-actions { margin-top:24px; }
+.beta-page .hero-actions .beta-button { width:auto; min-width:208px; height:56px; padding:0 28px; border-radius:999px; font-size:16px; font-weight:500; line-height:1.5; }
+.beta-page .hero-copy .hero-price { display:flex; justify-content:center; align-items:baseline; flex-wrap:wrap; gap:8px 16px; margin:16px auto 0; color:var(--wz-ink-muted); font-size:14px; line-height:1.5; }
+.beta-page .hero-price>span { margin:0; }
+.beta-page .hero-price-main { display:inline-flex; align-items:baseline; gap:4px; }
+.beta-page .hero-price-main>strong { color:var(--wz-ink); font-size:20px; font-weight:600; }
+.beta-page .hero-price-rejection::before { content:'·'; padding-right:16px; }
+.beta-page .hero-price-rejection>strong { color:var(--wz-ink); font-weight:500; }
+.beta-page .hero-footnote { margin-top:24px; color:var(--wz-ink-muted); font-size:12px; font-weight:500; line-height:1.5; letter-spacing:.1em; }
+@media (max-width:767px) {
+  .beta-page .hero-copy .hero-lede { max-width:340px; font-size:18px; line-height:1.5; }
+  .beta-page .hero-detail { max-width:340px; }
+  .beta-page .hero-copy .hero-price { flex-direction:column; align-items:center; gap:4px; }
+  .beta-page .hero-price-rejection::before { content:none; }
+}
+
+/* Homepage actions share the navigation's normal and hover colours. */
+body:has(.beta-page) :is(.beta-page .beta-button,.beta-page .mobile-access-bar>a,.beta-page .faq-answer>a,.site-footer .footer-access-cta) {
+  background:var(--wz-cta-background); border-color:var(--wz-cta-background); color:var(--wz-cta-foreground); box-shadow:none;
+  transition:background .15s,border-color .15s;
+}
+body:has(.beta-page) :is(.beta-page .beta-button,.beta-page .mobile-access-bar>a,.beta-page .faq-answer>a,.site-footer .footer-access-cta):hover {
+  background:var(--wz-cta-background-hover); border-color:var(--wz-cta-background-hover); color:var(--wz-cta-foreground); box-shadow:none; transform:none;
+}
+body:has(.beta-page) :is(.beta-page .beta-button,.beta-page .mobile-access-bar>a,.beta-page .faq-answer>a,.site-footer .footer-access-cta):focus-visible { outline:3px solid var(--wz-cta-background); outline-offset:4px; }
+.beta-page .faq-answer>a { display:inline-flex; justify-content:center; min-height:48px; padding:12px 16px; border:1px solid; border-radius:8px; font-size:14px; }
+.beta-page .mobile-access-bar>a { min-height:48px; display:inline-flex; align-items:center; justify-content:center; }
+
+/* Every action link on the homepage is at least 24px tall for touch. */
+.beta-page :is(.integration-strip-actions, .team-value-copy, .trust-panel, .governance-rules, .outcome-featured-copy, .outcome-note) a { min-height: 24px; align-items: center; }
