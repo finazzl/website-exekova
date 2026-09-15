@@ -45,7 +45,8 @@ const sameOrigin = value => new URL(value, base).origin === new URL(base).origin
   }
   assert.equal((await fetch(base + '/does-not-exist-cloudflare-check')).status, 404);
   const index = await fs.readFile(path.join(root, 'site/index.html'), 'utf8');
-  assert(index.includes('rel="canonical" href="https://exekova.com/"'));
+  const canonical = index.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+  assert.equal(new URL(canonical).href, report.siteUrl + '/');
   assert(!index.includes('content="noindex'));
   assert((await fs.readFile(path.join(root, 'site/signin.html'), 'utf8')).includes('content="noindex'));
   assert(!index.includes('/_next/image?'));

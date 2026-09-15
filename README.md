@@ -70,9 +70,20 @@ Every legal document is published as in force from its `effectiveDate` (15 Septe
 
 Homepage title, description, keywords, canonical path and indexing status live in `src/beta/content/page.json`; every other static route reads its metadata from `content/pages/<name>.json`. Visible FAQs and FAQ structured data share `src/beta/data/offer.ts` and `src/site/data/faq.ts`.
 
-The canonical URL remains `https://exekova.com/exekova`. Override the base using `NEXT_PUBLIC_SITE_URL`. The inherited `noindex: true` keeps this standalone preview out of search results; set the intended canonical deployment and indexing setting for public launch.
+The production canonical base is `https://exekova.com`. Override it at build time using `NEXT_PUBLIC_SITE_URL`. Public pages are indexable; sign-in and cookie settings retain `noindex`.
 
-The `/exekova` alias redirects to `/` and `/pricing` to `/#pricing`. Only `/signin` and `/autonomous-work-execution` still forward to `https://exekova.com`, configurable with `EXEKOVA_MAIN_SITE_URL`.
+The `/exekova` alias redirects to `/`. Pricing, sign-in and the platform pages are served by this application. Legacy aliases are shared between the Next.js configuration and the Cloudflare upload in `deployment/cloudflare/redirects.mjs`.
+
+## Cloudflare static upload
+
+```sh
+npm run build:cloudflare    # produces dist/cloudflare/site and the upload ZIP
+npm run preview:cloudflare  # static preview at http://127.0.0.1:3211
+# In another terminal, while the preview is running:
+npm run test:cloudflare
+```
+
+Upload `dist/cloudflare/exekova-cloudflare.zip` or the `dist/cloudflare/site/` folder. Cloudflare serves the files over HTTPS without an application port or start command. The export builds in an isolated copy so the working development server stays usable. See [deployment settings and upload instructions](deployment/cloudflare/README.md).
 
 ## Review
 

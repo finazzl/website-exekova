@@ -115,7 +115,8 @@ const zip = path.join(destination, 'exekova-cloudflare.zip');
 await run('zip', ['-q', '-r', zip, '.'], path.join(destination, 'site'));
 const zipData = await readFile(zip);
 const report = {
-  builtAt, siteUrl, localPreviewPort: 3211, isolatedBuild: work,
+  builtAt, siteUrl, localPreviewPort: 3211, isolatedBuild: work, nodeVersion: process.version,
+  nextVersion: JSON.parse(await readFile(path.join(work, 'node_modules/next/package.json'), 'utf8')).version,
   fileCount: files.length, htmlPages: files.filter(file => file.endsWith('.html')).length,
   uncompressedBytes: assets.reduce((sum, asset) => sum + asset.bytes, 0),
   largestAsset: assets.reduce((largest, asset) => asset.bytes > largest.bytes ? asset : largest, assets[0]),

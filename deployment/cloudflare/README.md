@@ -19,6 +19,7 @@
 | SPA fallback | Off — this export contains an HTML page for each route |
 | Runtime environment variables / secrets | None |
 | Build-time public URL | `NEXT_PUBLIC_SITE_URL`, default `https://exekova.com` |
+| Local build requirements | Node.js `>=20.9.0`, installed npm dependencies, `zip`; this build uses Node.js `v25.5.0` and Next.js `16.3.5` |
 
 The build runs in an isolated source copy, preserving the running development server and all current working-tree changes. Images are served from bundled files, without a Next.js image server. Fonts are bundled by Next.js. Redirects from `next.config.mjs` are translated to Cloudflare's `_redirects` format. HTML stays revalidatable; fingerprinted assets receive long-lived caching.
 
@@ -31,6 +32,8 @@ The build runs in an isolated source copy, preserving the running development se
 5. Deploy, then connect `exekova.com` through the project's custom-domain settings. The generated Cloudflare preview hostname also works; canonical tags point to `https://exekova.com`.
 
 Only upload the `site` folder or its ZIP. The source repository, `node_modules`, `.next`, build reports and these instructions are not website assets.
+
+With the preview running, use `npm run test:cloudflare` in another terminal to check exported files, internal links, redirects, production metadata, responsive navigation and the access-request download. Verification reports and screenshots are written beside the upload, outside `site/`.
 
 The current access/contact forms prepare email drafts or downloads, and sign-in links to the team's WhatsApp access flow. The static export preserves those behaviours; no server-based authentication, CRM submission or payment endpoint is introduced.
 
