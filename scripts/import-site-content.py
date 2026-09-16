@@ -34,7 +34,7 @@ def category(text):
 
 def norm(value):
     """Lowercase the brand in prose (this site writes 'exekova') and name the category in full, recursively."""
-    if isinstance(value, str): return category(re.sub(r'\bExekova\b', 'exekova', value)).replace(' — ', ', ').replace('—', ', ').replace(' – ', ', ').replace('–', '-')
+    if isinstance(value, str): return category(re.sub(r'\bExekova\b', 'exekova', value)).replace(chr(0x2014), '-').replace(' – ', ', ').replace('–', '-')
     if isinstance(value, list):
         out = [norm(v) for v in value]
         if out and all(isinstance(v, str) for v in out):

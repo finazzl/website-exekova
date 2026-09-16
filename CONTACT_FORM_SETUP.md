@@ -1,9 +1,13 @@
 # Contact form delivery
 
-The contact form retains Exekova's fields and uses the delivery options from
-Truvon, adapted from Vite's `VITE_*` settings to Next.js `NEXT_PUBLIC_*` settings.
+The contact form and homepage request-access dialog share the same delivery
+options, adapted from Vite's `VITE_*` settings to Next.js `NEXT_PUBLIC_*` settings.
 Copy `.env.example` to `.env.local` and choose a delivery path. The example leaves
 keys blank: use an Exekova inbox and Turnstile key with your domains allowed.
+Next.js does not load `.env.example` or expose `VITE_*` variables. Use
+`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `NEXT_PUBLIC_CONTACT_ENDPOINT` and
+`NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in `.env.local`, then restart the dev server.
+Keep populated settings in the ignored local file.
 
 ## Delivery priority
 
@@ -66,11 +70,18 @@ only; use `wrangler dev` to preview the built-in receiver.
 
 ## Behavior and checks
 
-The form validates fields, includes a hidden honeypot, enforces a 2.5-second
-minimum fill time with a retry notice, blocks duplicate submissions, and
-requires verification whenever a site key is configured. Expired verification
-tokens disable Send; widgets reset after delivery attempts. Failed requests
+Both forms validate fields, include a hidden honeypot, enforce a 2.5-second
+minimum fill time with a retry notice, block duplicate submissions, and
+require verification whenever a site key is configured. Expired verification
+tokens prevent delivery and show a verification reminder on Send; widgets reset after delivery attempts. Failed requests
 retain the visitor's message. Downloads and direct email remain available.
+Submission feedback appears at the top of each form and scrolls into view.
+Confirmed submissions use a green success banner; rejected or unverified
+submissions show an error without clearing the visitor's entries.
+The access dialog renders its verification widget only while open. Access
+requests include task source, repository provider, optional repository name,
+task and acceptance criteria under the receiver's `Request access` topic.
+Planned integrations are submitted as interest and never imply that work starts.
 
 The built-in receiver validates fields and lengths, rejects missing/invalid
 Turnstile tokens, verifies them before sending, and returns an error if delivery

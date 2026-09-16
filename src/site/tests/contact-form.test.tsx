@@ -44,7 +44,7 @@ describe('contact requests', () => {
     expect(validContact({ ...request, name: '' })).toBe(true);
   });
   it('formats the subject and plain-text body', () => {
-    expect(contactSubject(request)).toBe('exekova contact · Pricing and invoicing');
+    expect(contactSubject(request)).toBe('exekova contact · Pricing and invoicing · lead@example.test');
     const body = buildContactRequest(request);
     for (const value of Object.values(request)) expect(body).toContain(value);
     expect(buildContactRequest({ ...request, name: '' })).toContain('Name: Not given');
@@ -55,6 +55,9 @@ describe('contact requests', () => {
     expect([...topic.options].map(option => option.value)).toEqual([...CONTACT_TOPICS]);
     fill(); submit();
     await waitFor(() => expect(screen.getByRole('status').textContent).toMatch(/has been sent/i));
+    const feedback = screen.getByRole('status');
+    expect(feedback.getAttribute('data-tone')).toBe('success');
+    expect(feedback.compareDocumentPosition(screen.getByLabelText('Name (optional)')) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(fetchMock.mock.calls[0][0]).toBe('/api/contact');
     expect(JSON.parse(fetchMock.mock.calls[0][1].body)).toMatchObject({ ...request, company_url: '', page: '/contact' });
     expect((screen.getByLabelText('Message') as HTMLTextAreaElement).value).toBe('');
@@ -103,32 +106,36 @@ describe('contact requests', () => {
     await waitFor(() => expect(screen.getByRole('status').textContent).toMatch(/has been sent/i));
     expect(fetchMock.mock.calls[0][0]).toBe('https://api.web3forms.com/submit');
     const body = JSON.parse(fetchMock.mock.calls[0][1].body);
-    expect(body).toMatchObject({ ...request, access_key: 'public-key', from_name: 'exekova website', botcheck: '' });
+    expect(body).toMatchObject({ ...request, access_key: 'public-key', subject: 'exekova contact · Pricing and invoicing · lead@example.test', from_name: 'exekova website', botcheck: '' });
     expect(body).not.toHaveProperty('turnstileToken');
     expect(body).not.toHaveProperty('cf-turnstile-response');
   });
   it('requires verification, clears expired tokens, and resets after delivery', async () => {
     vi.stubEnv('NEXT_PUBLIC_TURNSTILE_SITE_KEY', 'site-key');
     render(<ContactForm email="connect@example.test"/>);
-    fill(); submit();
+    fill(); fireEvent.click(screen.getByRole('button', { name: 'Send message' }));
     expect(fetchMock).not.toHaveBeenCalled();
     expect(screen.getByRole('status').textContent).toMatch(/complete the verification/i);
     fireEvent.click(screen.getByRole('button', { name: 'Verify' }));
     fireEvent.click(screen.getByRole('button', { name: 'Expire' }));
-    expect((screen.getByRole('button', { name: 'Send message' }) as HTMLButtonElement).disabled).toBe(true);
+    fireEvent.click(screen.getByRole('button', { name: 'Send message' }));
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(screen.getByRole('status').getAttribute('data-tone')).toBe('error');
     fireEvent.click(screen.getByRole('button', { name: 'Verify' }));
     submit();
     await waitFor(() => expect(screen.getByRole('status').textContent).toMatch(/has been sent/i));
     expect(JSON.parse(fetchMock.mock.calls[0][1].body).turnstileToken).toBe('verified-token');
     expect(screen.getByTestId('verification').getAttribute('data-reset')).toBe('1');
   });
-  it('silently drops honeypots without delivery', () => {
+  it('reports blocked submissions without falsely confirming delivery', () => {
     const { container } = render(<ContactForm email="connect@example.test"/>);
     fill();
     fireEvent.change(container.querySelector('input[name="company_url"]')!, { target: { value: 'spam' } });
     submit();
     expect(fetchMock).not.toHaveBeenCalled();
-    expect(screen.getByRole('status').textContent).toMatch(/has been sent/i);
+    expect(screen.getByRole('status').textContent).toMatch(/was not sent/i);
+    expect(screen.getByRole('status').getAttribute('data-tone')).toBe('error');
+    expect((screen.getByLabelText('Message') as HTMLTextAreaElement).value).toBe(request.message);
   });
   it('retains fast autofill submissions and asks the visitor to retry', () => {
     render(<ContactForm email="connect@example.test"/>);

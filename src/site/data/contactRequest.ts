@@ -13,7 +13,7 @@ export function validContact(request: ContactRequest) {
 }
 
 export function contactSubject(request: ContactRequest) {
-  return `exekova contact · ${request.topic}`;
+  return `exekova contact · ${request.topic} · ${request.email.trim()}`;
 }
 
 export function buildContactRequest(request: ContactRequest) {

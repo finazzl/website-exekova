@@ -25,7 +25,7 @@ export const acceptableUse: LegalDoc = {
       heading: 'Permitted use',
       blocks: [
         { type: 'p', text: 'The service exists to take scoped engineering tasks from the sources you connect and return verified pull requests in the repositories you approve. You may use it for lawful software development work in projects and repositories that you own or are authorised to change, in line with the [Terms of Service](/terms) and this policy.' },
-        { type: 'p', text: 'This website may be used to learn about the service, request access, contact us and read our policies. The access request form prepares an email in your own email application; the contact form sends your message to our team. Use them for genuine enquiries.' },
+        { type: 'p', text: 'This website may be used to learn about the service, request access, contact us and read our policies. The access request and contact forms send your enquiry to our team. Use them for genuine enquiries.' },
       ],
     },
     {

@@ -24,7 +24,9 @@ describe('contact receiver', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
   it('drops honeypots without contacting providers', async () => {
-    expect(await (await handleContact(request({ company_url: 'spam' }), env)).json()).toEqual({ ok: true });
+    const response = await handleContact(request({ company_url: 'spam' }), env);
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ ok: false, error: 'Unable to submit this request.' });
     expect(fetchMock).not.toHaveBeenCalled();
   });
   it('fails closed when credentials are absent', async () => {
@@ -44,7 +46,7 @@ describe('contact receiver', () => {
     expect(fetchMock.mock.calls[0][0]).toContain('/turnstile/v0/siteverify');
     expect(JSON.parse(fetchMock.mock.calls[0][1].body)).toMatchObject({ secret: env.TURNSTILE_SECRET, response: 'test-token' });
     expect(fetchMock.mock.calls[1][0]).toBe('https://api.resend.com/emails');
-    expect(JSON.parse(fetchMock.mock.calls[1][1].body)).toMatchObject({ from: 'website@example.test', to: 'team@example.test', reply_to: fields.email });
+    expect(JSON.parse(fetchMock.mock.calls[1][1].body)).toMatchObject({ from: 'website@example.test', to: 'team@example.test', reply_to: fields.email, subject: 'exekova contact · Pricing and invoicing · lead@example.test' });
     expect(JSON.parse(fetchMock.mock.calls[1][1].body).text).toContain(fields.message);
   });
   it('reports provider rejection and network errors', async () => {
@@ -52,6 +54,17 @@ describe('contact receiver', () => {
     expect((await handleContact(request(), env)).status).toBe(502);
     fetchMock.mockRejectedValueOnce(new Error('offline'));
     expect((await handleContact(request(), env)).status).toBe(502);
+  });
+  it('uses the access-request email and selected tools in the delivered subject', async () => {
+    fetchMock.mockResolvedValueOnce(Response.json({ success: true })).mockResolvedValueOnce(Response.json({ id: 'message-id' }));
+    const response = await handleContact(request({ ...fields, topic: 'Request access', page: '/#request-access', source: 'Jira', provider: 'GitHub' }), env);
+    expect(response.status).toBe(200);
+    expect(JSON.parse(fetchMock.mock.calls[1][1].body).subject).toBe('exekova access request - lead@example.test - Jira - GitHub');
+  });
+  it('rejects unrecognised access tools before contacting providers', async () => {
+    const response = await handleContact(request({ ...fields, topic: 'Request access', page: '/#request-access', source: 'Unknown', provider: 'GitHub' }), env);
+    expect(response.status).toBe(422);
+    expect(fetchMock).not.toHaveBeenCalled();
   });
   it('routes API requests to the handler and pages to static assets', async () => {
     const ASSETS = { fetch: vi.fn().mockResolvedValue(new Response('page')) };

@@ -81,7 +81,7 @@ image fails to load.
 Third-party marks belong to their respective owners and identify integrations;
 they do not indicate endorsement or change integration availability.
 
-## Expanded ecosystem — September 2026
+## Expanded ecosystem - September 2026
 
 The shared scroller contains 134 distinct tools and technologies, including
 Cloudflare; Elasticsearch, Kibana, Logstash, Beats, Elastic Agent and Elastic APM;

@@ -1,4 +1,6 @@
 import { buildContactRequest, contactSubject, validContact } from '../data/contactRequest';
+import { accessRequestSubject } from '../../beta/data/accessRequest';
+import { CONNECTORS } from '../../beta/data/connectors';
 
 export type ContactEnv = {
   TURNSTILE_SECRET?: string;
@@ -28,12 +30,22 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
   } catch {
     return json({ ok: false, error: 'Invalid JSON.' }, 400);
   }
-  if (body.company_url) return json({ ok: true });
+  if (body.company_url) return json({ ok: false, error: 'Unable to submit this request.' }, 400);
   const field = (key: string) => typeof body[key] === 'string' ? body[key].trim() : '';
   const fields = { name: field('name'), email: field('email'), company: field('company'), topic: field('topic'), message: field('message') };
   const token = field('turnstileToken') || field('cf-turnstile-response');
   if (!validContact(fields) || !token || token.length > 2048) {
     return json({ ok: false, error: 'Missing or invalid fields.' }, 422);
+  }
+  let subject = contactSubject(fields);
+  if (field('page') === '/#request-access') {
+    const tools = { email: fields.email, source: field('source'), provider: field('provider') };
+    if (fields.topic !== 'Request access'
+      || !CONNECTORS.some(item => item.kind === 'source' && item.name === tools.source)
+      || !CONNECTORS.some(item => item.kind === 'repo' && item.name === tools.provider)) {
+      return json({ ok: false, error: 'Missing or invalid tools.' }, 422);
+    }
+    subject = accessRequestSubject(tools);
   }
   if (!env.TURNSTILE_SECRET || !env.RESEND_API_KEY) {
     return json({ ok: false, error: 'Contact delivery is not configured.' }, 503);
@@ -56,7 +68,7 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
         from: env.LEAD_FROM || 'website@exekova.com',
         to: env.LEAD_TO || 'connect@exekova.com',
         reply_to: fields.email,
-        subject: contactSubject(fields),
+        subject,
         text: buildContactRequest(fields),
       }),
       signal: AbortSignal.timeout(10000),

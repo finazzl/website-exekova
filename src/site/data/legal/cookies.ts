@@ -42,7 +42,7 @@ export const cookies: LegalDoc = {
         { type: 'table', head: ['Name', 'Purpose', 'Type', 'Duration'], rows: [
           [COOKIE_PREFERENCES_KEY, 'Remembers the choices you saved on the Cookie settings page: functional, analytics and marketing storage on or off, and when you saved them.', 'Local storage, strictly necessary, set by exekova.com', 'Until you clear it on the Cookie settings page or in your browser'],
         ] },
-        { type: 'note', text: 'The request-access form on the homepage builds an email in your own email application. The contact form submits your message to our team and does not save your entries in browser storage. When enabled, Cloudflare Turnstile provides spam verification on the contact form.' },
+        { type: 'note', text: 'The request-access and contact forms submit your enquiry to our team and do not save your entries in browser storage. When enabled, Cloudflare Turnstile provides spam verification on both forms.' },
       ],
     },
     {

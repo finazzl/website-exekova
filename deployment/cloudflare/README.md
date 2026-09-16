@@ -40,14 +40,14 @@ This configuration serves static assets and a Worker contact receiver at `/api/c
 | Production URL / canonical base | `https://exekova.com` |
 | Local development | Port `3200` by default; the current working preview uses `3210` |
 | Local static production preview | `http://127.0.0.1:3211` |
-| Cloudflare application port | None — Cloudflare serves the static files over HTTPS |
+| Cloudflare application port | None - Cloudflare serves the static files over HTTPS |
 | Cloudflare build/start commands | None for direct upload; the files are built locally |
 | Local packaging command | `npm run build:cloudflare` |
 | Folder to upload | `dist/cloudflare/site/` |
 | ZIP to upload | `dist/cloudflare/exekova-cloudflare.zip` |
 | Upload root | `index.html`, `404.html`, `_next/`, `brand/`, page files, `_headers`, `_redirects` |
 | HTML routing | Clean URLs; automatic HTML handling; use `404.html` for unknown paths |
-| SPA fallback | Off — this export contains an HTML page for each route |
+| SPA fallback | Off - this export contains an HTML page for each route |
 | Runtime environment variables / secrets | `TURNSTILE_SECRET`, `RESEND_API_KEY`, optional `LEAD_TO` and `LEAD_FROM` for the built-in contact receiver |
 | Build-time public URL | `NEXT_PUBLIC_SITE_URL`, default `https://exekova.com` |
 | Local build requirements | Node.js `>=20.9.0`, installed npm dependencies, `zip`; this build uses Node.js `v25.5.0` and Next.js `16.3.5` |
@@ -66,7 +66,7 @@ Only upload the `site` folder or its ZIP. The source repository, `node_modules`,
 
 With the preview running, use `npm run test:cloudflare` in another terminal to check exported files, internal links, redirects, production metadata, responsive navigation and the access-request download. Verification reports and screenshots are written beside the upload, outside `site/`.
 
-The access request form prepares email drafts or downloads. The contact form supports direct submission; configure it using [CONTACT_FORM_SETUP.md](../../CONTACT_FORM_SETUP.md). Wrangler deploys the built-in receiver with the static assets. Uploading only the folder or ZIP requires Web3Forms or a separately hosted contact endpoint. Sign-in links to the team's WhatsApp access flow.
+The contact and access request forms share direct submission settings; configure them using [CONTACT_FORM_SETUP.md](../../CONTACT_FORM_SETUP.md). Both also offer downloads, and unconfigured local development can prepare email drafts. Wrangler deploys the built-in receiver with the static assets. Uploading only the folder or ZIP requires Web3Forms or a separately hosted contact endpoint. Sign-in links to the team's WhatsApp access flow.
 
 ## Social sharing previews
 

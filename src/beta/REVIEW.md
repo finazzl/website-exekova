@@ -44,7 +44,7 @@ The first revision did **not** include every reference section. Its hero was a s
 | Two-line centered hero | “Task, Repo” / violet “Done.”; 96px desktop and 48px mobile brand serif; no private-beta hero eyebrow |
 | Moving input text, central control, transformed output | Original SVG paths with continuously moving task/outcome text, three customer steps, working pause/play, offscreen/hidden-page suspension, and reduced-motion controls |
 | Customer logo strip | Continuous, status-labelled integration strip with pause/play and a scrollable reduced-motion fallback; no invented customer endorsements |
-| Expanding comparison demonstration | Scroll-responsive manual-coordination / EXEKOVA panels, with the interactive Get — Task → Set — Repo → Done — Verified Outcome demo |
+| Expanding comparison demonstration | Scroll-responsive manual-coordination / EXEKOVA panels, with the interactive Get - Task → Set - Repo → Done - Verified Outcome demo |
 | Three-step product walkthrough | Desktop sticky, scroll-driven task/repository/outcome story; three separate visual scenes on mobile |
 | Four-feature story with sticky visual | Task intake, approved repository, independent review, verification evidence; changing desktop visual and individual mobile visuals |
 | Privacy/trust panel | Approved scope, isolated branch, human-owned merge; no unearned certification badges |
@@ -59,7 +59,7 @@ All new components, motion preferences, dialog functionality, QA, and experience
 
 ## Three-step content correction
 
-The customer journey has exactly three steps, defined once in `data/workflow.ts`: **Get — Task → Set — Repo → Done — Verified Outcome**. The hero ribbon, “Give it work / Get it done” demo, walkthrough, integration map, closing copy, and FAQ use this wording. Review and verification appear as evidence included in Done, not extra customer steps. The original hero headline and violet accents are preserved.
+The customer journey has exactly three steps, defined once in `data/workflow.ts`: **Get - Task → Set - Repo → Done - Verified Outcome**. The hero ribbon, “Give it work / Get it done” demo, walkthrough, integration map, closing copy, and FAQ use this wording. Review and verification appear as evidence included in Done, not extra customer steps. The original hero headline and violet accents are preserved.
 
 The demo and feature story show five primary task sources: **Jira, Slack, Teams, Excel, and EXEKOVA’s Work Intent form**. Jira and the Work Intent form are Beta. Slack, Teams, and Excel task intake are Planned; Slack’s review-notification capability is not used to claim task intake. Earlier Linear and CSV roadmap entries remain in the complete availability map. The access form uses the same connector records. Planned demo selections cannot progress to a verified beta outcome.
 
@@ -71,7 +71,7 @@ The supplied findings accurately identified the remaining content gaps. The upda
 
 | Target | Resolution |
 | --- | --- |
-| Hero + How EXEKOVA works | Three customer steps retained throughout: Get — Task, Set — Repo, Done — Verified Outcome |
+| Hero + How EXEKOVA works | Three customer steps retained throughout: Get - Task, Set - Repo, Done - Verified Outcome |
 | Pay for accepted work | Dedicated pricing chapter with side-by-side Accepted task / $19 and Rejected attempt / $0 cards |
 | Independent verification | Review and verification evidence remain part of the outcome; no additional customer steps |
 | Task sources + repositories | Five featured intake sources; all existing beta/planned labels shared with the form and FAQ |
@@ -143,7 +143,7 @@ Final validation: optimized build and TypeScript passed; seven unit/component te
 
 ## Students integrations and live-site polish
 
-Reference inspected live on 15 September 2026: [Wispr Students](https://wisprflow.ai/students). The integrations chapter now uses a full-width rounded dark surface, left-aligned EB Garamond heading (64px desktop / 40px mobile), outlined workflow chips, a compact CTA and a continuous curved stream of integration marks. The three cards preserve Get — Task, Set — Repo and Done — Verified Outcome. Jira, Work Intent and GitHub use the current shared Available status; all planned integrations retain explicit labels. The CTA opens the existing request-access dialog.
+Reference inspected live on 15 September 2026: [Wispr Students](https://wisprflow.ai/students). The integrations chapter now uses a full-width rounded dark surface, left-aligned EB Garamond heading (64px desktop / 40px mobile), outlined workflow chips, a compact CTA and a continuous curved stream of integration marks. The three cards preserve Get - Task, Set - Repo and Done - Verified Outcome. Jira, Work Intent and GitHub use the current shared Available status; all planned integrations retain explicit labels. The CTA opens the existing request-access dialog.
 
 `components/ToolsRibbon.tsx` owns the original responsive curve, viewport-aware motion, pause and reduced-motion behavior. `styles/tools-workflow.module.css` scopes the chapter. The curve moves below the copy on tablets and phones to keep the longer EXEKOVA headline unobstructed. Live reference measurements and screenshots: `/tmp/exekova-students-tools/`.
 
