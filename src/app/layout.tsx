@@ -7,6 +7,7 @@ import SiteFooter from '@/site/components/SiteFooter';
 import Frame from '@/site/components/Frame';
 import WhatsAppButton from '@/site/components/WhatsAppButton';
 import GoogleAnalytics from '@/site/components/GoogleAnalytics';
+import GoogleTag from '@/site/components/GoogleTag';
 import { GA_MEASUREMENT_ID } from '@/site/data/analytics';
 import './globals.css';
 import '@/beta/styles/beta.css';
@@ -40,6 +41,7 @@ export const viewport: Viewport = { themeColor: '#FCFBFE', width: 'device-width'
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
+      <head>{GA_MEASUREMENT_ID && <GoogleTag />}</head>
       <body className="font-sans antialiased typography-system">
         <a href="#main" className="sr-only skip">Skip to content</a>
         <Frame>

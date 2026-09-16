@@ -30,7 +30,7 @@ All 11 unique external destinations were tested. No HTTP 404 was found. LinkedIn
 
 The public GA4 measurement ID defaults to `G-R33H6YFCH2`. Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in the ignored local/build configuration to override it, then rebuild. An explicitly empty or invalid ID disables Analytics and its consent notice.
 
-With an ID configured, Analytics loads asynchronously only after the visitor allows it. Cookie settings can withdraw permission and remove first-party Analytics cookies. The implementation sends page views with query strings and fragments removed and does not send form values. In the GA4 web stream, disable enhanced automatic page-change measurement when using this manual route tracking, to prevent duplicate page views. Do not enable extra form tracking without reviewing its data collection.
+With an ID configured, the async Google tag is present in the initial HTML head so setup tools can discover it. Synchronous consent defaults and `ga-disable-...` disable measurement before the library executes. The library download contacts Google, but Analytics events and cookies require visitor permission. Cookie settings can withdraw permission and remove first-party Analytics cookies. The implementation sends page views with query strings and fragments removed and does not send form values. In the GA4 web stream, disable enhanced automatic page-change measurement when using this manual route tracking, to prevent duplicate page views. Do not enable extra form tracking without reviewing its data collection.
 
 ## Checks
 

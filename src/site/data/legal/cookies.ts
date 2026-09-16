@@ -10,10 +10,10 @@ export const cookies: LegalDoc = {
   accent: 'What this site stores. Almost nothing.',
   lede: 'What exekova.com stores on your device, why, and how to change it. Optional Google Analytics is off until you allow it. Advertising cookies are not used.',
   effectiveDate: '16 September 2026',
-  version: '1.1',
+  version: '1.2',
   status: 'final',
   summary: [
-    'Optional Google Analytics, when configured, loads only after you allow analytics. Cloudflare provides hosting and form spam verification.',
+    'The Google tag library loads when you visit, but Analytics measurement and cookies stay off until you allow analytics. Cloudflare provides hosting and form spam verification.',
     'Your cookie preference is saved in your browser. If you allow configured Google Analytics, it can also set first-party analytics cookies.',
     'You can change or clear that preference at any time on the Cookie settings page or through your browser.',
     'Optional analytics stays off until you turn it on. You can withdraw permission at any time.',
@@ -31,8 +31,8 @@ export const cookies: LegalDoc = {
       id: 'what-we-store',
       heading: 'What this website stores',
       blocks: [
-        { type: 'p', text: 'Fonts are bundled with the site. Google Analytics is optional and, when configured, loads only after you allow analytics. It measures page visits and traffic sources; our analytics integration does not send your form entries. No advertising scripts are loaded.' },
-        { type: 'p', text: 'Your preference is written to local storage when you choose in the analytics notice or save on [Cookie settings](/cookie-settings). Without analytics permission, no Google Analytics script is loaded.' },
+        { type: 'p', text: 'Fonts are bundled with the site. The Google tag library loads asynchronously when you visit. Analytics measurement and cookies stay disabled until you allow analytics. When permitted, it measures page visits and traffic sources; our analytics integration does not send your form entries. No advertising scripts are loaded.' },
+        { type: 'p', text: 'Downloading the Google tag library sends standard connection information, such as your IP address and browser information, to Google. Your preference is written to local storage when you choose in the analytics notice or save on [Cookie settings](/cookie-settings). Without analytics permission, the tag does not send Analytics measurement events or set Analytics cookies.' },
         { type: 'table', head: ['Name', 'Purpose', 'Type', 'Duration'], rows: [
           [COOKIE_PREFERENCES_KEY, 'Remembers the choices you saved on the Cookie settings page: functional, analytics and marketing storage on or off, and when you saved them.', 'Local storage, strictly necessary, set by exekova.com', 'Until you clear it on the Cookie settings page or in your browser'],
           ['_ga and _ga_*', 'Distinguish visits and sessions for Google Analytics, only when configured and permitted.', 'First-party cookies, optional analytics', 'Up to one year; renewed during permitted visits'],
@@ -66,7 +66,7 @@ export const cookies: LegalDoc = {
       id: 'third-parties',
       heading: 'Third parties',
       blocks: [
-        { type: 'p', text: 'When you allow configured analytics, Google processes visit information. Cloudflare provides hosting performance measurement and Turnstile spam verification; these services may process technical browser and request information. External websites linked from this site have their own policies.' },
+        { type: 'p', text: 'Google receives the request to download its tag library. When you allow analytics, Google also processes visit information. Cloudflare provides hosting performance measurement and Turnstile spam verification; these services may process technical browser and request information. External websites linked from this site have their own policies.' },
       ],
     },
     {
