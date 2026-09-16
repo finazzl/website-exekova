@@ -7,6 +7,7 @@
 - `robots.txt` advertises the sitemap without the unsupported `Host` directive. The existing `/cookie-settings` exclusion is retained; sign-in and cookie settings are intentionally not indexed.
 - The sitemap contains 117 unique, canonical public pages. All have at least two incoming links from other pages. Related task links connect the bug-fix, test-coverage and small-feature pages.
 - The two implementation-specific integration pages redirect to `/integrations`. They are removed from the sitemap, directory and machine-readable content. Public examples describe implementation and review responsibilities without naming the underlying providers.
+- Their unused logo files are removed from public assets as well.
 - Diagnostic preview HTML is excluded from production builds.
 
 Before these changes, normal and Googlebot requests both returned HTTP 200 for the sitemap and robots file. The XML bodies were identical and parsed successfully. The Search Console fetch error was not reproduced. A Googlebot user-agent test does not establish access from Google's actual IP addresses. Resubmit the sitemap in Search Console after deployment; if it still cannot fetch, inspect Cloudflare security events for the actual Google request.

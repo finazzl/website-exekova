@@ -15,12 +15,9 @@ so visitors do not make requests to external logo services.
 | gitlab.png | https://about.gitlab.com/images/ico/favicon-192x192.png |
 | datadog.png | https://corp.dd-static.net/img/dd_logo_n_70x75.png |
 | aws.png | https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png |
-| claude-code.png | https://assets.claude.com/95a868946ac8a31e5ff832e2899f294aa368b836.png |
-| codex.png | https://github.com/openai.png?size=128 |
 | sentry.ico | https://sentry.io/favicon.ico |
 | servicenow.png | https://github.com/ServiceNow.png?size=128 |
 
-Codex uses OpenAI's company mark; Claude Code uses Claude's company mark.
 ServiceNow uses the Now mark from its official GitHub organization. Artwork is
 stored as supplied, without redrawing or recolouring.
 
