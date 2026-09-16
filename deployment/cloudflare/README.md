@@ -29,7 +29,7 @@ This runs `wrangler deploy` and creates or updates the named Worker. Wrangler pr
 
 To attach the production domain, open **Workers & Pages → exekova → Settings → Domains & Routes → Add → Custom Domain**, then add `exekova.com`. Canonical URLs in the current export already use `https://exekova.com`. No application port or Node.js start command is required on Cloudflare. The local static preview remains on port `3211`.
 
-This configuration serves assets only, with clean HTML URLs and the exported 404 page. The package's `_headers` and `_redirects` remain active. `wrangler deploy` targets Workers; an existing **Pages** project uses the separate `wrangler pages deploy` workflow.
+This configuration serves static assets and a Worker contact receiver at `/api/contact`, with clean HTML URLs and the exported 404 page. The package's `_headers` and `_redirects` remain active. `wrangler deploy` targets Workers; an existing **Pages** project uses the separate `wrangler pages deploy` workflow.
 
 ## Settings recorded before generating the upload
 
@@ -48,7 +48,7 @@ This configuration serves assets only, with clean HTML URLs and the exported 404
 | Upload root | `index.html`, `404.html`, `_next/`, `brand/`, page files, `_headers`, `_redirects` |
 | HTML routing | Clean URLs; automatic HTML handling; use `404.html` for unknown paths |
 | SPA fallback | Off — this export contains an HTML page for each route |
-| Runtime environment variables / secrets | None |
+| Runtime environment variables / secrets | `TURNSTILE_SECRET`, `RESEND_API_KEY`, optional `LEAD_TO` and `LEAD_FROM` for the built-in contact receiver |
 | Build-time public URL | `NEXT_PUBLIC_SITE_URL`, default `https://exekova.com` |
 | Local build requirements | Node.js `>=20.9.0`, installed npm dependencies, `zip`; this build uses Node.js `v25.5.0` and Next.js `16.3.5` |
 
@@ -66,7 +66,7 @@ Only upload the `site` folder or its ZIP. The source repository, `node_modules`,
 
 With the preview running, use `npm run test:cloudflare` in another terminal to check exported files, internal links, redirects, production metadata, responsive navigation and the access-request download. Verification reports and screenshots are written beside the upload, outside `site/`.
 
-The current access/contact forms prepare email drafts or downloads, and sign-in links to the team's WhatsApp access flow. The static export preserves those behaviours; no server-based authentication, CRM submission or payment endpoint is introduced.
+The access request form prepares email drafts or downloads. The contact form supports direct submission; configure it using [CONTACT_FORM_SETUP.md](../../CONTACT_FORM_SETUP.md). Wrangler deploys the built-in receiver with the static assets. Uploading only the folder or ZIP requires Web3Forms or a separately hosted contact endpoint. Sign-in links to the team's WhatsApp access flow.
 
 ## Social sharing previews
 

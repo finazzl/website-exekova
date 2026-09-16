@@ -47,7 +47,7 @@ The app router remains a thin entry point. The beta was originally extracted fro
 - Slack, Teams, Linear, Excel, CSV, GitLab and Bitbucket: **Planned**.
 - Existing offer: **$19 USD per accepted task**, with $29 planned standard pricing.
 - All demonstrations use example data. They do not connect to customer systems or run tasks.
-- The access request and contact forms prepare an email draft or download the same request. Visitors must send it themselves. No request API, CRM, payment flow, or automatic submission is configured.
+- The access request form prepares an email draft or download. The contact form sends through a custom endpoint, Web3Forms, or the built-in Turnstile + Resend receiver. Configure it using [CONTACT_FORM_SETUP.md](./CONTACT_FORM_SETUP.md) and `.env.example`.
 - Required contact, team, task and acceptance criteria qualify the request. Planned integration choices register interest.
 
 ## Site pages

@@ -13,7 +13,7 @@ import QuestionsSection from '@/site/components/QuestionsSection';
 import { plain } from '@/site/lib/inline';
 
 const contactFaq = [
-  { q: 'What happens when I send the form?', a: 'It opens a ready-to-send email in your own mail client, addressed to the team. Nothing is sent from this site and no message is stored here, so you can read and edit it before it goes.' },
+  { q: 'What happens when I send the form?', a: 'Your message is delivered to the exekova team. A confirmation appears when it has been sent. If delivery fails, your message stays in the form so you can retry or email us directly.' },
   { q: 'What should a first task include?', a: 'The repository, the change you want and acceptance criteria your team can verify. A bug fix, a small feature or focused test coverage is the right size. Eligibility and repository access are confirmed before work starts.' },
   { q: 'Where do privacy requests go?', a: 'To the same address, with “exekova privacy request” as the subject. The Privacy Policy and the Data Processing Addendum describe how they are handled.' },
 ];
@@ -25,7 +25,7 @@ export default function ContactPage() {
   const signInHref = getSite().nav.signIn.href as string;
   const privacyMail = `mailto:${email}?subject=${encodeURIComponent('exekova privacy request')}`;
   return <>
-    <PageHero eyebrow="CONTACT" title="Talk to the team." accent="Start with one task." lede="Every message from this site is an email you review and send yourself. We reply from the same address."
+    <PageHero eyebrow="CONTACT" title="Talk to the team." accent="Start with one task." lede="Tell us about your team, a task you have in mind, or a question. Send your message here and we’ll reply by email."
       trail={[{ label: 'Contact', href: '/contact' }]}/>
 
     <section className="site-section is-tight" id="contact-channels" aria-label="Contact form and channels"><div className="shell contact-layout">

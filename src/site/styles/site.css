@@ -326,6 +326,9 @@ a.site-card:hover { border-color: color-mix(in srgb, var(--wz-violet) 40%, var(-
 /* Contact */
 .contact-layout { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: start; }
 .contact-form.beta-request-form { border: 1px solid var(--wz-line); }
+.contact-fields { min-width: 0; margin: 0; padding: 0; border: 0; }
+.contact-form .contact-honeypot { position: absolute; width: 1px; height: 1px; min-height: 0; padding: 0; border: 0; opacity: 0; pointer-events: none; overflow: hidden; }
+.contact-form button:disabled { opacity: .55; cursor: not-allowed; }
 .contact-channels { display: grid; gap: 14px; }
 .contact-channel { display: flex; gap: 16px; align-items: flex-start; padding: 22px 24px; border-radius: 18px; background: white; border: 1px solid var(--wz-line); }
 .contact-channel > span { display: grid; flex-shrink: 0; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--wz-lilac); color: var(--wz-violet); }

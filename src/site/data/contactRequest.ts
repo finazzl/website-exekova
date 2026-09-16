@@ -1,7 +1,4 @@
-/**
- * The contact form's message, built the same way the access request is: a
- * plain-text email the visitor reviews and sends from their own email app.
- */
+/** Shared contact validation and email formatting for the form and receiver. */
 export const CONTACT_TOPICS = ['Request access', 'A task I have in mind', 'Pricing and invoicing', 'Partnerships', 'Privacy or legal', 'Press', 'Something else'] as const;
 export type ContactTopic = (typeof CONTACT_TOPICS)[number];
 
@@ -9,6 +6,8 @@ export type ContactRequest = { name: string; email: string; company: string; top
 
 export function validContact(request: ContactRequest) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(request.email.trim())
+    && request.email.length <= 160 && request.name.length <= 120
+    && request.company.length <= 120 && request.message.length <= 2000
     && [request.company, request.message].every(value => value.trim().length > 0)
     && (CONTACT_TOPICS as readonly string[]).includes(request.topic);
 }

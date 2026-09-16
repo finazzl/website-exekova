@@ -5,8 +5,14 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { siteRedirects } from '../deployment/cloudflare/redirects.mjs';
+import nextEnv from '@next/env';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+// Load production public settings before building in a copy without .env files.
+// Only public settings are forwarded from dotenv files to the isolated build.
+const inheritedEnv = { ...process.env };
+nextEnv.loadEnvConfig(root, false, { info() {}, error: console.error });
+const publicEnv = Object.fromEntries(Object.entries(process.env).filter(([key]) => key.startsWith('NEXT_PUBLIC_')));
 const destination = path.join(root, 'dist/cloudflare');
 const configDirectory = path.join(root, 'deployment/cloudflare');
 const siteConfig = JSON.parse(await readFile(path.join(root, 'content/site.json'), 'utf8'));
@@ -51,7 +57,8 @@ await cp(path.join(configDirectory, 'README.md'), path.join(destination, 'UPLOAD
 for (const entry of ['src', 'content', 'public', 'deployment', 'next.config.mjs', 'package.json', 'package-lock.json', 'tsconfig.json']) {
   await cp(path.join(root, entry), path.join(work, entry), {
     recursive: true,
-    filter: source => !path.basename(source).startsWith('.') && !source.endsWith('.md'),
+    // POST handlers cannot be statically exported; the Worker serves this route.
+    filter: source => !path.basename(source).startsWith('.') && !source.endsWith('.md') && source !== path.join(root, 'src/app/api/contact'),
   });
 }
 if (process.platform === 'darwin') {
@@ -60,7 +67,7 @@ if (process.platform === 'darwin') {
   await cp(path.join(root, 'node_modules'), path.join(work, 'node_modules'), { recursive: true });
 }
 await run(process.execPath, [path.join(work, 'node_modules/next/dist/bin/next'), 'build'], work, {
-  ...process.env, NODE_ENV: 'production', EXEKOVA_STATIC_EXPORT: '1', NEXT_PUBLIC_SITE_URL: siteUrl,
+  ...inheritedEnv, ...publicEnv, NODE_ENV: 'production', EXEKOVA_STATIC_EXPORT: '1', NEXT_PUBLIC_SITE_URL: siteUrl,
 });
 
 const stage = path.join(destination, `.site-${stamp}`);
