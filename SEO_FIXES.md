@@ -28,7 +28,7 @@ All 11 unique external destinations were tested. No HTTP 404 was found. LinkedIn
 
 ## Google Analytics
 
-Set `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-...` in the ignored local/build configuration, then rebuild. Without a valid ID, no Analytics script or consent notice is rendered.
+The public GA4 measurement ID defaults to `G-R33H6YFCH2`. Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in the ignored local/build configuration to override it, then rebuild. An explicitly empty or invalid ID disables Analytics and its consent notice.
 
 With an ID configured, Analytics loads asynchronously only after the visitor allows it. Cookie settings can withdraw permission and remove first-party Analytics cookies. The implementation sends page views with query strings and fragments removed and does not send form values. In the GA4 web stream, disable enhanced automatic page-change measurement when using this manual route tracking, to prevent duplicate page views. Do not enable extra form tracking without reviewing its data collection.
 
@@ -39,14 +39,18 @@ npm test
 npm run build:cloudflare
 npm run test:seo
 npm run test:home-style -- --url=http://127.0.0.1:3211
+npm run test:analytics
 npm run test:sharing
 npm run check:deploy:cloudflare
 # After deployment:
 npm run test:seo:live
 npm run test:home-style -- --url=https://exekova.com
+npm run test:analytics -- --url=https://exekova.com
 ```
 
 The home-style check covers 320, 390, 1440, 1920 and 2560 pixel widths. Browser checks also exercise navigation, the deferred demo, animations and both forms. Form delivery responses are mocked during those checks; no test enquiry is emailed. Reports and screenshots stay in ignored `qa-output/`.
+
+The Analytics browser check runs Google's actual library with measurement requests intercepted, covering consent, rejection, a single page view per navigation, URL cleanup and withdrawal on desktop and mobile. Use `node scripts/check-analytics.cjs --url=https://exekova.com --delivery` separately to verify one real production page view reaches Google's collection endpoint. This does not verify report processing inside the Google Analytics account.
 
 ## Production verification
 

@@ -17,6 +17,7 @@
     "test:seo": "node scripts/check-seo.mjs",
     "test:seo:live": "node scripts/check-live-seo.mjs",
     "test:home-style": "node scripts/check-home-style.cjs",
+    "test:analytics": "node scripts/check-analytics.cjs",
     "start": "next start -p 3200",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
