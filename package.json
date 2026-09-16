@@ -12,6 +12,7 @@
     "preview:cloudflare": "node scripts/preview-cloudflare.mjs",
     "test:cloudflare": "node scripts/check-cloudflare.cjs",
     "test:sharing": "node scripts/check-social-sharing.mjs",
+    "build:social-image": "node scripts/build-social-image.mjs",
     "start": "next start -p 3200",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

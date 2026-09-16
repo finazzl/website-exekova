@@ -70,11 +70,13 @@ The current access/contact forms prepare email drafts or downloads, and sign-in 
 
 ## Social sharing previews
 
-Sharing metadata is rendered into each page's initial HTML head. Open Graph and X cards use the public `1200 × 630` PNG at `/brand/og-default.png`, with an HTTPS URL, image type, dimensions and alternative text. Page-specific titles and descriptions are preserved; the root layout supplies defaults.
+Sharing metadata is rendered into each page's initial HTML head. Open Graph and X cards use the public `1200 × 630` PNG at `/brand/exekova-social-v2.png`, with an HTTPS URL, image type, dimensions and alternative text. The card prominently displays the existing logo and “Task. Repo. Done.” Page-specific titles and descriptions are preserved; the root layout supplies defaults. The favicon is a valid ICO container; PNG and Apple touch icons are also declared.
 
-With the static preview running, run `npm run test:sharing`. After deploying, run `npm run test:sharing -- --url=https://exekova.com`. This checks the raw HTML and image responses using WhatsApp, Meta, X and LinkedIn crawler user agents. It does not simulate the apps' caches or originate requests from their infrastructure.
+The sharing image is a checked-in asset. To regenerate its typography-based design using the existing brand logo, tokens and bundled fonts, run `npm run build:social-image` after a static build, then rebuild the site to package it. When changing the design, use a new image filename and update `content/site.json` so image caches can distinguish it.
 
-If the website checks pass but WhatsApp shows no card, check **WhatsApp → Settings → Privacy → Advanced → Disable link previews** is off. Paste the URL into a new message and allow the preview to load before sending. A previously sent message is not a reliable retest. [WhatsApp's preview setting](https://faq.whatsapp.com/445453537819972).
+With the static preview running, run `npm run test:sharing`. After deploying, run `npm run test:sharing -- --url=https://exekova.com`. This checks raw HTML titles, preview images, icon file signatures, dimensions and response types using WhatsApp, Meta, X and LinkedIn crawler user agents. It does not simulate the apps' caches or originate requests from their infrastructure. A matching user agent alone cannot establish whether Cloudflare allows a platform's actual source IPs.
+
+If WhatsApp shows no cards for any website, check **WhatsApp → Settings → Privacy → Advanced → Disable link previews** is off. If other websites show cards in the same app, investigate the affected domain and page instead. Paste the URL into a new message and allow the preview to load before sending. A previously sent message is not a reliable retest. [WhatsApp's preview setting](https://faq.whatsapp.com/445453537819972). See [the current iPhone investigation](./WHATSAPP-PREVIEW.md) for verified responses and the pending comparison test.
 
 ## Rebuild for another public domain
 

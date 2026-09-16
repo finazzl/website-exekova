@@ -2,12 +2,14 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 
 const base = new URL(process.argv.find(arg => arg.startsWith('--url='))?.slice(6) || 'http://127.0.0.1:3211');
-const agents = ['WhatsApp/2.24.6.77 A', 'facebookexternalhit/1.1', 'Twitterbot/1.0', 'LinkedInBot/1.0'];
+// WhatsApp documents separate A (Android), I (iOS), and N (Web) identifiers.
+const agents = ['WhatsApp/2.22.20.72 A', 'WhatsApp/2.22.19.78 I', 'WhatsApp/2.2236.3 N', 'facebookexternalhit/1.1', 'Twitterbot/1.0', 'LinkedInBot/1.0'];
 const routes = ['/', '/pricing', '/use-cases/fintech-psp-deprecation'];
 const images = new Set();
+const icons = new Set();
 
 async function request(url, userAgent) {
-  const response = await fetch(url, { headers: { 'User-Agent': userAgent }, signal: AbortSignal.timeout(20000) });
+  const response = await fetch(url, { headers: { 'User-Agent': userAgent, 'Accept-Language': 'en' }, signal: AbortSignal.timeout(20000) });
   assert.equal(response.status, 200, `${url}: crawler must receive HTTP 200`);
   assert(!response.headers.get('cf-mitigated'), `${url}: crawler must not receive a challenge`);
   return response;
@@ -30,6 +32,7 @@ for (const route of routes) {
       return value;
     };
     assert.equal(meta('og:title'), document.title);
+    assert(html.indexOf('<title>') < 16384 && html.indexOf('property="og:image"') < 16384, 'Sharing metadata must be near the start of the response');
     assert.equal(meta('og:description'), meta('description'));
     assert.equal(meta('og:type'), 'website');
     const canonical = new URL(document.head.querySelector('link[rel="canonical"]').href);
@@ -50,6 +53,33 @@ for (const route of routes) {
     assert.equal(meta('twitter:description'), meta('og:description'));
     assert.equal(meta('twitter:image'), image.href);
     assert.equal(meta('twitter:image:alt'), meta('og:image:alt'));
+    const iconLinks = [...document.head.querySelectorAll('link[rel="icon"],link[rel="apple-touch-icon"]')];
+    assert(iconLinks.some(link => new URL(link.href, base).pathname === '/favicon.ico'), 'A favicon must be declared');
+    assert(iconLinks.some(link => link.rel === 'apple-touch-icon'), 'An Apple touch icon must be declared');
+    for (const link of iconLinks) {
+      const iconUrl = new URL(link.href, base);
+      const iconKey = `${userAgent} ${iconUrl.href}`;
+      if (icons.has(iconKey)) continue;
+      const iconResponse = await request(iconUrl, userAgent);
+      const iconBytes = Buffer.from(await iconResponse.arrayBuffer());
+      if (iconUrl.pathname.endsWith('.ico')) {
+        assert.match(iconResponse.headers.get('content-type') || '', /^image\/(?:x-icon|vnd\.microsoft\.icon)/);
+        assert.equal(iconBytes.readUInt32LE(0), 0x00010000, 'favicon.ico must contain a real ICO header, not a renamed PNG');
+        const count = iconBytes.readUInt16LE(4);
+        assert(count > 0 && iconBytes.length >= 6 + count * 16, 'ICO directory must be complete');
+        for (let i = 0; i < count; i++) {
+          const entry = 6 + i * 16;
+          const length = iconBytes.readUInt32LE(entry + 8), offset = iconBytes.readUInt32LE(entry + 12);
+          assert(length > 0 && offset >= 6 + count * 16 && offset + length <= iconBytes.length, 'ICO image data must be present');
+        }
+      } else {
+        assert.match(iconResponse.headers.get('content-type') || '', /^image\/png/);
+        assert.equal(iconBytes.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+        const sizes = `${iconBytes.readUInt32BE(16)}x${iconBytes.readUInt32BE(20)}`;
+        assert.equal(link.getAttribute('sizes'), sizes, 'Declared icon size must match the image');
+      }
+      icons.add(iconKey);
+    }
     // Local previews retain production metadata; fetch their matching local asset.
     const imageUrl = image.origin === canonical.origin ? new URL(image.pathname + image.search, base) : image;
     const key = `${userAgent} ${imageUrl.href}`;
@@ -65,6 +95,6 @@ for (const route of routes) {
     }
     dom.window.close();
   }
-  console.log(`PASS ${route}: initial HTML metadata and preview image for all four crawler user agents`);
+  console.log(`PASS ${route}: initial HTML title, sharing image and valid icons for all ${agents.length} crawler user agents`);
 }
 console.log(`Social sharing checks passed at ${base.origin}. Client preview settings and platform caches require a separate in-app check.`);
