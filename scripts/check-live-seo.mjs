@@ -3,9 +3,19 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { JSDOM } from 'jsdom';
 
 const base = 'https://exekova.com';
-const report = { checkedAt: new Date().toISOString(), crawlerResponses: [], redirects: [], pages: [] };
+const report = { checkedAt: new Date().toISOString(), crawlerResponses: [], redirects: [], pages: [], transportRetries: [] };
 async function get(url, options = {}) {
-  return fetch(url, { ...options, signal: AbortSignal.timeout(20000) });
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      return await fetch(url, { ...options, signal: AbortSignal.timeout(20000) });
+    } catch (error) {
+      // Retry transport failures only. HTTP errors still fail the assertions below.
+      if (attempt === 3) throw new Error(`Unable to fetch ${url} after ${attempt} attempts`, { cause: error });
+      const reason = error.cause?.code || error.name;
+      report.transportRetries.push({ url, attempt, reason });
+      console.warn(`Retry ${attempt}: ${url} (${reason})`);
+    }
+  }
 }
 let sitemapText;
 for (const userAgent of ['Mozilla/5.0 (compatible; Exekova SEO check)', 'Googlebot']) {
@@ -36,7 +46,7 @@ for (const [url, destination] of [
   [base + '/integrations/claude-code', '/integrations'],
   [base + '/integrations/codex', '/integrations'],
 ]) {
-  const response = await get(url, { redirect: 'manual' });
+  const response = await get(url, { method: 'HEAD', redirect: 'manual' });
   assert.equal(response.status, 308, url);
   assert.equal(new URL(response.headers.get('location'), base).href, new URL(destination, base).href, url);
   assert(response.headers.has('strict-transport-security'));
@@ -46,7 +56,7 @@ const document = new JSDOM(sitemapText, { contentType: 'application/xml' }).wind
 const urls = [...document.querySelectorAll('loc')].map(node => node.textContent);
 assert(!urls.some(url => /integrations\/(claude-code|codex)/.test(url)));
 const queue = [...urls];
-await Promise.all(Array.from({ length: 6 }, async () => {
+await Promise.all(Array.from({ length: 3 }, async () => {
   while (queue.length) {
     const url = queue.pop();
     const response = await get(url, { method: 'HEAD', redirect: 'manual', headers: { 'User-Agent': 'Googlebot' } });
@@ -54,10 +64,11 @@ await Promise.all(Array.from({ length: 6 }, async () => {
     assert.match(response.headers.get('content-type') || '', /text\/html/);
     assert(response.headers.has('strict-transport-security'));
     report.pages.push({ url, status: response.status });
+    if (report.pages.length % 25 === 0) console.log(`Checked ${report.pages.length}/${urls.length} sitemap pages`);
   }
 }));
-assert.equal((await get(base + '/does-not-exist-seo-check')).status, 404);
-assert.equal((await get(base + '/api/contact')).status, 405);
+assert.equal((await get(base + '/does-not-exist-seo-check', { method: 'HEAD' })).status, 404);
+assert.equal((await get(base + '/api/contact', { method: 'HEAD' })).status, 405);
 await mkdir('qa-output/seo', { recursive: true });
 await writeFile('qa-output/seo/verified-live.json', JSON.stringify(report, null, 2));
 console.log(`PASS ${urls.length} live sitemap pages, ${report.redirects.length} permanent redirects, normal and Googlebot sitemap/robots responses, HSTS, 404 and contact API routing.`);

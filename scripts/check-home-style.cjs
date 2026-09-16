@@ -25,6 +25,7 @@ const base = process.argv.find(arg => arg.startsWith('--url='))?.slice(6) || 'ht
       assert.equal(geometry.pageWidth, width, 'No horizontal page overflow');
       await page.screenshot({ path: `qa-output/home-style/ribbon-${width}.png` });
       await page.locator('#pricing').scrollIntoViewIfNeeded();
+      await page.waitForFunction(() => [...document.querySelectorAll('#pricing img')].every(img => img.complete && img.naturalWidth > 0));
       const theme = await page.evaluate(() => Object.fromEntries([
         ['background', '#pricing', 'backgroundColor'],
         ['heading', '#pricing h2', 'color'],

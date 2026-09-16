@@ -47,3 +47,11 @@ npm run test:home-style -- --url=https://exekova.com
 ```
 
 The home-style check covers 320, 390, 1440, 1920 and 2560 pixel widths. Browser checks also exercise navigation, the deferred demo, animations and both forms. Form delivery responses are mocked during those checks; no test enquiry is emailed. Reports and screenshots stay in ignored `qa-output/`.
+
+## Production verification
+
+Application commit `db04785` was deployed to Cloudflare version `0c656dcb-aac8-4469-9b43-eec08e4b0de6`. Checks against `https://exekova.com` passed for all 117 sitemap URLs, nine permanent redirects, sitemap/robots responses for normal and Googlebot user agents, HSTS, 404 handling and contact API routing.
+
+The live ribbon and pricing checks passed at all five widths, including loaded pricing images. Sharing metadata passed for six crawler user agents, and both forms passed the mocked feedback checks on desktop and mobile. All 61 unit tests and the production build passed before deployment.
+
+In the measured desktop homepage load, initial requests fell from 46 to 30 and browser DOM nodes from 2373 to 2002. No application JavaScript exceptions were observed. The contact page's third-party Turnstile still emits challenge diagnostics and a PAT HTTP 401 in headless Chromium; these remain visible in the browser audit report.
