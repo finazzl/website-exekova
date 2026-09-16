@@ -58,7 +58,7 @@ for (const entry of ['src', 'content', 'public', 'deployment', 'next.config.mjs'
   await cp(path.join(root, entry), path.join(work, entry), {
     recursive: true,
     // POST handlers cannot be statically exported; the Worker serves this route.
-    filter: source => !path.basename(source).startsWith('.') && !source.endsWith('.md') && source !== path.join(root, 'src/app/api/contact'),
+    filter: source => !path.basename(source).startsWith('.') && !source.endsWith('.md') && !/^preview-check-.*\.html$/.test(path.basename(source)) && source !== path.join(root, 'src/app/api/contact'),
   });
 }
 if (process.platform === 'darwin') {

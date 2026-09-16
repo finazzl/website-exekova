@@ -2,11 +2,31 @@ import { handleContact, type ContactEnv } from '../../src/site/server/contact';
 
 type Env = ContactEnv & { ASSETS: { fetch(request: Request): Promise<Response> } };
 
+const primaryHost = 'exekova.com';
+const publicHosts = new Set([primaryHost, 'www.exekova.com', 'exekova.sanjay-singh-597.workers.dev']);
+
+function withSecurityHeaders(response: Response) {
+  const secured = new Response(response.body, response);
+  secured.headers.set('Strict-Transport-Security', 'max-age=31536000');
+  secured.headers.set('X-Content-Type-Options', 'nosniff');
+  secured.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  return secured;
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
-    if (new URL(request.url).pathname.replace(/\/$/, '') === '/api/contact') {
-      return handleContact(request, env);
+    const url = new URL(request.url);
+    const canonicalPath = url.pathname.replace(/\/index(?:\.html)?$/, '/').replace(/\.html$/, '').replace(/\/+$/, '') || '/';
+    if (publicHosts.has(url.hostname) && (url.hostname !== primaryHost || url.protocol !== 'https:' || url.pathname !== canonicalPath)) {
+      url.protocol = 'https:';
+      url.hostname = primaryHost;
+      url.port = '';
+      url.pathname = canonicalPath;
+      return withSecurityHeaders(Response.redirect(url.href, 308));
     }
-    return env.ASSETS.fetch(request);
+    const response = url.pathname.replace(/\/$/, '') === '/api/contact'
+      ? await handleContact(request, env)
+      : await env.ASSETS.fetch(request);
+    return withSecurityHeaders(response);
   },
 };

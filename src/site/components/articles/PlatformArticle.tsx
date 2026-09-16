@@ -18,7 +18,7 @@ const parts = (headline: Part[] | undefined): [string, string] => {
   const texts = (headline ?? []).map(part => typeof part === 'string' ? part : part.text);
   return [texts[0] ?? '', texts.slice(1).join(' ')];
 };
-const actions = <><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>;
+const actions = <><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>;
 
 /** The Live Floor's five lanes, described from the page's own feature list. */
 const LANES = [
@@ -56,7 +56,7 @@ function Block({ section, index, page }: { section: Section; index: number; page
     }
     case 'definition':
       return <section className={`site-section is-tight`} aria-labelledby={id}><div className="shell site-faq">
-        <Heading id={id} label="DEFINITIONS" title="In plain" accent="terms."><Link href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
+        <Heading id={id} label="DEFINITIONS" title="In plain" accent="terms."><Link prefetch={false} href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
         <FaqAccordion groups={[{ title: 'Definitions', items: section.items }]} name={id}/>
       </div></section>;
     case 'steps': {
@@ -79,14 +79,14 @@ function Block({ section, index, page }: { section: Section; index: number; page
       const group = section.group ? faqGroupsByKey[section.group] : null;
       const items = section.items ?? group?.items ?? [];
       return <section className="site-section is-tight" aria-labelledby={id}><div className="shell site-faq">
-        <Heading id={id} label={String(section.label ?? 'Questions').toUpperCase()} title={title} accent={accent}><Link href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
+        <Heading id={id} label={String(section.label ?? 'Questions').toUpperCase()} title={title} accent={accent}><Link prefetch={false} href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
         <FaqAccordion groups={[{ title: group?.title ?? 'Questions', items }]} name={id}/>
       </div></section>;
     }
     case 'featureGrid': {
       const [title, accent] = parts(section.headline);
       return <section className={`site-section${tone}`} aria-labelledby={id}><div className="shell">
-        <Heading id={id} label={String(section.label).toUpperCase()} title={title} accent={accent} body={section.body}>{section.cta && <Link href={section.cta.href} className="site-inline-link">{section.cta.label}<Icon name="arrow" size={15}/></Link>}</Heading>
+        <Heading id={id} label={String(section.label).toUpperCase()} title={title} accent={accent} body={section.body}>{section.cta && <Link prefetch={false} href={section.cta.href} className="site-inline-link">{section.cta.label}<Icon name="arrow" size={15}/></Link>}</Heading>
         <Cards items={section.items.map((item: any) => ({ icon: item.href ? 'layers' : 'check', title: item.title, body: item.body, href: item.href, linkLabel: item.linkLabel }))}/>
       </div></section>;
     }
@@ -95,7 +95,7 @@ function Block({ section, index, page }: { section: Section; index: number; page
       return <section className={`site-section${tone}`} aria-labelledby={id}><div className="shell">
         <Heading id={id} centered label={String(section.label).toUpperCase()} title={title} accent={accent} body={section.body}/>
         <ol className="site-chips site-pipeline" aria-label="Acceptance path">{section.stages.map((stage: any, position: number) => <li key={stage.label} data-tone={stage.tone}><span>{String(position + 1).padStart(2, '0')}</span>{stage.label}</li>)}</ol>
-        {section.cta && <p className="site-note"><Icon name="arrow" size={14}/><Link href={section.cta.href}>{section.cta.label}</Link></p>}
+        {section.cta && <p className="site-note"><Icon name="arrow" size={14}/><Link prefetch={false} href={section.cta.href}>{section.cta.label}</Link></p>}
       </div></section>;
     }
     case 'metrics': {
@@ -118,7 +118,7 @@ function Block({ section, index, page }: { section: Section; index: number; page
       return <section className="site-section is-lilac" aria-labelledby={id}><div className="shell">
         <Heading id={id} centered label="THE BOARD" title="Five lanes." accent="One record." body="Every piece of work sits in exactly one lane, and every card opens the record behind it."/>
         <ol className="site-steps is-five" aria-label="Live Floor lanes">{LANES.map((lane, position) => <li className="site-step" key={lane.label}><span>{String(position + 1).padStart(2, '0')}</span><h3>{lane.label}</h3><p>{lane.text}</p></li>)}</ol>
-        <p className="site-note"><Icon name="play" size={14}/><Link href="/#product-demo">Watch a run move across the board in the interactive demo.</Link></p>
+        <p className="site-note"><Icon name="play" size={14}/><Link prefetch={false} href="/#product-demo">Watch a run move across the board in the interactive demo.</Link></p>
       </div></section>;
     case 'recoveryLoop': {
       const [title, accent] = parts(section.headline);
@@ -137,7 +137,7 @@ function Block({ section, index, page }: { section: Section; index: number; page
     case 'logoMarquee': {
       const groups = ecosystemGroups.filter(group => (section.categories ?? []).includes(group.id));
       return <section className="site-section is-tight" aria-labelledby={id}><div className="shell">
-        <Heading id={id} label={section.label} title="With your tools" accent="and standards."><Link href="/integrations" className="site-inline-link">See every integration and its status<Icon name="arrow" size={15}/></Link></Heading>
+        <Heading id={id} label={section.label} title="With your tools" accent="and standards."><Link prefetch={false} href="/integrations" className="site-inline-link">See every integration and its status<Icon name="arrow" size={15}/></Link></Heading>
         {groups.map(group => <Chips key={group.id} label={group.label} items={group.items}/>)}
       </div></section>;
     }
@@ -160,14 +160,14 @@ function Block({ section, index, page }: { section: Section; index: number; page
     case 'postureClaims': {
       const [title, accent] = parts(section.headline);
       return <section className={`site-section${tone}`} aria-labelledby={id}><div className="shell">
-        <Heading id={id} label={String(section.label).toUpperCase()} title={title} accent={accent} body={section.body}>{section.cta && <Link href={section.cta.href} className="site-inline-link">{section.cta.label}<Icon name="arrow" size={15}/></Link>}</Heading>
+        <Heading id={id} label={String(section.label).toUpperCase()} title={title} accent={accent} body={section.body}>{section.cta && <Link prefetch={false} href={section.cta.href} className="site-inline-link">{section.cta.label}<Icon name="arrow" size={15}/></Link>}</Heading>
         <dl className="site-rules">{section.items.map((item: any) => <div key={item.k}><dt>{item.k}</dt><dd>{item.v}</dd></div>)}</dl>
       </div></section>;
     }
     case 'deployment': {
       const [title, accent] = parts(section.headline);
       return <section className={`site-section${tone}`} id={section.id} aria-labelledby={id}><div className="shell">
-        <Heading id={id} label={String(section.label).toUpperCase()} title={title} accent={accent} body={section.body}>{section.cta && <Link href={section.cta.href} className="site-inline-link">{section.cta.label}<Icon name="arrow" size={15}/></Link>}</Heading>
+        <Heading id={id} label={String(section.label).toUpperCase()} title={title} accent={accent} body={section.body}>{section.cta && <Link prefetch={false} href={section.cta.href} className="site-inline-link">{section.cta.label}<Icon name="arrow" size={15}/></Link>}</Heading>
         <Cards columns={2} items={section.options.map((option: any) => ({ icon: 'cloud', title: option.title, body: option.body, badge: option.badge, href: option.cta?.href, linkLabel: option.cta?.label }))}/>
       </div></section>;
     }

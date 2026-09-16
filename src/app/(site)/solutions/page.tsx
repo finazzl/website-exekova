@@ -27,7 +27,7 @@ export default function SolutionsPage() {
   return <>
     <PageHero eyebrow="SOLUTIONS" title="Find the right starting point" accent="for your team." lede={functionsIndex.lede}
       trail={[{ label: 'Solutions', href: '/solutions' }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>}/>
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>}/>
 
     <section className="site-section is-tight" aria-labelledby="functions-title"><div className="shell">
       <Heading id="functions-title" centered wide label="BY FUNCTION" title="Execution capacity" accent="for every function." body={functionsIndex.description}/>

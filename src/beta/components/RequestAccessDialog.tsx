@@ -7,12 +7,14 @@ import RequestAccess from './RequestAccess';
 export default function RequestAccessDialog({ email, signInHref }: { email: string; signInHref: string }) {
   const ref = useRef<HTMLDialogElement>(null);
   const [active, setActive] = useState(false);
+  const [visited, setVisited] = useState(false);
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     const open = () => {
       if (ref.current?.open) return;
       document.body.style.overflow = 'hidden';
       ref.current?.showModal();
+      setVisited(true);
       setActive(true);
     };
     const close = () => { if (!ref.current?.open) { document.body.style.overflow = previousOverflow; setActive(false); } };
@@ -35,6 +37,6 @@ export default function RequestAccessDialog({ email, signInHref }: { email: stri
   return <><dialog className="access-dialog" id="request-access" ref={ref} aria-labelledby="request-title" onClick={event => { if (event.target === ref.current) { const rect = ref.current.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) ref.current.close(); } }}>
     <button type="button" className="access-dialog-close" onClick={() => ref.current?.close()} aria-label="Close access request"><Icon name="close" size={24}/></button>
     <div className="access-dialog-heading"><span className="beta-label">LET’S START WITH ONE TASK</span><h2 id="request-title">Make room for<br/><em>the next thing.</em></h2><p>{content.request.copy}</p></div>
-    <RequestAccess email={email} signInHref={signInHref} copy={content.request} active={active}/>
+    {visited && <RequestAccess email={email} signInHref={signInHref} copy={content.request} active={active}/>}
   </dialog><noscript><p className="access-noscript">Request access by emailing <a href={`mailto:${email}`}>{email}</a> with your team, task, and acceptance criteria.</p></noscript></>;
 }

@@ -6,6 +6,8 @@ import AnnouncementBar from '@/site/components/AnnouncementBar';
 import SiteFooter from '@/site/components/SiteFooter';
 import Frame from '@/site/components/Frame';
 import WhatsAppButton from '@/site/components/WhatsAppButton';
+import GoogleAnalytics from '@/site/components/GoogleAnalytics';
+import { GA_MEASUREMENT_ID } from '@/site/data/analytics';
 import './globals.css';
 import '@/beta/styles/beta.css';
 import '@/beta/styles/experience.css';
@@ -20,7 +22,7 @@ import { getSite } from '@/lib/content';
 import { organizationSchema, socialMetadata, websiteSchema } from '@/lib/seo';
 
 /** Shared font and metadata infrastructure; the beta owns its page shell. */
-const sans = Figtree({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-sans', display: 'swap' });
+const sans = Figtree({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 const serif = EB_Garamond({ subsets: ['latin'], weight: ['400'], style: ['italic', 'normal'], variable: '--font-display', display: 'swap' });
 
 const site = getSite();
@@ -47,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Frame><SiteFooter site={site} /></Frame>
         <WhatsAppButton />
+        {GA_MEASUREMENT_ID && <GoogleAnalytics />}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema(), websiteSchema()]).replace(/</g, '\\u003c') }} />
       </body>
     </html>

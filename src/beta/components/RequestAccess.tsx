@@ -94,8 +94,8 @@ export default function RequestAccess({ email, signInHref, copy: c, active = tru
     {siteKey && !token && <p className="verification-hint">Complete the verification checkbox before sending.</p>}
     <div className="request-actions"><button type="submit" className="beta-button" disabled={submitting}>{submitting ? 'Sending…' : delivery.kind === 'mailto' ? c.submit : 'Send request'}<Icon name="arrow" size={17}/></button><button type="button" className="beta-text-button" onClick={download}>{c.download}<Icon name="file" size={15}/></button></div>
     </fieldset>
-    <p className="beta-fine">{delivery.kind === 'mailto' ? c.fine : 'Your request is sent to the exekova team. This page does not start work or take payment. Do not include credentials or private code.'} <Link href="/privacy">Privacy</Link> · <Link href="/terms">Terms</Link></p>
+    <p className="beta-fine">{delivery.kind === 'mailto' ? c.fine : 'Your request is sent to the exekova team. This page does not start work or take payment. Do not include credentials or private code.'} <Link prefetch={false} href="/privacy">Privacy</Link> · <Link prefetch={false} href="/terms">Terms</Link></p>
     <p className="request-contact">{delivery.kind === 'mailto' ? c.contactHint : 'Prefer email? Write to'} <a href={`mailto:${email}`}>{email}</a>.</p>
-    <Link className="request-signin" href={signInHref}>{c.signin}<Icon name="arrow" size={14}/></Link>
+    <Link prefetch={false} className="request-signin" href={signInHref}>{c.signin}<Icon name="arrow" size={14}/></Link>
   </form>;
 }

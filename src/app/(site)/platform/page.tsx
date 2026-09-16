@@ -36,7 +36,7 @@ export default function PlatformPage() {
   const reviewFaq = faqGroups.filter(group => group.title === 'Review and verification' || group.title === 'Integrations');
   return <>
     <PageHero layout="split" eyebrow="THE PLATFORM" title="Get the task. Set the repo." accent="Done, verified." lede="exekova takes a scoped engineering task from Jira or the Work Intent form to a pull request in the GitHub repository you approve, with independent review and check evidence attached."
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Request access<Icon name="arrow" size={18}/></a><Link href="/#product-demo" className="beta-secondary">Try the interactive demo<Icon name="arrow" size={15}/></Link></>}
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Request access<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/#product-demo" className="beta-secondary">Try the interactive demo<Icon name="arrow" size={15}/></Link></>}
       note={demo.caption}
       aside={<RecordCard label={`${demo.repo} · ${demo.key}`} title="Checkout validation fixed." body="Recheck the postcode when the country changes. Block invalid submissions. Add a regression test." checks={demo.checks} foot={demo.ready}/>}/>
 
@@ -68,7 +68,7 @@ export default function PlatformPage() {
           <p>Every tool exekova works with, from where a task starts to where the outcome lands, with a page for each. Connectors are switched on with your team, inside the scope you grant.</p>
         </div>
         <ul className="site-callout-chips" aria-label="Catalogue categories">{integrationsIndex.categories.map(category => <li key={category.id}>{category.title}<small>{category.integrations.length}</small></li>)}</ul>
-        <Link href="/integrations" className="beta-button">Browse the integrations catalogue<Icon name="arrow" size={17}/></Link>
+        <Link prefetch={false} href="/integrations" className="beta-button">Browse the integrations catalogue<Icon name="arrow" size={17}/></Link>
       </aside>
     </div></section>
 
@@ -81,7 +81,7 @@ export default function PlatformPage() {
     <PricingBand/>
 
     <section className="site-section" aria-labelledby="platform-faq-title"><div className="shell site-faq">
-      <Heading id="platform-faq-title" label="QUESTIONS" title="Before the" accent="first task." body="The questions engineering teams ask about review, verification and integrations."><Link href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
+      <Heading id="platform-faq-title" label="QUESTIONS" title="Before the" accent="first task." body="The questions engineering teams ask about review, verification and integrations."><Link prefetch={false} href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
       <FaqAccordion groups={reviewFaq} name="platform-faq"/>
     </div></section>
 

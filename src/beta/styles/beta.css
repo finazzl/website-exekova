@@ -430,11 +430,9 @@
 .ribbon-output-band { stroke:var(--wz-green); stroke-width:37px; }
 .ribbon-output-copy { fill:var(--wz-ink); font-family:var(--font-sans),sans-serif; font-size:18px; font-weight:500; }
 .ribbon-output-copy { animation:ribbon-reveal .9s .5s both; }
-.ribbon-result { animation:ribbon-reveal .5s 1.2s both; }
 @keyframes ribbon-reveal { from { opacity:0; } to { opacity:1; } }
 .ribbon-exekova { position:absolute; top:50%; left:50%; transform:translate(-50%,-5%); display:flex; align-items:center; gap:7px; height:64px; padding:8px 17px; border:2px solid var(--wz-ink); border-radius:100px; background:var(--wz-paper); font-size:12px; letter-spacing:.06em; font-weight:600; transition:box-shadow .2s; }
 .ribbon-exekova:hover { box-shadow:0 0 0 6px color-mix(in srgb,var(--wz-violet) 12%,transparent); }
-.ribbon-result { position:absolute; display:flex; align-items:center; gap:8px; top:calc(50% - 58px); left:50%; transform:translateX(-50%); background:var(--wz-violet); border-radius:100px; padding:8px 19px; color:white; font-size:14px; white-space:nowrap; }
 .beta-product-chapter { color:var(--wz-paper); background:var(--wz-ink); border-radius:80px 80px 0 0; overflow:hidden; }
 .integration-strip { text-align:center; padding:67px 40px 64px; }
 .beta-page .integration-strip>.beta-label { color:var(--wz-paper); font-size:12px; }
@@ -598,8 +596,6 @@
   .ribbon-input-mobile { display:block; }
   .ribbon-exekova { height:48px; padding:6px 10px; top:51%; font-size:11px; gap:5px; }
   .ribbon-exekova img { width:31px; }
-  .ribbon-result { top:calc(51% - 40px); font-size:11px; padding:6px 12px; gap:5px; }
-  .ribbon-result svg { width:13px; }
   .beta-product-chapter { border-radius:40px 40px 0 0; }
   .integration-strip { padding:46px 25px 37px; }
   .beta-page .integration-strip>.beta-label { font-size:11px; }

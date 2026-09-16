@@ -18,7 +18,7 @@ export default function LeaderArticle({ item }: { item: Leader }) {
   return <>
     <PageHero layout="split" eyebrow={item.eyebrow.toUpperCase()} title={item.headline[0]} accent={item.headline[1]} lede={item.lede}
       trail={[{ label: 'Solutions', href: '/solutions' }, { label: item.eyebrow, href: `/solutions/${item.slug}` }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link href="/platform" className="beta-secondary">See how it executes<Icon name="arrow" size={15}/></Link></>}
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/platform" className="beta-secondary">See how it executes<Icon name="arrow" size={15}/></Link></>}
       aside={<RecordCard label={item.console.label.toUpperCase()} title={item.console.title} body={item.console.formula ? `${item.console.formula.numerator} ÷ ${item.console.formula.denominator} = ${item.console.formula.result}` : undefined} checks={consoleChecks} foot={item.console.foot} footIcon="chart" badge={item.console.tag || 'Example'}/>}/>
 
     <section className="site-section is-tight" aria-labelledby="owns-title"><div className="shell">
@@ -47,7 +47,7 @@ export default function LeaderArticle({ item }: { item: Leader }) {
     </div></section>
 
     <section className="site-section is-lilac" aria-labelledby="leader-faq-title"><div className="shell site-faq">
-      <Heading id="leader-faq-title" label="QUESTIONS" title={`${item.faqGroup}`} accent="questions." body="The questions this chair asks most often."><Link href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
+      <Heading id="leader-faq-title" label="QUESTIONS" title={`${item.faqGroup}`} accent="questions." body="The questions this chair asks most often."><Link prefetch={false} href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
       <FaqAccordion groups={[{ title: item.faqGroup, items: item.faq }]} name="leader-faq"/>
     </div></section>
 

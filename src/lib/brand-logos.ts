@@ -7,9 +7,9 @@ const BRAND_LOGOS: Record<string, string> = {
   GitHub: 'github.svg',
   Jira: 'jira.svg',
   Linear: 'linear.svg',
-  GitLab: 'gitlab.png',
+  GitLab: 'gitlab.webp',
   Bitbucket: 'bitbucket.svg',
-  Slack: 'slack.png',
+  Slack: 'slack.webp',
   Teams: 'teams.svg',
 };
 

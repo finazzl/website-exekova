@@ -24,7 +24,7 @@ export default function FeatureRows({ rows }: { rows: FeatureRow[] }) {
       <h3>{row.title}{row.accent && <> <em>{row.accent}</em></>}</h3>
       <p>{row.body}</p>
       {row.points && <ul>{row.points.map(point => <li key={point}><Icon name="check" size={16}/>{point}</li>)}</ul>}
-      {row.link && <Link href={row.link.href}>{row.link.label}<Icon name="arrow" size={15}/></Link>}
+      {row.link && <Link prefetch={false} href={row.link.href}>{row.link.label}<Icon name="arrow" size={15}/></Link>}
     </div>
     <div className={`site-row-visual is-${row.tone ?? 'lilac'}`}>{row.visual ?? (row.record && <RecordCard {...row.record}/>)}</div>
   </article>)}</div>;

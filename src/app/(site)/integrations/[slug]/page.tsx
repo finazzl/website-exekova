@@ -45,7 +45,7 @@ export default async function IntegrationPage({ params }: { params: Promise<{ sl
   return <>
     <PageHero layout="split" eyebrow={`INTEGRATIONS · ${item.category.toUpperCase()}`} title={item.name} accent={`${item.status}.`} lede={item.summary}
       trail={[{ label: 'Integrations', href: '/integrations' }, { label: item.name, href: `/integrations/${item.slug}` }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link href="/integrations" className="beta-secondary">All integrations<Icon name="arrow" size={15}/></Link></>}
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/integrations" className="beta-secondary">All integrations<Icon name="arrow" size={15}/></Link></>}
       aside={<RecordCard label="WHAT EXEKOVA RECEIVES" title={item.name} checks={item.receives} foot={item.category} footIcon="grid" badge={item.status}/>}/>
 
     <section className="site-section is-tight" aria-labelledby="exchange-title"><div className="shell">

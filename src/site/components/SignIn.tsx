@@ -33,13 +33,13 @@ export default function SignIn({ wordmark, mark, run }: { wordmark: string; mark
 
   return <section className="signin-section signin-fullscreen" aria-labelledby="signin-title"><div className="shell"><div className="signin-card">
     <div className="signin-form-col">
-      <Link href="/" className="signin-brand signin-brand-wordmark" aria-label="exekova home"><Image src={wordmark} alt="exekova" width={667} height={167} sizes="168px" priority/></Link>
+      <Link prefetch={false} href="/" className="signin-brand signin-brand-wordmark" aria-label="exekova home"><Image src={wordmark} alt="exekova" width={667} height={167} sizes="168px" priority/></Link>
       <h1 id="signin-title" className="brand-section-heading">Sign in to your <em>workspace.</em></h1>
       <p className="signin-lede">Access is arranged personally, not by a form. Message the team on WhatsApp and a person sets up your workspace.</p>
 
       <div className="signin-access" role="group" aria-labelledby="signin-access-title">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/integrations/whatsapp.png" alt="" width={44} height={44}/>
+        <img src="/brand/integrations/whatsapp.webp" alt="" width={44} height={44}/>
         <div>
           <strong id="signin-access-title">Connect via WhatsApp to access</strong>
           <a className="signin-number" href={whatsappHref(WHATSAPP_ACCESS_MESSAGE)} target="_blank" rel="noopener noreferrer">{WHATSAPP_DISPLAY}</a>
@@ -48,9 +48,9 @@ export default function SignIn({ wordmark, mark, run }: { wordmark: string; mark
       </div>
       <a className="signin-cta" href={whatsappHref(WHATSAPP_ACCESS_MESSAGE)} target="_blank" rel="noopener noreferrer">Open WhatsApp<Icon name="arrow" size={16}/></a>
 
-      <p className="signin-consent">By requesting access you agree to exekova’s <Link href="/terms">terms</Link>, <Link href="/privacy">privacy policy</Link> and <Link href="/cookies">cookie policy</Link>.</p>
+      <p className="signin-consent">By requesting access you agree to exekova’s <Link prefetch={false} href="/terms">terms</Link>, <Link prefetch={false} href="/privacy">privacy policy</Link> and <Link prefetch={false} href="/cookies">cookie policy</Link>.</p>
       <p className="signin-switch">New here? <a href={REQUEST_ACCESS}>Request access with a task<Icon name="arrow" size={14}/></a></p>
-      <p className="signin-switch signin-switch-quiet">Prefer email? <Link href="/contact">Contact the team<Icon name="arrow" size={14}/></Link></p>
+      <p className="signin-switch signin-switch-quiet">Prefer email? <Link prefetch={false} href="/contact">Contact the team<Icon name="arrow" size={14}/></Link></p>
     </div>
 
     <div className="signin-panel">

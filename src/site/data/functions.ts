@@ -156,8 +156,8 @@ export const functions: Fn[] = [
         "body": "Independent changes run in parallel; dependent ones wait on their predecessor reaching the required state."
       },
       {
-        "title": "Engines you already use",
-        "body": "Claude Code and Codex run as execution engines, with GitHub and Jira connected."
+        "title": "Tools your team already uses",
+        "body": "Implementation and independent review work with the GitHub repository and Jira task you connect."
       }
     ],
     "cases": {
@@ -446,7 +446,7 @@ export const functions: Fn[] = [
       "Jira",
       "GitHub",
       "Sentry",
-      "Codex"
+      "Independent review"
     ],
     "workTitle": [
       "From acceptance criteria",

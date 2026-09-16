@@ -26,7 +26,7 @@ export function virtualPage(input: { slug: string; title: string; description: s
 }
 
 export function siteBase() {
-  return (process.env.NEXT_PUBLIC_SITE_URL ?? getSite().brand.url) as string;
+  return new URL(process.env.NEXT_PUBLIC_SITE_URL ?? getSite().brand.url).origin;
 }
 
 export function breadcrumbSchema(crumbs: { label: string; href: string }[]) {

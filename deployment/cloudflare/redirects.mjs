@@ -1,6 +1,8 @@
 // One source for the Next.js server and Cloudflare's static redirect file.
 export const siteRedirects = [
-  { source: '/exekova', destination: '/', permanent: false },
+  { source: '/exekova', destination: '/', permanent: true },
+  { source: '/integrations/claude-code', destination: '/integrations', permanent: true },
+  { source: '/integrations/codex', destination: '/integrations', permanent: true },
   { source: '/usecases', destination: '/use-cases', permanent: true },
   { source: '/privacy-policy', destination: '/privacy', permanent: true },
   { source: '/terms-of-service', destination: '/terms', permanent: true },

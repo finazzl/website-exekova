@@ -11,7 +11,7 @@ export default function Breadcrumbs({ trail }: { trail: Crumb[] }) {
   return <>
     <nav className="site-breadcrumbs" aria-label="Breadcrumb"><ol>{crumbs.map((crumb, index) => {
       const last = index === crumbs.length - 1;
-      return <li key={`${index}-${crumb.href}`}>{last ? <span aria-current="page">{crumb.label}</span> : <Link href={crumb.href}>{crumb.label}</Link>}{!last && <Icon name="arrow" size={11}/>}</li>;
+      return <li key={`${index}-${crumb.href}`}>{last ? <span aria-current="page">{crumb.label}</span> : <Link prefetch={false} href={crumb.href}>{crumb.label}</Link>}{!last && <Icon name="arrow" size={11}/>}</li>;
     })}</ol></nav>
     <JsonLd data={breadcrumbSchema(crumbs)}/>
   </>;

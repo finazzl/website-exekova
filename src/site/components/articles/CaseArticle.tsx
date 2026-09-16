@@ -17,7 +17,7 @@ export default function CaseArticle({ item }: { item: Case }) {
   return <>
     <PageHero layout="split" eyebrow={`${item.origin.name.toUpperCase()} · USE CASE`} title={item.name} lede={item.problem}
       trail={[{ label: 'Use cases', href: '/use-cases' }, { label: item.origin.name, href: item.origin.href }, { label: item.name, href: `/use-cases/${item.slug}` }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Bring a problem like this<Icon name="arrow" size={18}/></a><Link href={item.origin.href} className="beta-secondary">More in {item.origin.name.toLowerCase()}<Icon name="arrow" size={15}/></Link></>}
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Bring a problem like this<Icon name="arrow" size={18}/></a><Link prefetch={false} href={item.origin.href} className="beta-secondary">More in {item.origin.name.toLowerCase()}<Icon name="arrow" size={15}/></Link></>}
       aside={<RecordCard label="WHAT ARRIVES" title={item.name} body={item.arrives} checks={item.returns} foot={item.origin.name} footIcon={item.origin.icon} badge="Use case"/>}/>
 
     <section className="site-section is-tight" aria-labelledby="why-title"><div className="shell">

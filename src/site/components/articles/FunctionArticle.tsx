@@ -20,7 +20,7 @@ export default function FunctionArticle({ item }: { item: Fn }) {
   return <>
     <PageHero layout="split" eyebrow={`SOLUTIONS · ${item.name.toUpperCase()}`} title={item.headline[0]} accent={item.headline[1]} lede={item.lede}
       trail={[{ label: 'Solutions', href: '/solutions' }, { label: item.name, href: `/solutions/${item.slug}` }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>}
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>}
       aside={<RecordCard label={`${item.acceptance.sourceTool} · ${item.id}`} title={item.request} body={`Standard: ${item.standard}`} checks={item.checks} foot={item.deliverable} badge="Example"/>}/>
 
     <section className="site-section is-tight" aria-labelledby="work-title"><div className="shell">

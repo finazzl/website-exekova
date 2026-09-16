@@ -5,9 +5,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
 import { useMotionPreference } from './useMotionPreference';
 import Icon from '@/components/Icon';
-import { WORKFLOW_STEPS } from '../data/workflow';
 
-const finalStep = WORKFLOW_STEPS.length - 1;
 const input = 'Fix checkout validation. Recheck the postcode when the country changes. Add a regression test. ';
 const output = 'Independently reviewed. Required checks passed. Verified outcome. Ready for your team. ';
 
@@ -19,12 +17,10 @@ export default function TaskRibbon() {
   const mobileText = useRef<SVGTextPathElement>(null);
   const outputText = useRef<SVGTextPathElement>(null);
   const elapsed = useRef(0);
-  const currentStep = useRef(0);
   const inView = useInView(ref, { amount: 0.05 });
   const reduced = useMotionPreference();
   const [playing, setPlaying] = useState(true);
   const [visible, setVisible] = useState(true);
-  const [step, setStep] = useState(0);
   const [extraWidth, setExtraWidth] = useState(0);
   const running = playing && inView && visible && reduced === false;
   useEffect(() => {
@@ -42,7 +38,6 @@ export default function TaskRibbon() {
     document.addEventListener('visibilitychange', update);
     return () => document.removeEventListener('visibilitychange', update);
   }, []);
-  useEffect(() => { if (reduced) { currentStep.current = finalStep; setStep(finalStep); } }, [reduced]);
   useEffect(() => {
     if (!running) return;
     let frame = 0;
@@ -67,15 +62,13 @@ export default function TaskRibbon() {
       // Both paths run left to right: the task enters EXEKOVA and the outcome
       // leaves it. A full repeated phrase before the path keeps the loop filled.
       paths.forEach((path,index) => path?.setAttribute('startOffset', String(-widths[index] + ((elapsed.current * 0.042) % widths[index]))));
-      const nextStep = Math.floor((elapsed.current % 12000) / (12000 / WORKFLOW_STEPS.length));
-      if (nextStep !== currentStep.current) { currentStep.current = nextStep; setStep(nextStep); }
       frame = requestAnimationFrame(tick);
     }
     frame = requestAnimationFrame(tick);
     return () => { cancelled = true; cancelAnimationFrame(frame); window.removeEventListener('resize', remeasure); };
   }, [running]);
-  return <div className="task-ribbon" ref={ref} data-playing={running} data-step={step} aria-label="Example task-to-outcome animation">
-    <svg className="task-ribbon-svg" viewBox={`${-extraWidth} 0 ${1440 + extraWidth * 2} 640`} fill="none" aria-hidden="true">
+  return <div className="task-ribbon" ref={ref} data-playing={running} aria-label="Example task-to-outcome animation">
+    <svg className="task-ribbon-svg" style={{ minWidth: '100%' }} viewBox={`${-extraWidth} 0 ${1440 + extraWidth * 2} 640`} fill="none" aria-hidden="true">
       <defs>
         <path id={`${id}-input`} d={`M${-160-extraWidth} 270 H-160 C28 315 230 344 332 248 C414 170 335 23 249 45 C139 70 112 173 183 271 C291 416 498 510 720 510`}/>
         <path id={`${id}-mobile`} d="M310 436 C420 459 562 454 539 380 C523 292 477 301 462 350 C436 427 561 510 720 510"/>
@@ -86,8 +79,9 @@ export default function TaskRibbon() {
       <use href={`#${id}-output`} className="ribbon-output-band"/>
       <text className="ribbon-output-copy" dy="6"><textPath ref={outputText} href={`#${id}-output`} startOffset="0">{output.repeat(5)}</textPath></text>
     </svg>
-    <div className="ribbon-result"><Icon name={WORKFLOW_STEPS[step].icon} size={17}/><span key={step}>{WORKFLOW_STEPS[step].label}</span></div>
-    <button type="button" className="ribbon-exekova" aria-label={reduced ? 'Next hero step' : playing ? 'Pause hero animation' : 'Play hero animation'} onClick={() => reduced ? setStep(value => (value + 1) % WORKFLOW_STEPS.length) : setPlaying(value => !value)}><Image src="/brand/exekova-mark.png" width={40} height={40} alt=""/><Icon name={reduced ? 'arrow' : playing ? 'pause' : 'play'} size={15}/></button>
+    {reduced
+      ? <div className="ribbon-exekova" aria-label="EXEKOVA task workflow"><Image src="/brand/exekova-mark.webp" width={40} height={40} alt=""/><Icon name="arrow" size={15}/></div>
+      : <button type="button" className="ribbon-exekova" aria-label={playing ? 'Pause hero animation' : 'Play hero animation'} onClick={() => setPlaying(value => !value)}><Image src="/brand/exekova-mark.webp" width={40} height={40} alt=""/><Icon name={playing ? 'pause' : 'play'} size={15}/></button>}
     <a href="#product-demo" className="ribbon-demo-link">Explore the workflow<Icon name="arrow" size={13}/></a>
   </div>;
 }

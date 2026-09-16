@@ -18,12 +18,14 @@ it('resumes from reduced motion when the queued frame predates the effect', () =
   vi.spyOn(performance, 'now').mockReturnValue(100);
 
   const { container, rerender } = render(<TaskRibbon/>);
-  expect(container.querySelector('.task-ribbon')?.getAttribute('data-step')).toBe('2');
+  expect(container.querySelector('.ribbon-result')).toBeNull();
   preference.reduced = false;
   rerender(<TaskRibbon/>);
   act(() => tick(99));
-  expect(container.querySelector('.task-ribbon')?.getAttribute('data-step')).toBe('0');
   expect(container.querySelector('.task-ribbon')?.getAttribute('data-playing')).toBe('true');
   act(() => tick(115));
-  expect(container.querySelector('.ribbon-result')?.textContent).toBe('Get');
+  expect(container.querySelector('.ribbon-result')).toBeNull();
+  const offset = Number(container.querySelector('textPath')?.getAttribute('startOffset'));
+  expect(Number.isFinite(offset)).toBe(true);
+  expect(offset).toBeGreaterThanOrEqual(-900);
 });

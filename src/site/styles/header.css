@@ -78,3 +78,5 @@
 }
 @media (prefers-reduced-motion: reduce) { .site-header * { transition: none !important; } }
 @media print { .site-header { display: none !important; } }
+.navigation-panel { animation: navigation-enter .15s ease-out; }
+@keyframes navigation-enter { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }

@@ -51,7 +51,7 @@ export default function LegalDocument({ doc }: { doc: LegalDoc }) {
       <aside className="legal-toc">
         <span>Contents</span>
         <ol>{doc.sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.heading}</a></li>)}</ol>
-        <nav className="legal-toc-links" aria-label="Other legal documents">{legalNav.filter(link => link.href !== doc.slug).map(link => <Link href={link.href} key={link.href}>{link.label}</Link>)}</nav>
+        <nav className="legal-toc-links" aria-label="Other legal documents">{legalNav.filter(link => link.href !== doc.slug).map(link => <Link prefetch={false} href={link.href} key={link.href}>{link.label}</Link>)}</nav>
       </aside>
       <article className="legal-body">
         <dl className="legal-meta"><div><dt>Effective</dt><dd>{doc.effectiveDate}</dd></div><div><dt>Version</dt><dd>{doc.version}</dd></div><div><dt>Applies to</dt><dd>exekova.com and the exekova service</dd></div></dl>

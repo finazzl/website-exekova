@@ -5,10 +5,10 @@
     "url": "https://exekova.com",
     "category": "Autonomous Work Execution Platform",
     "tagline": "Get the task. Set the repo. Work done.",
-    "wordmark": "/brand/big-xkova.png",
-    "mark": "/brand/exekova-mark.png",
-    "logoSmall": "/brand/small-xkova.png",
-    "icon": "/brand/xkova-icon.png"
+    "wordmark": "/brand/big-xkova.webp",
+    "mark": "/brand/exekova-mark.webp",
+    "logoSmall": "/brand/small-xkova.webp",
+    "icon": "/brand/xkova-icon.webp"
   },
   "announcement": {
     "enabled": true,

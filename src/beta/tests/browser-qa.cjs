@@ -54,11 +54,9 @@ fs.mkdirSync(out,{recursive:true});
       assert.equal(await page.locator('.governance-rules dl>div').count(),5);
       assert((await page.locator('.vision-tomorrow').innerText()).includes('not yet available'));
       assert.equal(await page.locator('.task-ribbon').getAttribute('data-playing'),'false');
-      for(const [index,label] of [[0,'Get'],[1,'Set'],[2,'Done'],[0,'Get']]) {
-        await page.getByRole('button',{name:'Next hero step',exact:true}).click();
-        assert.equal(await page.locator('.task-ribbon').getAttribute('data-step'),String(index));
-        assert.equal(await page.locator('.ribbon-result').innerText(),label);
-      }
+      assert.equal(await page.locator('.ribbon-result').count(),0);
+      const ribbonBounds = await page.locator('.task-ribbon-svg').boundingBox();
+      assert(ribbonBounds.x <= 0 && ribbonBounds.x + ribbonBounds.width >= width, 'Hero ribbon reaches both viewport edges');
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://exekova.com');
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width,'Page overflow at '+width);
       const overflow=await page.locator('main section').evaluateAll(elements=>elements.filter(el=>{const r=el.getBoundingClientRect();return r.right>innerWidth+1 || r.left < -1;}).map(el=>el.className));

@@ -28,7 +28,7 @@ export default function BrandLogo({ name, size = 24, labelled }: { name: string;
       loading="lazy"
       decoding="async"
       className="shrink-0 object-contain"
-      style={{ width: size, height: size }}
+      style={{ width: size, height: size, objectFit: 'contain' }}
       onError={() => setFailedSrc(src)}
     />
   );

@@ -10,7 +10,7 @@ export default function PricingBand({ id = 'pricing-band' }: { id?: string }) {
   const c = content.pricing;
   return <section className="site-section is-lilac" aria-labelledby={id}><div className="shell site-price">
     <Heading id={id} label={c.eyebrow} title={c.headline[0]} accent={c.headline[1]} body={c.body}>
-      <Link href="/pricing" className="site-inline-link">See the full pricing page<Icon name="arrow" size={15}/></Link>
+      <Link prefetch={false} href="/pricing" className="site-inline-link">See the full pricing page<Icon name="arrow" size={15}/></Link>
     </Heading>
     <div className="site-price-card">
       <span className="beta-label">{c.label}</span>

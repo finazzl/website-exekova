@@ -16,7 +16,7 @@ export default function ScenarioArticle({ item }: { item: Scenario }) {
   return <>
     <PageHero layout="split" eyebrow={item.label.toUpperCase()} title={item.headline[0]} accent={item.headline[1]} lede={item.body} note={item.provenance}
       trail={[{ label: 'Use cases', href: '/use-cases' }, { label: item.title, href: `/use-cases/${item.slug}` }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Bring your own brief<Icon name="arrow" size={18}/></a><Link href="/use-cases" className="beta-secondary">All use cases<Icon name="arrow" size={15}/></Link></>}
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Bring your own brief<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/use-cases" className="beta-secondary">All use cases<Icon name="arrow" size={15}/></Link></>}
       aside={<RecordCard label={item.id} title={remittance ? 'The brief' : 'The epic'} body={item.problem} checks={briefChecks} foot={remittance ? 'Set by the CEO' : 'Filed by the CTO'} footIcon="file" badge="Scenario"/>}/>
 
     {(item.contract.length > 0 || item.brief.length > 0) && <section className="site-section is-tight" aria-labelledby="brief-title"><div className="shell">

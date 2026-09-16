@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Icon from '@/components/Icon';
 import type { UseCase } from '../../data/useCases';
+import { useCases } from '../../data/useCases';
 import { REQUEST_ACCESS } from '../../nav';
 import PageHero from '../PageHero';
 import Heading from '../Heading';
@@ -14,7 +15,7 @@ import CtaBand from '../CtaBand';
 export default function TaskTypeArticle({ useCase }: { useCase: UseCase }) {
   return <>
     <PageHero layout="split" eyebrow={`A FIRST TASK · ${useCase.name.toUpperCase()}`} title={useCase.headline[0]} accent={useCase.headline[1]} lede={useCase.lede}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Bring a task like this<Icon name="arrow" size={18}/></a><Link href="/#product-demo" className="beta-secondary">Watch it in the demo<Icon name="arrow" size={15}/></Link></>}
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Bring a task like this<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/#product-demo" className="beta-secondary">Watch it in the demo<Icon name="arrow" size={15}/></Link></>}
       trail={[{ label: 'Use cases', href: '/use-cases' }, { label: useCase.name, href: `/use-cases/${useCase.slug}` }]}
       aside={<RecordCard label="EXAMPLE TASK" title={useCase.example.title} body={useCase.example.brief} checks={useCase.example.criteria} foot={useCase.example.outcome}/>}/>
 
@@ -37,10 +38,14 @@ export default function TaskTypeArticle({ useCase }: { useCase: UseCase }) {
     </div></section>
 
     <section className="site-section is-tight" aria-labelledby="usecase-faq-title"><div className="shell site-faq">
-      <Heading id="usecase-faq-title" label="QUESTIONS" title={`About ${useCase.name.toLowerCase()}.`} body="The answers stay inside what the service does today."><Link href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
+      <Heading id="usecase-faq-title" label="QUESTIONS" title={`About ${useCase.name.toLowerCase()}.`} body="The answers stay inside what the service does today."><Link prefetch={false} href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
       <FaqAccordion groups={[{ title: useCase.name, items: useCase.faq }]} name="usecase-faq"/>
     </div></section>
 
+    <section className="site-section is-tight" aria-labelledby="related-tasks-title"><div className="shell">
+      <Heading id="related-tasks-title" title="Other tasks to start with."/>
+      <Cards columns={2} items={useCases.filter(item => item.slug !== useCase.slug).map(item => ({ title: item.name, body: item.summary, href: `/use-cases/${item.slug}`, linkLabel: `Explore ${item.name.toLowerCase()}` }))}/>
+    </div></section>
     <CtaBand secondary={{ href: '/use-cases', label: 'All use cases' }}/>
   </>;
 }

@@ -46,7 +46,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ indus
   return <>
     <PageHero layout="split" eyebrow={`INDUSTRIES · ${industry.name.toUpperCase()}`} title={industry.headline[0]} accent={industry.headline[1]} lede={industry.lede}
       trail={[{ label: 'Industries', href: '/industries' }, { label: industry.name, href: `/industries/${industry.slug}` }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link href="#use-cases" className="beta-secondary">Explore the use cases<Icon name="arrow" size={15}/></Link></>}
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link prefetch={false} href="#use-cases" className="beta-secondary">Explore the use cases<Icon name="arrow" size={15}/></Link></>}
       aside={<RecordCard label={`${industry.source} · ${industry.sample.id}`} title={industry.sample.title} body={industry.sample.body} checks={[`Standard: ${industry.sample.criterion}`, ...industry.phases.map(phase => `${phase.label}: ${phase.title}`)]} foot="Ready for your team’s decision" badge="Example"/>}/>
 
     <section className="site-section is-tight" aria-labelledby="workloads-title"><div className="shell">

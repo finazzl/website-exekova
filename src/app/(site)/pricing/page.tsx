@@ -26,7 +26,7 @@ export default function PricingPage() {
   return <>
     <PageHero eyebrow="PRICING" title="Pay for accepted work." accent="Nothing else." lede="One price per accepted engineering task. Nothing for rejected attempts, no subscription, no seat licence, and no payment on this website."
       trail={[{ label: 'Pricing', href: '/pricing' }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">{c.cta}<Icon name="arrow" size={18}/></a><Link href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>}/>
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">{c.cta}<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>}/>
 
     <section className="site-section is-tight" aria-labelledby="price-title"><div className="shell site-price">
       <Heading id="price-title" label="THE PRICE" title={c.headline[0]} accent={c.headline[1]} body="Accepted tasks are invoiced against the acceptance record. The price agreed for your task stays with that task, whatever the standard price becomes later."/>
@@ -73,7 +73,7 @@ export default function PricingPage() {
     </div></section>
 
     <section className="site-section is-tight" aria-labelledby="pricing-faq-title"><div className="shell site-faq">
-      <Heading id="pricing-faq-title" label="QUESTIONS" title="About the" accent="price." body="The questions teams ask before the first invoice."><Link href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
+      <Heading id="pricing-faq-title" label="QUESTIONS" title="About the" accent="price." body="The questions teams ask before the first invoice."><Link prefetch={false} href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
       <FaqAccordion groups={pricingFaq} name="pricing-faq"/>
     </div></section>
 

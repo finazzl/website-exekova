@@ -21,7 +21,7 @@ export default function CtaBand({ title = 'You have work to do.', accent = 'Give
     <p>{body}</p>
     <div className="site-actions">
       <a href={primary.href} className="beta-button">{primary.label}<Icon name="arrow" size={18}/></a>
-      {secondary && <Link href={secondary.href} className="beta-secondary">{secondary.label}<Icon name="arrow" size={15}/></Link>}
+      {secondary && <Link prefetch={false} href={secondary.href} className="beta-secondary">{secondary.label}<Icon name="arrow" size={15}/></Link>}
     </div>
     {note && <small>{note}</small>}
     <p className="site-definition">{DEFINITION_LONG}</p>

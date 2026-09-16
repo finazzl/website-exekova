@@ -13,7 +13,7 @@ export default function ComparisonArticle({ item }: { item: Comparison }) {
   return <>
     <PageHero eyebrow="COMPARISON" title={item.headline[0]} accent={item.headline[1]} lede={item.lede}
       trail={[{ label: 'Platform', href: '/platform' }, { label: item.title, href: `/compare/${item.slug}` }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>}
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>}
       note={item.note ?? `${item.name} is described from its own public material, read on ${item.checked}.`}/>
 
     <section className="site-section is-tight" aria-labelledby="definitions-title"><div className="shell site-faq">
@@ -40,7 +40,7 @@ export default function ComparisonArticle({ item }: { item: Comparison }) {
     </div></section>
 
     <section className="site-section is-tight" aria-labelledby="compare-faq-title"><div className="shell site-faq">
-      <Heading id="compare-faq-title" label="QUESTIONS" title="Common" accent="questions.">{item.sources.length > 0 && <div className="site-sources" style={{ marginTop: 26 }}><span className="site-chips-label">Sources · read {item.checked}</span>{item.sources.map(source => <p key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a><span>{source.detail}</span></p>)}</div>}<Link href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
+      <Heading id="compare-faq-title" label="QUESTIONS" title="Common" accent="questions.">{item.sources.length > 0 && <div className="site-sources" style={{ marginTop: 26 }}><span className="site-chips-label">Sources · read {item.checked}</span>{item.sources.map(source => <p key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a><span>{source.detail}</span></p>)}</div>}<Link prefetch={false} href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
       <FaqAccordion groups={[{ title: item.title, items: item.faq }]} name="compare-faq"/>
     </div></section>
 

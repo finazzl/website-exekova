@@ -26,7 +26,7 @@ export default function IntegrationsPage() {
   return <>
     <PageHero eyebrow={integrationsIndex.eyebrow} title={integrationsIndex.headline[0]} accent={integrationsIndex.headline[1]} lede={integrationsIndex.lede}
       trail={[{ label: 'Platform', href: '/platform' }, { label: 'Integrations', href: '/integrations' }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>}/>
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/platform" className="beta-secondary">How the platform works<Icon name="arrow" size={15}/></Link></>}/>
 
     <section className="site-section is-tight" aria-labelledby="detail-title"><div className="shell">
       <Heading id="detail-title" centered wide label="DETAIL PAGES" title="Where the work lands." accent="Where human intent arrives." body="GitHub and Jira are where engineering work lives and lands. Slack and Microsoft Teams are where a person asks for it: the request becomes a scoped task with acceptance criteria, and the outcome is reported back in the same thread."/>
@@ -39,15 +39,15 @@ export default function IntegrationsPage() {
         <h3 id={`category-${category.id}`}><span>{category.index}</span>{category.title}<small style={{ fontSize: 15, fontWeight: 400, color: 'var(--wz-ink-muted)' }}>{category.subhead}</small></h3>
         <ul className="site-integrations" style={{ justifyContent: 'flex-start' }} aria-label={category.title}>{category.integrations.map(item => {
           const inner = <>{item.logo ? <img src={item.logo} alt="" aria-hidden="true" width={18} height={18} loading="lazy" decoding="async" className="site-mark"/> : <Icon name="grid" size={16}/>}<span><strong>{item.name}<span className="site-dot" aria-hidden="true"/><span className="sr-only">Active</span></strong>{item.description && <small>{item.description}</small>}</span></>;
-          return <li key={item.name} data-status="active">{detailed.has(item.slug) ? <Link href={`/integrations/${item.slug}`}>{inner}</Link> : inner}</li>;
+          return <li key={item.name} data-status="active">{detailed.has(item.slug) ? <Link prefetch={false} href={`/integrations/${item.slug}`}>{inner}</Link> : inner}</li>;
         })}</ul>
       </section>)}
       {integrationsIndex.logoPolicy && <p className="site-note"><Icon name="shield" size={15}/>{integrationsIndex.logoPolicy}</p>}
     </div></section>
 
     <section className="site-section is-tight" aria-labelledby="integration-faq-title"><div className="shell site-faq">
-      <Heading id="integration-faq-title" label="QUESTIONS" title="Integration" accent="questions."><Link href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
-      <FaqAccordion groups={[{ title: 'Detail pages', items: integrationsIndex.definitions.map(entry => ({ ...entry, a: entry.a.replace('Claude Code, Codex, GitHub and Jira meet that bar today.', 'GitHub, Jira, Slack and Microsoft Teams meet that bar today, and Claude Code and Codex are described as execution engines.') })) }, { title: integrationsIndex.faqGroup, items: integrationsIndex.faq }]} name="integration-faq"/>
+      <Heading id="integration-faq-title" label="QUESTIONS" title="Integration" accent="questions."><Link prefetch={false} href="/faq" className="site-inline-link">All questions and answers<Icon name="arrow" size={15}/></Link></Heading>
+      <FaqAccordion groups={[{ title: 'Detail pages', items: integrationsIndex.definitions }, { title: integrationsIndex.faqGroup, items: integrationsIndex.faq }]} name="integration-faq"/>
     </div></section>
 
     <CtaBand title={integrationsIndex.cta.headline[0]} accent={integrationsIndex.cta.headline[1]} body={integrationsIndex.cta.body} secondary={{ href: '/contact', label: 'Talk to the team' }}/>

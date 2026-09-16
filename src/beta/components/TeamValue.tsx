@@ -1,4 +1,5 @@
 'use client';
+import ResponsivePhoto from '@/components/ResponsivePhoto';
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
@@ -7,16 +8,16 @@ import Icon from '@/components/Icon';
 import { teamRoles } from '../content/chapters';
 import { leaders } from '@/site/data/leaders';
 import { useMotionPreference } from './useMotionPreference';
-import backdrop from '../assets/team-room.png';
+const backdrop = 'team-room' as const;
 
 function OutcomeVisual({ index }: { index: number }) {
   const current = teamRoles[index];
   return <div className="team-outcome-visual">
-    <Image src={backdrop} alt="" fill sizes="(max-width: 700px) 100vw, 620px" className="chapter-photo"/>
+    <ResponsivePhoto name={backdrop} alt="" sizes="(max-width: 700px) 100vw, 620px" className="chapter-photo"/>
     <div className="team-photo-shade"/>
     <div className="team-question" key={`question-${index}`}>{current.title}</div>
     <div className="team-outcome-record" key={index}>
-      <div><Image src="/brand/exekova-mark.png" width={28} height={28} alt=""/><span>exekova</span><span className="beta-badge" data-status="available">Engineering</span></div>
+      <div><Image src="/brand/exekova-mark.webp" width={28} height={28} alt=""/><span>exekova</span><span className="beta-badge" data-status="available">Engineering</span></div>
       <span className="beta-label">FOR THE {current.role}</span>
       <h3>{current.example}</h3>
       <ul>{current.evidence.map(item => <li key={item}><Icon name="check" size={17}/>{item}</li>)}</ul>
@@ -61,7 +62,7 @@ export default function TeamValue() {
       <div className="team-value-panel" id="team-value-panel" data-role={teamRoles[selected].role} aria-live="polite"><OutcomeVisual index={selected}/></div>
       <div className="team-role-buttons" aria-label="Explore value for your role">{teamRoles.map((item, index) => <article className="team-role-story" data-active={selected === index} key={item.role}>
         <div className="team-mobile-visual"><OutcomeVisual index={index}/></div>
-        <div className="team-value-copy"><button type="button" aria-label={item.role} aria-pressed={selected === index} aria-controls="team-value-panel" onClick={() => select(index)}><Icon name={item.icon} size={17}/>{item.role}</button><h3>{item.title}</h3><p className="team-pain">{item.pain}</p><p>{item.value}</p>{leaders.find(entry => entry.role === item.role) && <Link href={`/solutions/${leaders.find(entry => entry.role === item.role)!.slug}`}>For the {item.role}: read the full picture<Icon name="arrow" size={15}/></Link>}</div>
+        <div className="team-value-copy"><button type="button" aria-label={item.role} aria-pressed={selected === index} aria-controls="team-value-panel" onClick={() => select(index)}><Icon name={item.icon} size={17}/>{item.role}</button><h3>{item.title}</h3><p className="team-pain">{item.pain}</p><p>{item.value}</p>{leaders.find(entry => entry.role === item.role) && <Link prefetch={false} href={`/solutions/${leaders.find(entry => entry.role === item.role)!.slug}`}>For the {item.role}: read the full picture<Icon name="arrow" size={15}/></Link>}</div>
       </article>)}</div>
     </div>
   </div></section>;

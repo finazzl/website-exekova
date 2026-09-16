@@ -33,7 +33,7 @@ export default function UseCasesPage() {
   return <>
     <PageHero eyebrow="USE CASES · ENTERPRISE" title={casesIndex.hero.headline[0]} accent={casesIndex.hero.headline[1]} lede={lede}
       trail={[{ label: 'Use cases', href: '/use-cases' }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link href="#by-industry" className="beta-secondary">{total} live problems, by industry<Icon name="arrow" size={15}/></Link></>}/>
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link prefetch={false} href="#by-industry" className="beta-secondary">{total} live problems, by industry<Icon name="arrow" size={15}/></Link></>}/>
 
     <section className="site-section is-tight" aria-labelledby="lens-title"><div className="shell">
       <Heading id="lens-title" centered label="ONE RUN. ONE RECORD." title={casesIndex.lens.title} body={casesIndex.lens.body}/>
@@ -44,7 +44,7 @@ export default function UseCasesPage() {
       <Heading id="industry-title" centered wide label={casesIndex.byIndustry.label.toUpperCase()} title={casesIndex.byIndustry.headline[0]} accent={casesIndex.byIndustry.headline[1]} body={casesIndex.byIndustry.body}/>
       <p className="site-note" style={{ marginTop: 0, marginBottom: 40 }}><Icon name="layers" size={15}/><span><strong>{casesIndex.pipeline.label}</strong> {casesIndex.pipeline.stages.join(' → ')}. {casesIndex.pipeline.note}</span></p>
       {byIndustry.map((entry, index) => <section className="site-group" key={entry.industry.slug} aria-labelledby={`industry-${entry.industry.slug}`}>
-        <h3 id={`industry-${entry.industry.slug}`}><span>{String(index + 1).padStart(2, '0')}</span><Link href={`/industries/${entry.industry.slug}`}>{entry.industry.name}</Link></h3>
+        <h3 id={`industry-${entry.industry.slug}`}><span>{String(index + 1).padStart(2, '0')}</span><Link prefetch={false} href={`/industries/${entry.industry.slug}`}>{entry.industry.name}</Link></h3>
         <Cards columns={entry.cases.length >= 4 ? 4 : entry.cases.length === 3 ? 3 : 2} items={entry.cases.map(item => ({ icon: entry.industry.icon, kicker: entry.industry.name, title: item.name, body: item.problem, href: `/use-cases/${item.slug}`, linkLabel: 'Open the use case' }))}/>
       </section>)}
       <p className="site-note"><Icon name="shield" size={15}/>{casesIndex.note}</p>
@@ -58,7 +58,7 @@ export default function UseCasesPage() {
     <section className="site-section is-lilac" id="by-function" aria-labelledby="function-title"><div className="shell">
       <Heading id="function-title" centered wide label="BY FUNCTION" title="Every function." accent="Its own definition of done." body={functionsIndex.description}/>
       {functions.map(fn => <section className="site-group" key={fn.slug} aria-labelledby={`function-${fn.slug}`}>
-        <h3 id={`function-${fn.slug}`}><span>{fn.group}</span><Link href={`/solutions/${fn.slug}`}>{fn.name}</Link></h3>
+        <h3 id={`function-${fn.slug}`}><span>{fn.group}</span><Link prefetch={false} href={`/solutions/${fn.slug}`}>{fn.name}</Link></h3>
         <Cards items={fn.cases.ids.map(slug => caseBySlug(slug)).filter(Boolean).map(item => ({ icon: fn.icon, kicker: fn.name, title: item!.name, body: item!.problem, href: `/use-cases/${item!.slug}`, linkLabel: 'Open the use case' }))}/>
       </section>)}
     </div></section>

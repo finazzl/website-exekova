@@ -378,13 +378,13 @@ export const platformPages: PlatformPage[] = [
                 "name": "Implementation",
                 "icon": "code",
                 "task": "Diagnose and repair the timeout",
-                "engine": "Claude Code"
+                "engine": "Implementation capability"
               },
               {
                 "name": "Independent review",
                 "icon": "eye",
                 "task": "Review the change against the brief",
-                "engine": "Codex"
+                "engine": "Independent review"
               },
               {
                 "name": "QA",
@@ -395,8 +395,8 @@ export const platformPages: PlatformPage[] = [
             ],
             "tools": [
               "Jira",
-              "Claude Code",
-              "Codex",
+              "Implementation capability",
+              "Independent review",
               "GitHub"
             ],
             "evidence": "Reviewed change · test results · acceptance record"
@@ -448,13 +448,13 @@ export const platformPages: PlatformPage[] = [
                 "name": "Implementation",
                 "icon": "code",
                 "task": "Execute independent units in parallel",
-                "engine": "Claude Code"
+                "engine": "Implementation capability"
               },
               {
                 "name": "Independent review",
                 "icon": "eye",
                 "task": "Review changes before they advance",
-                "engine": "Codex"
+                "engine": "Independent review"
               },
               {
                 "name": "QA",
@@ -465,8 +465,8 @@ export const platformPages: PlatformPage[] = [
             ],
             "tools": [
               "Jira",
-              "Claude Code",
-              "Codex",
+              "Implementation capability",
+              "Independent review",
               "GitHub"
             ],
             "evidence": "Dependency plan · reviewed changes · validation evidence"
@@ -1929,8 +1929,8 @@ export const ecosystemGroups: EcosystemGroup[] = [
     "id": "engineering",
     "label": "Engineering & AI",
     "items": [
-      "Claude Code",
-      "Codex",
+      "Implementation capability",
+      "Independent review",
       "GitHub",
       "GitLab",
       "Bitbucket",

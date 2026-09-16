@@ -17,7 +17,7 @@ export const metadata: Metadata = metadataFor('/faq');
 export default function FaqPage() {
   return <>
     <PageHero eyebrow="QUESTIONS & ANSWERS" title="Clear before" accent="you start." lede="Getting started, scope, review and verification, pricing, integrations and data. If a question is missing, ask it and we will add the answer here."
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Request access<Icon name="arrow" size={18}/></a><Link href="/contact" className="beta-secondary">Ask a question<Icon name="arrow" size={15}/></Link></>}/>
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Request access<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/contact" className="beta-secondary">Ask a question<Icon name="arrow" size={15}/></Link></>}/>
 
     <section className="site-section is-tight" aria-labelledby="faq-list-title"><div className="shell site-faq">
       <Heading id="faq-list-title" label="A FEW GOOD QUESTIONS" title="Everything" accent="we get asked." body="Every answer stays inside what the product does today. Planned integrations are labelled planned.">

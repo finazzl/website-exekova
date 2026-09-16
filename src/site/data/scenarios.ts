@@ -290,13 +290,13 @@ export const scenarios: Scenario[] = [
       {
         "role": "Application builder",
         "task": "Build onboarding, quote, recipient and tracking screens.",
-        "tool": "Claude Code",
+        "tool": "Implementation capability",
         "output": "Reviewed application changes"
       },
       {
         "role": "Payments builder",
         "task": "Implement sandbox adapters, ledger posting and idempotency.",
-        "tool": "Codex",
+        "tool": "Independent review",
         "output": "Versioned service changes"
       },
       {
@@ -602,7 +602,7 @@ export const scenarios: Scenario[] = [
       {
         "role": "Independent reviewer",
         "task": "Challenge the candidate against the six local checks.",
-        "tool": "Codex",
+        "tool": "Independent review",
         "output": "Evidence + test candidate"
       },
       {

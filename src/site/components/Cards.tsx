@@ -28,7 +28,7 @@ export default function Cards({ items, columns = 3 }: { items: CardItem[]; colum
       {item.href && <span className="site-card-link">{item.linkLabel ?? 'Learn more'}<Icon name="arrow" size={14}/></span>}
     </>;
     return item.href
-      ? <Link href={item.href} className="site-card" key={item.title}>{inner}</Link>
+      ? <Link prefetch={false} href={item.href} className="site-card" key={item.title}>{inner}</Link>
       : <article className="site-card" key={item.title}>{inner}</article>;
   })}</div>;
 }

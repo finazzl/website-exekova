@@ -43,20 +43,6 @@ export const integrationsIndex: IntegrationsIndex = {
       "accent": "violet",
       "integrations": [
         {
-          "name": "Claude Code",
-          "slug": "claude-code",
-          "description": "Installed CLI",
-          "status": "Available",
-          "logo": "/brand/integrations/claude-code.png"
-        },
-        {
-          "name": "Codex",
-          "slug": "codex",
-          "description": "Installed CLI",
-          "status": "Available",
-          "logo": "/brand/integrations/codex.png"
-        },
-        {
           "name": "GitHub",
           "slug": "github",
           "description": "Git repository workflows",
@@ -82,7 +68,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "gitlab",
           "description": "Repository connection",
           "status": "Available",
-          "logo": "/brand/integrations/gitlab.png"
+          "logo": "/brand/integrations/gitlab.webp"
         },
         {
           "name": "Linear",
@@ -145,7 +131,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "tabnine",
           "description": "AI assistance for software development",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/tabnine.png"
+          "logo": "/brand/integrations/tabnine.webp"
         }
       ]
     },
@@ -168,7 +154,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "slack",
           "description": "Channels and handoffs",
           "status": "Available",
-          "logo": "/brand/integrations/slack.png"
+          "logo": "/brand/integrations/slack.webp"
         },
         {
           "name": "Gmail",
@@ -182,7 +168,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "whatsapp",
           "description": "Business messaging",
           "status": "Available",
-          "logo": "/brand/integrations/whatsapp.png"
+          "logo": "/brand/integrations/whatsapp.webp"
         },
         {
           "name": "Notion",
@@ -224,7 +210,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "monday",
           "description": "Work management",
           "status": "Available",
-          "logo": "/brand/integrations/monday.png"
+          "logo": "/brand/integrations/monday.webp"
         },
         {
           "name": "ClickUp",
@@ -238,7 +224,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "smartsheet",
           "description": "Work tracking and structured project data",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/smartsheet.png"
+          "logo": "/brand/integrations/smartsheet.webp"
         },
         {
           "name": "Google Chat",
@@ -345,14 +331,14 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "hubspot",
           "description": "Sales and marketing",
           "status": "Planned",
-          "logo": "/brand/integrations/hubspot.png"
+          "logo": "/brand/integrations/hubspot.webp"
         },
         {
           "name": "ServiceNow",
           "slug": "servicenow",
           "description": "Service operations",
           "status": "Planned",
-          "logo": "/brand/integrations/servicenow.png"
+          "logo": "/brand/integrations/servicenow.webp"
         },
         {
           "name": "Stripe",
@@ -366,21 +352,21 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "zendesk",
           "description": "Customer support",
           "status": "Planned",
-          "logo": "/brand/integrations/zendesk.png"
+          "logo": "/brand/integrations/zendesk.webp"
         },
         {
           "name": "Intercom",
           "slug": "intercom",
           "description": "Customer conversations",
           "status": "Planned",
-          "logo": "/brand/integrations/intercom.png"
+          "logo": "/brand/integrations/intercom.webp"
         },
         {
           "name": "Airtable",
           "slug": "airtable",
           "description": "Operational data",
           "status": "Planned",
-          "logo": "/brand/integrations/airtable.png"
+          "logo": "/brand/integrations/airtable.webp"
         },
         {
           "name": "Shopify",
@@ -487,7 +473,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "aws",
           "description": "Cloud infrastructure",
           "status": "Available",
-          "logo": "/brand/integrations/aws.png"
+          "logo": "/brand/integrations/aws.webp"
         },
         {
           "name": "Google Cloud",
@@ -529,14 +515,14 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "datadog",
           "description": "Observability",
           "status": "Available",
-          "logo": "/brand/integrations/datadog.png"
+          "logo": "/brand/integrations/datadog.webp"
         },
         {
           "name": "PagerDuty",
           "slug": "pagerduty",
           "description": "Incident response",
           "status": "Available",
-          "logo": "/brand/integrations/pagerduty.png"
+          "logo": "/brand/integrations/pagerduty.webp"
         },
         {
           "name": "Cloudflare",
@@ -550,7 +536,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "oracle-cloud",
           "description": "Cloud infrastructure and deployment work",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/oracle.png"
+          "logo": "/brand/integrations/oracle.webp"
         },
         {
           "name": "Fastly",
@@ -571,7 +557,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "amazon-cloudfront",
           "description": "AWS content delivery workflows",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/aws.png"
+          "logo": "/brand/integrations/aws.webp"
         },
         {
           "name": "Podman",
@@ -592,7 +578,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "cri-o",
           "description": "Kubernetes container runtime work",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/cri-o.png"
+          "logo": "/brand/integrations/cri-o.webp"
         },
         {
           "name": "HashiCorp Nomad",
@@ -606,7 +592,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "amazon-ecs",
           "description": "Managed container service workflows",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/aws.png"
+          "logo": "/brand/integrations/aws.webp"
         },
         {
           "name": "Docker Swarm",
@@ -678,14 +664,14 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "zapier",
           "description": "Workflow automation",
           "status": "Planned",
-          "logo": "/brand/integrations/zapier.png"
+          "logo": "/brand/integrations/zapier.webp"
         },
         {
           "name": "Make",
           "slug": "make",
           "description": "Workflow automation",
           "status": "Planned",
-          "logo": "/brand/integrations/make.png"
+          "logo": "/brand/integrations/make.webp"
         },
         {
           "name": "LangGraph",
@@ -699,7 +685,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "openhands",
           "description": "Engineering harnesses",
           "status": "Planned",
-          "logo": "/brand/integrations/openhands.png"
+          "logo": "/brand/integrations/openhands.webp"
         },
         {
           "name": "OpenCode",
@@ -713,21 +699,21 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "cline",
           "description": "Engineering harnesses",
           "status": "Planned",
-          "logo": "/brand/integrations/cline.png"
+          "logo": "/brand/integrations/cline.webp"
         },
         {
           "name": "Aider",
           "slug": "aider",
           "description": "Engineering harnesses",
           "status": "Planned",
-          "logo": "/brand/integrations/aider.png"
+          "logo": "/brand/integrations/aider.webp"
         },
         {
           "name": "CrewAI",
           "slug": "crewai",
           "description": "Workflow harnesses",
           "status": "Planned",
-          "logo": "/brand/integrations/crewai.png"
+          "logo": "/brand/integrations/crewai.webp"
         },
         {
           "name": "AutoGen",
@@ -741,14 +727,14 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "workato",
           "description": "Enterprise workflow automation",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/workato.png"
+          "logo": "/brand/integrations/workato.webp"
         },
         {
           "name": "Activepieces",
           "slug": "activepieces",
           "description": "Workflow automation and connected actions",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/activepieces.png"
+          "logo": "/brand/integrations/activepieces.webp"
         },
         {
           "name": "Semantic Kernel",
@@ -841,28 +827,28 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "bugsnag",
           "description": "Application errors and stability insight",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/bugsnag.png"
+          "logo": "/brand/integrations/bugsnag.webp"
         },
         {
           "name": "Rollbar",
           "slug": "rollbar",
           "description": "Error monitoring and diagnostics",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/rollbar.png"
+          "logo": "/brand/integrations/rollbar.webp"
         },
         {
           "name": "incident.io",
           "slug": "incident-io",
           "description": "Incident response and coordination",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/incident-io.png"
+          "logo": "/brand/integrations/incident-io.webp"
         },
         {
           "name": "FireHydrant",
           "slug": "firehydrant",
           "description": "Incident management and service context",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/firehydrant.png"
+          "logo": "/brand/integrations/firehydrant.webp"
         },
         {
           "name": "Rootly",
@@ -897,14 +883,14 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "vector",
           "description": "Telemetry processing pipelines",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/vector.png"
+          "logo": "/brand/integrations/vector.webp"
         },
         {
           "name": "Cribl",
           "slug": "cribl",
           "description": "Telemetry collection, processing and routing",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/cribl.png"
+          "logo": "/brand/integrations/cribl.webp"
         }
       ]
     },
@@ -934,7 +920,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "oracle",
           "description": "Enterprise relational database work",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/oracle.png"
+          "logo": "/brand/integrations/oracle.webp"
         },
         {
           "name": "PostgreSQL",
@@ -990,7 +976,7 @@ export const integrationsIndex: IntegrationsIndex = {
           "slug": "redpanda",
           "description": "Kafka-compatible event streaming",
           "status": "Ecosystem",
-          "logo": "/brand/integrations/redpanda.png"
+          "logo": "/brand/integrations/redpanda.webp"
         },
         {
           "name": "Apache Pulsar",
@@ -1070,7 +1056,7 @@ export const integrationsIndex: IntegrationsIndex = {
   "definitions": [
     {
       "q": "Why do only some integrations have their own page?",
-      "a": "A detail page exists where there is something specific to say about how exekova works with that tool: what it reads, what it writes back, the shape of a run through it, and the security considerations that follow. Claude Code, Codex, GitHub and Jira meet that bar today. Every other connector is listed in the directory above with its current status, which is the accurate surface for it until there is more to describe than the catalogue row already says."
+      "a": "A detail page exists where there is something specific to say about how exekova works with that tool: what it reads, what it writes back, the shape of a run through it, and the security considerations that follow. GitHub, Jira, Slack and Microsoft Teams meet that bar today. Every other connector is listed in the directory above with its current status, which is the accurate surface for it until there is more to describe than the catalogue row already says."
     }
   ],
   "faqGroup": "Integrations",
@@ -1110,108 +1096,6 @@ export const integrationsIndex: IntegrationsIndex = {
 };
 
 export const integrationDetails: IntegrationDetail[] = [
-  {
-    "slug": "claude-code",
-    "name": "Claude Code",
-    "status": "Available",
-    "category": "Engineering & AI",
-    "accent": "violet",
-    "summary": "Claude Code runs as an installed CLI execution engine. exekova uses it to carry out implementation work inside a repository and returns the result into the acceptance path rather than handing raw output back to a person.",
-    "receives": [
-      "The work item and its acceptance criteria",
-      "Repository context permitted by the workspace grant",
-      "Constraints, budget and runtime limits",
-      "Prior evidence when a run is a retry"
-    ],
-    "sends": [
-      "Implemented changes on a working branch",
-      "A record of the actions taken",
-      "Captured output and errors as evidence",
-      "A completion signal that enters review, not a done state"
-    ],
-    "workflows": [
-      "Implementation against an existing repository",
-      "Refactoring within a defined scope",
-      "Diagnosis and fix of a failing build or test",
-      "Documentation generated alongside a change"
-    ],
-    "flow": [
-      "Work arrives from the tracker with acceptance criteria attached",
-      "exekova plans the change and grants scoped repository access",
-      "Claude Code executes the implementation on a working branch",
-      "Output is captured with its evidence",
-      "An independent reviewing capability assesses the change",
-      "Tests run as a pipeline stage where the environment supports them",
-      "Failures route to diagnosis and an eligible retry",
-      "Verified work is delivered as a pull request and the tracker is updated"
-    ],
-    "setup": [
-      "Connect the repository host in workspace settings",
-      "Install the Claude Code CLI in the execution environment",
-      "Provide engine credentials to exekova secret storage",
-      "Grant repository scopes following least privilege",
-      "Define the acceptance criteria template for engineering work",
-      "Set retry ceiling and budget for the workspace"
-    ],
-    "security": [
-      "Engine credentials are held in platform secret storage and are not exposed to the work item",
-      "Repository access is scoped per workspace and per run",
-      "Write actions can be placed behind an approval gate",
-      "Every action is captured in the run record for audit"
-    ],
-    "description": "exekova runs Claude Code as an execution engine inside your repository and returns the result through independent review and testing, not as raw output."
-  },
-  {
-    "slug": "codex",
-    "name": "Codex",
-    "status": "Available",
-    "category": "Engineering & AI",
-    "accent": "azure",
-    "summary": "Codex runs as an installed CLI execution engine alongside Claude Code. exekova selects between available engines based on the work rather than requiring you to choose per task.",
-    "receives": [
-      "The work item and its acceptance criteria",
-      "Repository context permitted by the workspace grant",
-      "Constraints, budget and runtime limits",
-      "Diagnosis context when a run is a retry"
-    ],
-    "sends": [
-      "Implemented changes on a working branch",
-      "An action record for the run",
-      "Captured output and errors as evidence",
-      "A completion signal that enters review"
-    ],
-    "workflows": [
-      "Implementation against an existing repository",
-      "Scoped refactoring",
-      "Test authoring against acceptance criteria",
-      "Fix attempts inside the recovery loop"
-    ],
-    "flow": [
-      "Work arrives with its acceptance criteria",
-      "exekova plans the change and selects the engine",
-      "Codex executes against the scoped repository grant",
-      "Output and evidence are captured",
-      "Independent review assesses the change",
-      "Tests run where the environment supports them",
-      "Failures route to diagnosis and eligible retry",
-      "Verified work lands as a pull request with the tracker updated"
-    ],
-    "setup": [
-      "Connect the repository host",
-      "Install the Codex CLI in the execution environment",
-      "Provide engine credentials to exekova secret storage",
-      "Grant repository scopes following least privilege",
-      "Confirm which engine the workspace prefers, or leave selection to exekova",
-      "Set retry ceiling and budget"
-    ],
-    "security": [
-      "Engine credentials are held in platform secret storage",
-      "Repository access is scoped per run",
-      "Approval gates available on write actions",
-      "Actions retained in the run record"
-    ],
-    "description": "exekova runs Codex as an execution engine alongside Claude Code, selecting between them based on the work rather than asking you to choose per task."
-  },
   {
     "slug": "github",
     "name": "GitHub",

@@ -29,7 +29,7 @@ This runs `wrangler deploy` and creates or updates the named Worker. Wrangler pr
 
 To attach the production domain, open **Workers & Pages → exekova → Settings → Domains & Routes → Add → Custom Domain**, then add `exekova.com`. Canonical URLs in the current export already use `https://exekova.com`. No application port or Node.js start command is required on Cloudflare. The local static preview remains on port `3211`.
 
-This configuration serves static assets and a Worker contact receiver at `/api/contact`, with clean HTML URLs and the exported 404 page. The package's `_headers` and `_redirects` remain active. `wrangler deploy` targets Workers; an existing **Pages** project uses the separate `wrangler pages deploy` workflow.
+This configuration runs the Worker before all assets so HTTP, `www` and the Workers hostname redirect permanently to `https://exekova.com`. The Worker also normalizes HTML paths, adds HSTS, and serves the contact receiver at `/api/contact`. Static `_headers` and `_redirects` remain active. This uses a Worker invocation per request. `wrangler deploy` targets Workers; uploading only the static assets does not install this canonical-host middleware.
 
 ## Settings recorded before generating the upload
 
@@ -60,7 +60,7 @@ The build runs in an isolated source copy, preserving the running development se
 2. Optionally run `npm run preview:cloudflare` and open `http://127.0.0.1:3211`.
 3. Open the Cloudflare **Upload and deploy** screen and drag in `dist/cloudflare/site/`, or use the ZIP if that uploader accepts ZIP files. `index.html` must be at the upload root.
 4. Use the project name `exekova` (or another available name). Keep static HTML routing enabled and SPA fallback disabled if those settings are shown. No Node.js start command or port is needed.
-5. Deploy, then connect `exekova.com` through the project's custom-domain settings. The generated Cloudflare preview hostname also works; canonical tags point to `https://exekova.com`.
+5. Deploy, then connect `exekova.com` through the project's custom-domain settings. With the Worker installed, its public Workers hostname redirects to `https://exekova.com`.
 
 Only upload the `site` folder or its ZIP. The source repository, `node_modules`, `.next`, build reports and these instructions are not website assets.
 
@@ -79,6 +79,8 @@ With the static preview running, run `npm run test:sharing`. After deploying, ru
 If WhatsApp shows no cards for any website, check **WhatsApp → Settings → Privacy → Advanced → Disable link previews** is off. If other websites show cards in the same app, investigate the affected domain and page instead. Paste the URL into a new message and allow the preview to load before sending. A previously sent message is not a reliable retest. [WhatsApp's preview setting](https://faq.whatsapp.com/445453537819972). See [the current iPhone investigation](./WHATSAPP-PREVIEW.md) for verified responses and the pending comparison test.
 
 ## Rebuild for another public domain
+
+The production Worker pins `exekova.com` as the primary host. Update its host configuration as well as the build URL when moving to another domain.
 
 ```sh
 NEXT_PUBLIC_SITE_URL=https://your-domain.example npm run build:cloudflare

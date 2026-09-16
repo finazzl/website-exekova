@@ -91,7 +91,7 @@ export default function HeroDemo() {
         </article>
         <div className="demo-exekova">
           <span className="demo-wire wire-left" aria-hidden="true" />
-          <div className="demo-orbit" aria-hidden="true"><div className="demo-brand-tile"><Image src="/brand/exekova-mark.png" alt="" width={66} height={66} priority /></div></div>
+          <div className="demo-orbit" aria-hidden="true"><div className="demo-brand-tile"><Image src="/brand/exekova-mark.webp" alt="" width={66} height={66} priority /></div></div>
           <strong className="demo-brand-name">exekova</strong>
           <div className="demo-stage-copy" key={current.id}><span>{current.title}</span><p>{current.detail}</p></div>
           <span className="demo-wire wire-right" aria-hidden="true" />

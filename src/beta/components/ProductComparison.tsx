@@ -3,13 +3,15 @@ import { useEffect, useRef, useState } from 'react';
 import { easeInOut, motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useMotionPreference } from './useMotionPreference';
 import Icon from '@/components/Icon';
-import HeroDemo from './HeroDemo';
+import dynamic from 'next/dynamic';
 import WorkTransformation from './WorkTransformation';
 import FlowingTaskText from './FlowingTaskText';
 import { WORKFLOW_STEPS, WORKFLOW_SUMMARY } from '../data/workflow';
 
 const DURATION=11000;
+const HeroDemo = dynamic(() => import('./HeroDemo'));
 export default function ProductComparison() {
+  const [demoOpen, setDemoOpen] = useState(false);
   const ref=useRef<HTMLDivElement>(null);
   const screen=useRef<HTMLDivElement>(null);
   const inView=useInView(screen,{amount:.35});
@@ -60,6 +62,6 @@ export default function ProductComparison() {
       </motion.div>
       <div className="flow-preview-controls"><ol aria-label="Preview the three steps">{WORKFLOW_STEPS.map((step,index)=><li key={step.id}><button type="button" aria-pressed={stage===index} onClick={()=>select(index)}>{step.label}</button></li>)}</ol><p>Task workflow. Your team owns the merge.</p></div>
     </div></div>
-    <details className="demo-lab"><summary>Try a task. See the evidence.<Icon name="plus" size={20}/></summary><div className="demo-lab-content"><HeroDemo/></div></details>
+    <details className="demo-lab" onToggle={event => setDemoOpen(event.currentTarget.open)}><summary>Try a task. See the evidence.<Icon name="plus" size={20}/></summary>{demoOpen && <div className="demo-lab-content"><HeroDemo/></div>}</details>
   </div></section>;
 }

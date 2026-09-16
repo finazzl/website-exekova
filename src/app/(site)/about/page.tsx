@@ -29,7 +29,7 @@ export default function AboutPage() {
   const email = contactEmail();
   return <>
     <PageHero eyebrow="ABOUT EXEKOVA" title="An autonomous work execution platform." accent="Human-owned decisions." lede="exekova turns a scoped engineering task into an independently reviewed, verified pull request. Your team keeps every decision that matters: the scope, the merge and the release."
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Request access<Icon name="arrow" size={18}/></a><Link href="/platform" className="beta-secondary">See how the platform works<Icon name="arrow" size={15}/></Link></>}/>
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Request access<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/platform" className="beta-secondary">See how the platform works<Icon name="arrow" size={15}/></Link></>}/>
 
     <section className="site-section is-tight" aria-labelledby="mission-title"><div className="shell">
       <p className="site-quote" id="mission-title">A task in. <em>A verified outcome out.</em> Nothing in between for anyone to interpret.</p>
@@ -66,9 +66,9 @@ export default function AboutPage() {
         <div><span className="site-fact-icon"><Icon name="layers" size={20}/></span><dt>Product</dt><dd>An autonomous work execution platform for scoped engineering tasks, delivered as verified GitHub pull requests.</dd></div>
         <div><span className="site-fact-icon"><Icon name="file" size={20}/></span><dt>Task sources</dt><dd>{available('source').join(' and the ')} today. {planned('source').join(', ')} intake is planned.</dd></div>
         <div><span className="site-fact-icon"><Icon name="branch" size={20}/></span><dt>Repositories</dt><dd>{available('repo').join(' and ')} today. {planned('repo').join(' and ')} are planned, with no committed date.</dd></div>
-        <div><span className="site-fact-icon"><Icon name="grid" size={20}/></span><dt>Integrations</dt><dd>Every system exekova works with is listed in the <Link href="/integrations">integrations catalogue</Link>, by category.</dd></div>
-        <div><span className="site-fact-icon"><Icon name="coins" size={20}/></span><dt>Price</dt><dd>${taskOffer.current} per accepted task. Rejected attempts cost nothing. The planned standard price is ${taskOffer.standard}. <Link href="/pricing">See pricing</Link>.</dd></div>
-        <div><span className="site-fact-icon"><Icon name="shield" size={20}/></span><dt>Security practices</dt><dd>{COMPLIANCE_LINE} Certification status is stated plainly on the <Link href="/security">security page</Link>.</dd></div>
+        <div><span className="site-fact-icon"><Icon name="grid" size={20}/></span><dt>Integrations</dt><dd>Every system exekova works with is listed in the <Link prefetch={false} href="/integrations">integrations catalogue</Link>, by category.</dd></div>
+        <div><span className="site-fact-icon"><Icon name="coins" size={20}/></span><dt>Price</dt><dd>${taskOffer.current} per accepted task. Rejected attempts cost nothing. The planned standard price is ${taskOffer.standard}. <Link prefetch={false} href="/pricing">See pricing</Link>.</dd></div>
+        <div><span className="site-fact-icon"><Icon name="shield" size={20}/></span><dt>Security practices</dt><dd>{COMPLIANCE_LINE} Certification status is stated plainly on the <Link prefetch={false} href="/security">security page</Link>.</dd></div>
         <div><span className="site-fact-icon"><Icon name="mail" size={20}/></span><dt>Contact</dt><dd>Email <a href={`mailto:${email}`}>{email}</a>. Every request from this site is an email you review and send yourself.</dd></div>
       </dl>
     </div></section>

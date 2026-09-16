@@ -34,7 +34,7 @@ def category(text):
 
 def norm(value):
     """Lowercase the brand in prose (this site writes 'exekova') and name the category in full, recursively."""
-    if isinstance(value, str): return category(re.sub(r'\bExekova\b', 'exekova', value)).replace(chr(0x2014), '-').replace(' – ', ', ').replace('–', '-')
+    if isinstance(value, str): return category(re.sub(r'\bExekova\b', 'exekova', value)).replace(chr(0x2014), '-').replace(' – ', ', ').replace('–', '-').replace('Claude Code', 'Implementation capability').replace('Codex', 'Independent review')
     if isinstance(value, list):
         out = [norm(v) for v in value]
         if out and all(isinstance(v, str) for v in out):
@@ -410,6 +410,9 @@ integrations_index = {
     'cta': {'headline': parts(icta['headline']), 'body': icta['body']},
 }
 integration_details = [{'slug': slug, 'name': v['name'], 'status': v['status'], 'category': v['category'], 'accent': v['accent'], 'summary': v['summary'], 'receives': v['receives'], 'sends': v['sends'], 'workflows': v['workflows'], 'flow': v['flow'], 'setup': v['setup'], 'security': v['security'], 'description': v.get('metaDescription', v['summary'])} for slug, v in det.items()]
+for group in integrations_index['categories']:
+    group['integrations'] = [item for item in group['integrations'] if item['slug'] not in {'claude-code', 'codex'}]
+integration_details = [item for item in integration_details if item['slug'] not in {'claude-code', 'codex'}]
 emit('integrations.ts', '''/**
  * The integrations catalogue and the four detail pages, generated from the
  * exekova.com content layer by scripts/import-site-content.py. Content only:

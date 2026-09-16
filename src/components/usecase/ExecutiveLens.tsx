@@ -49,7 +49,7 @@ export default function ExecutiveLens({ data, idPrefix }: { data: any; idPrefix:
                 </div>
                 <p className="xl-question">{r.question}</p>
                 <p className="xl-answer">{r.answer}</p>
-                {r.href && <Link href={r.href} className="xl-link">{r.hrefLabel ?? 'See the record'}<Icon name="arrow" size={13} /></Link>}
+                {r.href && <Link prefetch={false} href={r.href} className="xl-link">{r.hrefLabel ?? 'See the record'}<Icon name="arrow" size={13} /></Link>}
               </li>
             );
           })}

@@ -7,7 +7,7 @@ export function inline(text: string) {
     const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (!match) return part;
     const [, label, href] = match;
-    return href.startsWith('/') ? <Link href={href} key={index}>{label}</Link> : <a href={href} key={index}>{label}</a>;
+    return href.startsWith('/') ? <Link prefetch={false} href={href} key={index}>{label}</Link> : <a href={href} key={index}>{label}</a>;
   });
 }
 

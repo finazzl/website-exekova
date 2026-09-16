@@ -11,8 +11,8 @@ export default function IntegrationStrip() {
   const reduced = useMotionPreference();
   return <div className="integration-strip"><span className="beta-label">GET A TASK. SET A REPO. GET A VERIFIED OUTCOME.</span>
     <div className="integration-marquee" data-paused={paused || reduced !== false}>
-      {/* Four copies and a quarter-width shift keep the strip filled on any screen; only the first copy is read aloud. */}
-      <div className="integration-track">{[0,1,2,3].map(copy=><ul key={copy} aria-hidden={copy > 0 ? true : undefined}>
+      {/* Two full-width copies make a seamless loop; only the first is read aloud. */}
+      <div className="integration-track">{[0,1].map(copy=><ul key={copy} aria-hidden={copy > 0 ? true : undefined}>
         {integrations.map(item=><li key={item.name}>
           <span className="integration-mark"><ConnectorMark connector={item} size={27}/></span>
           <span>{item.name}</span>

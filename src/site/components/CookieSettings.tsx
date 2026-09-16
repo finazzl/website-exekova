@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Icon from '@/components/Icon';
-import { COOKIE_PREFERENCES_KEY } from '../data/legal/cookies';
+import { CONSENT_EVENT, COOKIE_PREFERENCES_KEY, GA_MEASUREMENT_ID } from '../data/analytics';
 
 type Optional = 'functional' | 'analytics' | 'marketing';
 type Preferences = Record<Optional, boolean> & { savedAt?: string };
@@ -9,9 +9,9 @@ type Preferences = Record<Optional, boolean> & { savedAt?: string };
 const DEFAULTS: Preferences = { functional: false, analytics: false, marketing: false };
 
 const CATEGORIES: { key: Optional | 'necessary'; title: string; body: string; items: string[] }[] = [
-  { key: 'necessary', title: 'Strictly necessary', body: 'Remembers the choices you save on this page. It cannot be switched off because it is what records your choice. Nothing else is stored by this website.', items: [`${COOKIE_PREFERENCES_KEY} · local storage`] },
+  { key: 'necessary', title: 'Strictly necessary', body: 'Remembers the choices you save on this page. It cannot be switched off because it is what records your choice. Optional analytics is controlled separately.', items: [`${COOKIE_PREFERENCES_KEY} · local storage`] },
   { key: 'functional', title: 'Functional', body: 'Storage that would remember conveniences such as a dismissed panel. Not currently used: nothing loads if you turn this on. Your choice is recorded for when it is.', items: ['Not currently used'] },
-  { key: 'analytics', title: 'Analytics', body: 'Storage that would measure how the site is used. exekova.com runs no analytics: nothing loads if you turn this on. Your choice is recorded for when it does.', items: ['Not currently used'] },
+  { key: 'analytics', title: 'Analytics', body: GA_MEASUREMENT_ID ? 'Google Analytics measures page visits and traffic sources only when you allow it. Form entries are not sent to Analytics.' : 'Google Analytics is not configured. Nothing loads if you turn this on.', items: GA_MEASUREMENT_ID ? ['_ga and _ga_* cookies, up to one year'] : ['Not currently used'] },
   { key: 'marketing', title: 'Marketing', body: 'Storage that would support advertising. Not used and not planned: nothing loads if you turn this on.', items: ['Not currently used'] },
 ];
 
@@ -52,6 +52,16 @@ export default function CookieSettings() {
       setAvailable(false);
       setStatus('Your browser did not allow the preference to be stored. Your choices apply for this visit only.');
     }
+    window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: next.analytics }));
+    if (!next.analytics) {
+      for (const entry of document.cookie.split(';')) {
+        const name = entry.trim().split('=')[0];
+        if (!/^_ga(?:_|$)/.test(name)) continue;
+        for (const domain of ['', `; Domain=${location.hostname}`, '; Domain=.exekova.com']) {
+          document.cookie = `${name}=; Max-Age=0; Path=/${domain}; SameSite=Lax`;
+        }
+      }
+    }
   }
 
   function toggle(key: Optional) {
@@ -61,7 +71,7 @@ export default function CookieSettings() {
 
   const saved = preferences.savedAt ? new Date(preferences.savedAt) : null;
   return <div className="cookie-settings">
-    {!available && hydrated && <p className="legal-notice"><Icon name="clock" size={16}/>Storage is not available in this browser, so choices cannot be remembered between visits. Nothing optional is stored by this website in any case.</p>}
+    {!available && hydrated && <p className="legal-notice"><Icon name="clock" size={16}/>Storage is not available in this browser, so choices cannot be remembered between visits. Your choices will apply to this visit.</p>}
     <div role="group" aria-label="Storage categories">{CATEGORIES.map(category => {
       const optional = category.key === 'necessary' ? null : category.key;
       const necessary = optional === null;
@@ -78,7 +88,7 @@ export default function CookieSettings() {
     <div className="cookie-actions">
       <button type="button" className="beta-button" onClick={() => persist({ functional: preferences.functional, analytics: preferences.analytics, marketing: preferences.marketing }, 'Preferences saved on this device.')}>Save preferences<Icon name="check" size={16}/></button>
       <button type="button" className="beta-secondary" onClick={() => persist({ functional: false, analytics: false, marketing: false }, 'Non-essential storage rejected. Only your preference is stored.')}>Reject non-essential</button>
-      <button type="button" className="beta-secondary" onClick={() => persist({ functional: true, analytics: true, marketing: true }, 'All categories accepted. No optional storage exists today, so nothing else loads.')}>Accept all</button>
+      <button type="button" className="beta-secondary" onClick={() => persist({ functional: true, analytics: true, marketing: true }, 'Preferences saved. Configured analytics may now load.')}>Accept all</button>
     </div>
     <p className="cookie-status" role="status" aria-live="polite">{status}</p>
     {saved && !status && <p className="beta-fine">Last saved {saved.toLocaleString()}.</p>}

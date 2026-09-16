@@ -90,7 +90,7 @@ export default function ContactForm({ email }: { email: string }) {
     {siteKey && !token && <p className="verification-hint">Complete the verification checkbox before sending.</p>}
     <div className="request-actions"><button type="submit" className="beta-button" disabled={submitting}>{submitting ? 'Sending…' : delivery.kind === 'mailto' ? 'Open email draft' : 'Send message'}<Icon name="arrow" size={17}/></button><button type="button" className="beta-text-button" onClick={download}>Download message<Icon name="file" size={15}/></button></div>
     </fieldset>
-    <p className="beta-fine">{delivery.kind === 'mailto' ? 'Review and send the message in your email app. ' : 'Your message is sent to the exekova team. '}This page does not start work or take payment. Do not include credentials or private code. <Link href="/privacy">Privacy</Link> · <Link href="/terms">Terms</Link></p>
+    <p className="beta-fine">{delivery.kind === 'mailto' ? 'Review and send the message in your email app. ' : 'Your message is sent to the exekova team. '}This page does not start work or take payment. Do not include credentials or private code. <Link prefetch={false} href="/privacy">Privacy</Link> · <Link prefetch={false} href="/terms">Terms</Link></p>
     <p className="request-contact">Prefer email? Write to <a href={`mailto:${email}`}>{email}</a>.</p>
   </form>;
 }

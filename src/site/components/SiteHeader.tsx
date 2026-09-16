@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
 import Icon from '@/components/Icon';
 import type { NavItem, NavLink } from '../nav';
 
@@ -17,7 +16,7 @@ function Chevron() {
 /** Homepage anchors stay plain links so the access dialog can intercept them on the homepage. */
 function NavAnchor({ href, className, children, onClick, current }: { href: string; className?: string; children: React.ReactNode; onClick?: () => void; current?: boolean }) {
   const props = { className, onClick, 'aria-current': current ? ('page' as const) : undefined };
-  return href.startsWith('/#') ? <a href={href} {...props}>{children}</a> : <Link href={href} {...props}>{children}</Link>;
+  return href.startsWith('/#') ? <a href={href} {...props}>{children}</a> : <Link prefetch={false} href={href} {...props}>{children}</Link>;
 }
 
 type Props = { nav: NavItem[]; wordmark: string; signIn: NavLink; cta: NavLink };
@@ -38,7 +37,6 @@ export default function SiteHeader({ nav, wordmark, signIn, cta }: Props) {
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const pathname = usePathname() ?? '/';
-  const reduced = useReducedMotion();
   const selected = nav.find(item => item.label === open);
   const clearTimers = () => { clearTimeout(hoverTimer.current); clearTimeout(closeTimer.current); };
   const closeAll = () => { focusMenu.current = false; clearTimers(); setOpen(null); setMobileOpen(false); setMobileSection(null); };
@@ -96,7 +94,7 @@ export default function SiteHeader({ nav, wordmark, signIn, cta }: Props) {
       }
     }}>
     <div className="navigation-bar">
-      <Link href="/" className="navigation-brand" aria-label="Exekova home" onClick={closeAll}><Image src={wordmark} alt="Exekova" width={667} height={167} priority/></Link>
+      <Link prefetch={false} href="/" className="navigation-brand" aria-label="Exekova home" onClick={closeAll}><Image src={wordmark} alt="Exekova" width={667} height={167} priority/></Link>
       <nav className="navigation-desktop" aria-label="Main navigation">{nav.map((item, index) => <div className="navigation-item" key={item.label} onPointerEnter={event => { if (event.pointerType !== 'mouse') return; clearTimers(); hoverTimer.current = setTimeout(() => setOpen(item.mega ? item.label : null), 100); }}>
         {item.mega
           ? <button className={`navigation-link ${currentItem(item) ? 'is-current' : ''}`} data-nav={item.label} aria-expanded={open === item.label} aria-controls={open === item.label ? 'desktop-mega-menu' : undefined} onClick={() => { clearTimers(); setOpen(open === item.label ? null : item.label); }} onKeyDown={event => {
@@ -105,20 +103,20 @@ export default function SiteHeader({ nav, wordmark, signIn, cta }: Props) {
             }}>{item.label}<Chevron/></button>
           : <NavAnchor className="navigation-link" href={item.href} current={current(item.href)} onClick={closeAll}>{item.label}</NavAnchor>}
       </div>)}</nav>
-      <div className="navigation-actions"><Link className="navigation-signin" href={signIn.href}>{signIn.label}</Link><NavAnchor className="navigation-cta" href={cta.href}>{cta.label}<Icon name="arrow" size={15}/></NavAnchor></div>
+      <div className="navigation-actions"><Link prefetch={false} className="navigation-signin" href={signIn.href}>{signIn.label}</Link><NavAnchor className="navigation-cta" href={cta.href}>{cta.label}<Icon name="arrow" size={15}/></NavAnchor></div>
       <button ref={mobileToggle} data-mobile-toggle className="navigation-toggle" aria-label={mobileOpen ? 'Close menu' : 'Open menu'} aria-expanded={mobileOpen} aria-controls={mobileOpen ? 'mobile-navigation' : undefined} onClick={() => { clearTimers(); setMobileOpen(!mobileOpen); setMobileSection(null); setOpen(null); }}>{mobileOpen ? <Icon name="close" size={22}/> : <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>}</button>
-      {selected?.mega && <motion.div key={selected.label} id="desktop-mega-menu" className="navigation-panel" initial={reduced ? false : { opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0 : .15 }}>
-        <Link href={selected.mega.intro.href} className="navigation-feature" onClick={closeAll}><div><span className="navigation-eyebrow">EXPLORE {selected.label.toUpperCase()}</span><h2>{selected.mega.intro.title}</h2><p>{selected.mega.intro.body}</p></div><span className="navigation-feature-arrow"><Icon name="arrow" size={22}/></span></Link>
+      {selected?.mega && <div key={selected.label} id="desktop-mega-menu" className="navigation-panel">
+        <Link prefetch={false} href={selected.mega.intro.href} className="navigation-feature" onClick={closeAll}><div><span className="navigation-eyebrow">EXPLORE {selected.label.toUpperCase()}</span><h2>{selected.mega.intro.title}</h2><p>{selected.mega.intro.body}</p></div><span className="navigation-feature-arrow"><Icon name="arrow" size={22}/></span></Link>
         <div className="navigation-columns" data-columns={selected.mega.columns.length}>{selected.mega.columns.map((column, index) => <div key={index} className="navigation-column"><h3>{column.title}</h3><ul>{column.links.map(link => <li key={link.href}><NavAnchor href={link.href} current={pathname === link.href} onClick={closeAll}><div><strong>{link.label}</strong>{link.desc && <span>{link.desc}</span>}</div><Icon name="arrow" size={15}/></NavAnchor></li>)}</ul></div>)}</div>
-        <div className="navigation-panel-footer"><span>From business intent to verified outcomes.</span><Link href={selected.mega.intro.href} onClick={closeAll}>{selected.mega.intro.linkLabel}<Icon name="arrow" size={14}/></Link></div>
-      </motion.div>}
+        <div className="navigation-panel-footer"><span>From business intent to verified outcomes.</span><Link prefetch={false} href={selected.mega.intro.href} onClick={closeAll}>{selected.mega.intro.linkLabel}<Icon name="arrow" size={14}/></Link></div>
+      </div>}
     </div>
     {mobileOpen && <nav id="mobile-navigation" className="navigation-mobile" aria-label="Mobile navigation">
       <div className="navigation-mobile-links">{nav.map((item, index) => <div className="navigation-mobile-item" key={item.label}>{item.mega
         ? <><button className={currentItem(item) ? 'is-current' : undefined} aria-expanded={mobileSection === item.label} aria-controls={mobileSection === item.label ? `mobile-group-${index}` : undefined} onClick={() => setMobileSection(mobileSection === item.label ? null : item.label)}>{item.label}<Chevron/></button>
-          {mobileSection === item.label && <div id={`mobile-group-${index}`} className="navigation-mobile-group"><Link className="navigation-mobile-overview" href={item.href} onClick={closeAll}>{item.mega.intro.linkLabel}<Icon name="arrow" size={17}/></Link>{item.mega.columns.map((column, colIndex) => <div key={colIndex}><h3>{column.title}</h3><ul>{column.links.map(link => <li key={link.href}><NavAnchor href={link.href} current={pathname === link.href} onClick={closeAll}><strong>{link.label}</strong>{link.desc && <span>{link.desc}</span>}</NavAnchor></li>)}</ul></div>)}</div>}</>
+          {mobileSection === item.label && <div id={`mobile-group-${index}`} className="navigation-mobile-group"><Link prefetch={false} className="navigation-mobile-overview" href={item.href} onClick={closeAll}>{item.mega.intro.linkLabel}<Icon name="arrow" size={17}/></Link>{item.mega.columns.map((column, colIndex) => <div key={colIndex}><h3>{column.title}</h3><ul>{column.links.map(link => <li key={link.href}><NavAnchor href={link.href} current={pathname === link.href} onClick={closeAll}><strong>{link.label}</strong>{link.desc && <span>{link.desc}</span>}</NavAnchor></li>)}</ul></div>)}</div>}</>
         : <NavAnchor href={item.href} current={current(item.href)} onClick={closeAll}>{item.label}<Icon name="arrow" size={18}/></NavAnchor>}</div>)}</div>
-      <div className="navigation-mobile-actions"><Link className="navigation-signin" href={signIn.href} onClick={closeAll}>{signIn.label}</Link><NavAnchor className="navigation-cta" href={cta.href} onClick={closeAll}>{cta.label}<Icon name="arrow" size={16}/></NavAnchor></div>
+      <div className="navigation-mobile-actions"><Link prefetch={false} className="navigation-signin" href={signIn.href} onClick={closeAll}>{signIn.label}</Link><NavAnchor className="navigation-cta" href={cta.href} onClick={closeAll}>{cta.label}<Icon name="arrow" size={16}/></NavAnchor></div>
     </nav>}
   </header>;
 }

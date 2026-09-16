@@ -29,7 +29,7 @@ export default function IndustriesPage() {
   return <>
     <PageHero eyebrow={industriesIndex.eyebrow.toUpperCase()} title={industriesIndex.headline[0]} accent={industriesIndex.headline[1]} lede={industriesIndex.lede}
       trail={[{ label: 'Industries', href: '/industries' }]}
-      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link href="/solutions/engineering" className="beta-secondary">Engineering solution<Icon name="arrow" size={15}/></Link></>}/>
+      actions={<><a href={REQUEST_ACCESS} className="beta-button">Start with one task<Icon name="arrow" size={18}/></a><Link prefetch={false} href="/solutions/engineering" className="beta-secondary">Engineering solution<Icon name="arrow" size={15}/></Link></>}/>
 
     <section className="site-section is-tight" aria-labelledby="explorer-title"><div className="shell">
       <Heading id="explorer-title" centered label={industriesIndex.explorer.label.toUpperCase()} title={industriesIndex.explorer.headline[0]} accent={industriesIndex.explorer.headline[1]} body={industriesIndex.explorer.body}/>

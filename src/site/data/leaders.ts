@@ -817,13 +817,13 @@ export const leaders: Leader[] = [
       "bars": [
         {
           "label": "Implement",
-          "note": "Claude Code",
+          "note": "Implementation capability",
           "value": 100,
           "tone": "pass"
         },
         {
           "label": "Independent review",
-          "note": "Codex, separate engine",
+          "note": "Independent review capability",
           "value": 100,
           "tone": "pass"
         },
