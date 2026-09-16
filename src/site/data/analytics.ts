@@ -6,9 +6,10 @@ export const GA_MEASUREMENT_ID = /^G-[A-Z0-9]+$/.test(configuredId) ? configured
 export const GA_CONFIG = { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false, cookie_expires: 31536000 };
 export const GA_DENIED_CONSENT = { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' };
 
-export function analyticsConsent(): boolean | null {
+export function analyticsConsent(): boolean {
   try {
     const raw = localStorage.getItem(COOKIE_PREFERENCES_KEY);
-    return raw ? JSON.parse(raw).analytics === true : null;
-  } catch { return null; }
+    // New visitors are measured automatically; an existing opt-out remains effective.
+    return raw ? JSON.parse(raw).analytics === true : true;
+  } catch { return false; }
 }

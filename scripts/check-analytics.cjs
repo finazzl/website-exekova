@@ -22,18 +22,18 @@ async function waitForMeasurement(page, check, message) {
     if (process.argv.includes('--delivery')) {
       assert.equal(new URL(base).origin, 'https://exekova.com', 'Delivery verification is for production');
       const page = await browser.newPage({ reducedMotion: 'reduce' });
-      await page.goto(base, { waitUntil: 'networkidle' });
       const delivered = page.waitForResponse(response => {
         if (!isCollection(response.url())) return false;
         const params = new URL(response.url()).searchParams;
         const body = response.request().postData() || '';
         return params.get('tid') === id && (params.get('en') === 'page_view' || body.includes('en=page_view'));
       }, { timeout: 30000 });
-      await page.getByRole('button', { name: 'Allow analytics' }).click();
+      await page.goto(base, { waitUntil: 'networkidle' });
+      assert.equal(await page.locator('.analytics-choice').count(), 0, 'No Analytics popup');
       const response = await delivered;
       assert(response.ok(), `Google collection response: ${response.status()}`);
       report.delivery = { status: response.status(), endpoint: new URL(response.url()).origin, measurementId: id };
-      console.log(`PASS production page view accepted by Google: HTTP ${response.status()}, ${id}`);
+      console.log(`PASS automatic production page view accepted by Google: HTTP ${response.status()}, ${id}`);
       return;
     }
     for (const width of [1440, 390]) {
@@ -65,29 +65,17 @@ async function waitForMeasurement(page, check, message) {
       assert(html.indexOf('id="exekova-google-consent"') < html.indexOf('id="exekova-google-analytics"'), 'Consent defaults execute before Google library');
       assert.equal((await tagResponse).status(), 200, 'Google library loads on a fresh visit');
       const notice = page.getByRole('complementary', { name: 'Analytics preference' });
-      await notice.waitFor();
-      assert.equal(collections.length, 0, 'No measurement before consent');
-      assert(!(await context.cookies()).some(cookie => cookie.name.startsWith('_ga')), 'No Analytics cookies before consent');
-      await notice.getByRole('button', { name: 'No thanks' }).click();
-      await page.reload({ waitUntil: 'networkidle' });
-      assert.equal(await notice.count(), 0, 'Rejection persists');
-      assert.equal(collections.length, 0, 'No measurement after rejection');
-      assert(!(await context.cookies()).some(cookie => cookie.name.startsWith('_ga')), 'No Analytics cookies after rejection');
-
-      await page.evaluate(key => localStorage.removeItem(key), key);
-      await page.reload({ waitUntil: 'networkidle' });
-      const tagRequests = requests.filter(url => url.includes('/gtag/js')).length;
-      await notice.getByRole('button', { name: 'Allow analytics' }).click();
+      assert.equal(await notice.count(), 0, 'No Analytics popup');
       const pageViews = () => collections.filter(event => event.en === 'page_view');
-      await waitForMeasurement(page, () => pageViews().length > 0, 'Initial page view is emitted');
+      await waitForMeasurement(page, () => pageViews().length > 0, 'Initial page view is emitted automatically');
       await page.waitForTimeout(1500);
       assert.equal(pageViews().length, 1, 'One initial page view');
       assert.equal(pageViews()[0].tid, id);
       assert.equal(pageViews()[0].dl, base + '/');
       assert(!JSON.stringify(collections).includes('do-not-collect'), 'Measurement excludes query/fragment data');
       assert.equal(await page.locator('#exekova-google-analytics').count(), 1);
-      assert.equal(requests.filter(url => url.includes('/gtag/js')).length, tagRequests, 'Consent does not insert a duplicate library');
-      assert((await context.cookies()).some(cookie => cookie.name.startsWith('_ga')), 'Analytics cookie exists after opt-in');
+      assert.equal(requests.filter(url => url.includes('/gtag/js')).length, 1, 'One Google library request');
+      assert((await context.cookies()).some(cookie => cookie.name.startsWith('_ga')), 'Analytics starts automatically');
 
       if (width < 1100) await page.getByRole('button', { name: 'Open menu' }).click();
       await page.locator(width < 1100 ? '.navigation-mobile a[href="/pricing"]' : '.navigation-desktop a[href="/pricing"]').click();
@@ -98,16 +86,22 @@ async function waitForMeasurement(page, check, message) {
       assert.equal(pageViews().filter(event => event.dl === base + '/pricing').length, 1, 'One page view after navigation');
 
       await page.goto(base + '/cookie-settings', { waitUntil: 'networkidle' });
+      await waitForMeasurement(page, () => pageViews().some(event => event.dl === base + '/cookie-settings'), 'Cookie settings visit is measured before opt-out');
+      assert.equal(await page.getByRole('switch', { name: 'Analytics', exact: true }).getAttribute('aria-checked'), 'true', 'Settings show the automatic default');
       await page.getByRole('button', { name: 'Reject non-essential' }).click();
       await page.waitForFunction(id => window['ga-disable-' + id] === true, id);
       assert(!(await context.cookies()).some(cookie => cookie.name.startsWith('_ga')), 'Analytics cookies removed after withdrawal');
       const count = collections.length;
       await page.locator('footer a[href="/pricing"]').first().click();
       await page.waitForURL('**/pricing');
+      await page.waitForLoadState('networkidle');
+      await page.reload({ waitUntil: 'networkidle' });
       await page.waitForTimeout(1500);
-      assert.equal(collections.length, count, 'No measurement after withdrawal');
+      assert.equal(collections.length, count, 'Saved opt-out blocks measurement on future visits');
+      assert.equal(await page.evaluate(key => JSON.parse(localStorage.getItem(key)).analytics, key), false);
+      assert(!(await context.cookies()).some(cookie => cookie.name.startsWith('_ga')), 'Opt-out prevents new Analytics cookies');
       assert.equal(pageViews().filter(event => event.dl === base + '/pricing').length, 1, 'No delayed duplicate navigation page view');
-      console.log(`PASS ${width}px: initial HTML tag, consent, rejection, page views, clean URL, withdrawal`);
+      console.log(`PASS ${width}px: initial HTML tag, no popup, automatic page views, clean URL, saved opt-out`);
       await context.close();
     }
     assert.deepEqual(report.errors, []);

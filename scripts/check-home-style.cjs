@@ -10,6 +10,7 @@ const base = process.argv.find(arg => arg.startsWith('--url='))?.slice(6) || 'ht
   try {
     for (const width of [1440, 1920, 2560, 390, 320]) {
       const page = await browser.newPage({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
+      await page.route(/https:\/\/[^/]*google-analytics\.com\/.*collect/, route => route.fulfill({ status: 204 }));
       page.on('pageerror', error => errors.push(error.message));
       await page.goto(base, { waitUntil: 'networkidle' });
       await page.evaluate(() => document.fonts.ready);

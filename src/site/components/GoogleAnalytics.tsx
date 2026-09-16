@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { analyticsConsent, CONSENT_EVENT, COOKIE_PREFERENCES_KEY, GA_CONFIG, GA_DENIED_CONSENT, GA_MEASUREMENT_ID } from '../data/analytics';
+import { analyticsConsent, CONSENT_EVENT, GA_CONFIG, GA_DENIED_CONSENT, GA_MEASUREMENT_ID } from '../data/analytics';
 
 type AnalyticsWindow = Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; [key: `ga-disable-${string}`]: boolean };
 
-/** The library is discoverable in the head; measurement requires an explicit analytics choice. */
+/** Apply saved opt-outs before automatic measurement. This component has no visible UI. */
 export default function GoogleAnalytics() {
   const pathname = usePathname();
   const [consent, setConsent] = useState<boolean | null>(null);
@@ -38,14 +38,5 @@ export default function GoogleAnalytics() {
     target.gtag?.('event', 'page_view', { page_location: window.location.origin + pathname, page_title: document.title, page_referrer: referrer });
   }, [consent, pathname, ready]);
 
-  function choose(analytics: boolean) {
-    try { localStorage.setItem(COOKIE_PREFERENCES_KEY, JSON.stringify({ functional: false, marketing: false, analytics, savedAt: new Date().toISOString() })); } catch { /* Apply to this visit if storage is unavailable. */ }
-    window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: analytics }));
-  }
-
-  if (!GA_MEASUREMENT_ID || !ready || consent !== null) return null;
-  return <aside className="analytics-choice" aria-label="Analytics preference">
-    <p>May we use Google Analytics to understand visits and improve the site? <a href="/cookies">Cookie details</a></p>
-    <div><button type="button" onClick={() => choose(false)}>No thanks</button><button type="button" onClick={() => choose(true)}>Allow analytics</button></div>
-  </aside>;
+  return null;
 }

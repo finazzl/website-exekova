@@ -2,7 +2,7 @@ import type { LegalDoc } from '../../components/LegalDocument';
 
 /**
  * Privacy Policy. Written against what the site and service actually do: a
- * marketing site with optional consent-based analytics, an access request
+ * marketing site with analytics and an opt-out, an access request
  * sent through the website forms, a signed-in application on
  * exekova.com, and integrations the customer authorises (Jira, GitHub).
  */
@@ -13,10 +13,10 @@ export const privacy: LegalDoc = {
   accent: 'Plain language. Full detail.',
   lede: 'How exekova collects, uses, shares and protects personal data when you visit this site, request access, or use the service.',
   effectiveDate: '16 September 2026',
-  version: '1.2',
+  version: '1.3',
   status: 'final',
   summary: [
-    'The Google tag library loads when you visit. Analytics measurement and cookies require your permission. Advertising cookies are not used.',
+    'Google Analytics measures visits automatically unless you opt out in Cookie settings. Advertising cookies are not used.',
     'An access request is sent to our team through the website form. It contains what you type: work email, team, tools, task and acceptance criteria.',
     'When your organisation uses the service, exekova processes task data and repository content only within the projects and repositories you approve.',
     'exekova never merges, deploys or sells data. You can ask what we hold about you and have it corrected or deleted.',
@@ -35,7 +35,7 @@ export const privacy: LegalDoc = {
       heading: 'The data we collect',
       blocks: [
         { type: 'h3', text: 'When you visit this website' },
-        { type: 'p', text: 'Our hosting infrastructure records standard server logs: the IP address of the request, the page requested, the referring page, browser type and the time of the request. We use these logs to keep the site available and secure. Downloading the Google tag library sends standard connection information, including your IP address and browser information, to Google. Analytics measurement and cookies stay disabled until you allow analytics. When permitted, Analytics measures page visits and traffic sources. Our integration does not send form entries to Analytics. See the [Cookie Policy](/cookies).' },
+        { type: 'p', text: 'Our hosting infrastructure records standard server logs: the IP address of the request, the page requested, the referring page, browser type and the time of the request. We use these logs to keep the site available and secure. Downloading the Google tag library sends standard connection information, including your IP address and browser information, to Google. Analytics measures page visits and traffic sources automatically unless you opt out in Cookie settings. Existing opt-outs are honored. Our integration does not send form entries to Analytics. See the [Cookie Policy](/cookies).' },
         { type: 'h3', text: 'When you request access or contact us' },
         { type: 'p', text: 'When you submit the access request form, your work email address, company or team, task source and repository provider, optional repository name, task and acceptance criteria are sent to our delivery provider so our team can reply. This uses the same delivery and verification services described below for the contact form. If you download the request instead, the file stays on your device until you share it.' },
         { type: 'p', text: 'When you submit the contact form, your name (if provided), work email, company or team, selected topic and message are sent to our contact delivery provider so we can reply. Depending on the configured delivery path, this uses Web3Forms or our email receiver with Resend. If verification is enabled, Cloudflare Turnstile processes verification data to help prevent spam. Downloading a message keeps the file on your device until you share it.' },
@@ -135,7 +135,7 @@ export const privacy: LegalDoc = {
       id: 'cookies',
       heading: 'Cookies and local storage',
       blocks: [
-        { type: 'p', text: 'The website stores your preference when you save your choices. Google Analytics cookies are optional and are used only when configured and you allow analytics. Advertising cookies are not used. The [Cookie Policy](/cookies) lists what is stored, and [Cookie settings](/cookie-settings) lets you review your choices.' },
+        { type: 'p', text: 'The website stores your preference when you save your choices. Google Analytics cookies are used by default when configured, unless you opt out. Advertising cookies are not used. The [Cookie Policy](/cookies) lists what is stored, and [Cookie settings](/cookie-settings) lets you review your choices.' },
       ],
     },
     {

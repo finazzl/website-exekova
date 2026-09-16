@@ -30,7 +30,7 @@ All 11 unique external destinations were tested. No HTTP 404 was found. LinkedIn
 
 The public GA4 measurement ID defaults to `G-R33H6YFCH2`. Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in the ignored local/build configuration to override it, then rebuild. An explicitly empty or invalid ID disables Analytics and its consent notice.
 
-With an ID configured, the async Google tag is present in the initial HTML head so setup tools can discover it. Synchronous consent defaults and `ga-disable-...` disable measurement before the library executes. The library download contacts Google, but Analytics events and cookies require visitor permission. Cookie settings can withdraw permission and remove first-party Analytics cookies. The implementation sends page views with query strings and fragments removed and does not send form values. In the GA4 web stream, disable enhanced automatic page-change measurement when using this manual route tracking, to prevent duplicate page views. Do not enable extra form tracking without reviewing its data collection.
+With an ID configured, the async Google tag is present in the initial HTML head so setup tools can discover it. Measurement starts automatically after reading saved preferences, as requested by the site owner. There is no Analytics popup. An existing opt-out disables measurement before it starts; Cookie settings can stop measurement and remove first-party Analytics cookies. The implementation sends page views with query strings and fragments removed and does not send form values. In the GA4 web stream, disable enhanced automatic page-change measurement when using this manual route tracking, to prevent duplicate page views. Do not enable extra form tracking without reviewing its data collection.
 
 ## Checks
 
@@ -50,7 +50,7 @@ npm run test:analytics -- --url=https://exekova.com
 
 The home-style check covers 320, 390, 1440, 1920 and 2560 pixel widths. Browser checks also exercise navigation, the deferred demo, animations and both forms. Form delivery responses are mocked during those checks; no test enquiry is emailed. Reports and screenshots stay in ignored `qa-output/`.
 
-The Analytics browser check runs Google's actual library with measurement requests intercepted, covering consent, rejection, a single page view per navigation, URL cleanup and withdrawal on desktop and mobile. Use `node scripts/check-analytics.cjs --url=https://exekova.com --delivery` separately to verify one real production page view reaches Google's collection endpoint. This does not verify report processing inside the Google Analytics account.
+The Analytics browser check runs Google's actual library with measurement requests intercepted, covering automatic measurement without a popup, a single page view per navigation, URL cleanup and saved opt-outs on desktop and mobile. Use `node scripts/check-analytics.cjs --url=https://exekova.com --delivery` separately to verify one real automatic production page view reaches Google's collection endpoint. This does not verify report processing inside the Google Analytics account.
 
 ## Production verification
 
