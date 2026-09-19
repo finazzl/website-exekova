@@ -52,6 +52,10 @@ await writeFile(path.join(destination, 'deployment-settings.json'), JSON.stringi
 }, null, 2) + '\n');
 await cp(path.join(configDirectory, 'README.md'), path.join(destination, 'UPLOAD-INSTRUCTIONS.md'));
 
+// Commit dates are recorded here, in the Git checkout: the isolated build below
+// deliberately has no .git directory to read them from.
+await run(process.execPath, [path.join(root, 'scripts/build-lastmod.mjs')], root);
+
 // A fixed input list prevents credentials, Git metadata and unrelated local files
 // from entering the isolated build. The running .next directory stays untouched.
 for (const entry of ['src', 'content', 'public', 'deployment', 'next.config.mjs', 'package.json', 'package-lock.json', 'tsconfig.json']) {

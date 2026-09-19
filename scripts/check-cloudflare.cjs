@@ -50,7 +50,11 @@ const sameOrigin = value => new URL(value, base).origin === new URL(base).origin
   assert(!index.includes('content="noindex'));
   assert((await fs.readFile(path.join(root, 'site/signin.html'), 'utf8')).includes('content="noindex'));
   assert(!index.includes('/_next/image?'));
-  assert(report.fileCount <= 1000); assert(report.largestAsset.bytes <= 25 * 1024 * 1024);
+  // Deploys go through `wrangler deploy` (Workers Static Assets), which allows 20,000
+  // files. The report's 1,000-file flag is the Pages dashboard upload limit, a warning
+  // about that other upload path rather than a constraint on this one. 25 MiB per file
+  // applies to both.
+  assert(report.fileCount <= 20000); assert(report.largestAsset.bytes <= 25 * 1024 * 1024);
   console.log(`PASS ${urls.size} exported assets/internal URLs, ${redirectRules.length} redirects, 404 and production metadata`);
 
   const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });

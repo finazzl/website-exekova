@@ -7,6 +7,7 @@
     "dev": "next dev -p 3200",
     "build": "next build",
     "build:cloudflare": "node scripts/build-cloudflare.mjs",
+    "build:lastmod": "node scripts/build-lastmod.mjs",
     "check:deploy:cloudflare": "wrangler deploy --dry-run --outdir dist/cloudflare/wrangler-dry-run",
     "deploy:cloudflare": "wrangler deploy",
     "preview:cloudflare": "node scripts/preview-cloudflare.mjs",
