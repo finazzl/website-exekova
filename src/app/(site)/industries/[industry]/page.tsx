@@ -6,6 +6,8 @@ import Icon from '@/components/Icon';
 import { buildMetadata, schemaForPage } from '@/lib/seo';
 import { casesFor } from '@/site/data/cases';
 import { industries, industryBySlug } from '@/site/data/industries';
+import { insuranceBackOfficeCases } from '@/site/data/insuranceBackOffice';
+import { remittanceReconciliationCase } from '@/site/data/remittanceReconciliation';
 import { virtualPage } from '@/site/lib/meta';
 import { industryFaq } from '@/site/lib/pageFaq';
 import { fitDescription } from '@/site/lib/seoCopy';
@@ -41,7 +43,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ indus
   const found = pageFor((await params).industry);
   if (!found) notFound();
   const { industry, page } = found;
-  const cases = casesFor('industry', industry.slug);
+  const cases = [...(industry.slug === 'fintech' ? [remittanceReconciliationCase] : []), ...casesFor('industry', industry.slug)];
   const siblings = industries.filter(item => item.group === industry.group && item.slug !== industry.slug);
   return <>
     <PageHero layout="split" eyebrow={`INDUSTRIES · ${industry.name.toUpperCase()}`} title={industry.headline[0]} accent={industry.headline[1]} lede={industry.lede}
@@ -60,6 +62,12 @@ export default async function IndustryPage({ params }: { params: Promise<{ indus
       <Heading id="cases-title" centered wide label={industry.cases.label.toUpperCase()} title={industry.cases.headline[0]} accent={industry.cases.headline[1]} body={industry.cases.body}/>
       <Cards columns={cases.length >= 4 ? 4 : cases.length === 3 ? 3 : 2} items={cases.map(item => ({ icon: industry.icon, kicker: item.keepsLabel, title: item.name, body: item.problem, points: item.keeps, href: `/use-cases/${item.slug}`, linkLabel: 'Open the use case' }))}/>
     </div></section>
+
+    {industry.slug === 'insurance' && <section className="site-section is-mint" id="back-office" aria-labelledby="backoffice-title"><div className="shell">
+      <Heading id="backoffice-title" centered wide label="THE BACK OFFICE" title="Six more problems," accent="one back office run by agents." body="Rating and claims are the front of the book. Behind them sits the work that closes the month: reconciliation, statements, bordereaux, payouts, onboarding and leakage checks."/>
+      <Cards columns={3} items={insuranceBackOfficeCases.map(item => ({ icon: industry.icon, kicker: item.keepsLabel, title: item.name, body: item.problem, href: `/use-cases/${item.slug}`, linkLabel: 'Open the use case' }))}/>
+      <p className="site-note"><Icon name="umbrella" size={15}/><span>The whole suite, with the stages and the boundary, is on <Link prefetch={false} href="/insurance-back-office">the insurance back office page</Link>.</span></p>
+    </div></section>}
 
     <section className="site-section" aria-labelledby="controls-title"><div className="shell">
       <Heading id="controls-title" label={industry.controls.label.toUpperCase()} title={industry.controls.headline[0]} accent={industry.controls.headline[1]} body={industry.controls.body}/>

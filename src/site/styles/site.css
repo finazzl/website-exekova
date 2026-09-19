@@ -315,6 +315,15 @@ a.site-card:hover { border-color: color-mix(in srgb, var(--wz-violet) 40%, var(-
 .legal-note { display: flex; gap: 9px; align-items: flex-start; padding: 12px 14px; border-radius: 10px; background: var(--wz-mint); font-size: 14px !important; line-height: 1.6; }
 .legal-note svg { flex-shrink: 0; margin-top: 4px; color: var(--beta-success); }
 .legal-table-wrap { overflow-x: auto; margin-top: 18px; }
+/* Blog posts reuse the document layout above; these are the pieces only a post needs. */
+.post-callout { margin-top: 24px; padding: 20px 22px; border-radius: 16px; background: var(--wz-lilac); }
+.post-callout > span { display: block; margin-bottom: 8px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--wz-violet); }
+.post-callout p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--wz-ink); }
+.post-tags { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--wz-line); }
+.post-next { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--wz-line); font-size: 14px; }
+.post-next > span { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--wz-ink-muted); }
+.post-next a { display: inline-flex; align-items: center; gap: 8px; min-height: 24px; font-size: 17px; font-weight: 600; letter-spacing: -.01em; color: var(--wz-violet); }
+
 .legal-table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px; }
 .legal-table th, .legal-table td { padding: 12px 14px; border-bottom: 1px solid var(--wz-line); text-align: left; vertical-align: top; line-height: 1.5; color: var(--wz-ink); }
 .legal-table th { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--wz-ink-muted); }

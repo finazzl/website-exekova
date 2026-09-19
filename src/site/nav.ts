@@ -6,6 +6,9 @@ import { scenarios } from './data/scenarios';
 import { functionsIndex } from './data/functions';
 import { industryGroupsOrdered } from './data/industries';
 import { comparisons } from './data/compare';
+import { insuranceBackOfficeCases } from './data/insuranceBackOffice';
+import { postsByDate } from './data/blog';
+import { remittanceReconciliationCase } from './data/remittanceReconciliation';
 
 /**
  * Site-wide navigation for every route outside the homepage. Homepage anchors
@@ -41,6 +44,7 @@ export const productNav: NavLink[] = [
 ];
 
 export const companyNav: NavLink[] = [
+  { label: 'Blogs', href: '/blogs' },
   { label: 'Contact', href: '/contact' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Pricing', href: '/pricing' },
@@ -59,7 +63,7 @@ export const legalNav: NavLink[] = [
 
 /** The header, as exekova.com lays it out: five sections with mega menus, then Pricing. Every link resolves on this site. */
 export function megaNav(): NavItem[] {
-  const featured = casesIndex.featuredByIndustry.map(slug => caseBySlug(slug)).filter(Boolean).map(item => item!);
+  const featured = [remittanceReconciliationCase, ...casesIndex.featuredByIndustry.map(slug => caseBySlug(slug)).filter(Boolean).map(item => item!)];
   const featuredBy = (groupName: string) => featured.filter(item => industries.find(entry => entry.slug === item.origin.key)?.group === groupName).map(item => ({ label: item.name, href: `/use-cases/${item.slug}`, desc: item.origin.name }));
   return [
     { label: 'Platform', href: '/platform', mega: {
@@ -93,13 +97,20 @@ export function megaNav(): NavItem[] {
     } },
     { label: 'Use cases', href: '/use-cases', mega: {
       intro: { title: casesIndex.intro.title, body: casesIndex.intro.body, href: '/use-cases', linkLabel: 'All use cases' },
-      columns: industryGroupsOrdered.map(group => ({ title: group.name, links: featuredBy(group.name) })),
+      columns: [
+        { title: 'Insurance back office', links: [
+          { label: 'The back office, run by agents', href: '/insurance-back-office', desc: 'Six problems, three suites' },
+          ...insuranceBackOfficeCases.map(item => ({ label: item.name, href: `/use-cases/${item.slug}`, desc: item.origin.name })),
+        ] },
+        ...industryGroupsOrdered.map(group => ({ title: group.name, links: featuredBy(group.name) })),
+      ],
     } },
     { label: 'Company', href: '/about', mega: {
       intro: { title: 'A company built around getting work done.', body: 'Meet exekova, explore our approach to trusted execution, and talk to the team about the work ahead.', href: '/about', linkLabel: 'About exekova' },
       columns: [
         { title: 'About & support', links: [
           { label: 'About exekova', href: '/about', desc: 'Why we built an execution system' },
+          { label: 'Blogs', href: '/blogs', desc: `${postsByDate.length} posts on AI agents and finance operations` },
           { label: 'Contact', href: '/contact', desc: 'Bring us the work you want to move' },
           { label: 'FAQ', href: '/faq', desc: 'Answers about the platform and getting started' },
         ] },
@@ -118,8 +129,8 @@ export function footerColumns(): FooterColumn[] {
     { title: 'Platform', href: '/platform', overview: 'Explore the platform', links: productNav },
     { title: 'Solutions', href: '/solutions', overview: 'All solutions', links: [...functions.map(item => ({ label: item.name, href: `/solutions/${item.slug}` })), ...leaders.map(item => ({ label: item.role, href: `/solutions/${item.slug}` }))] },
     { title: 'Industries', href: '/industries', overview: 'All industries', links: industries.map(item => ({ label: item.name, href: `/industries/${item.slug}` })) },
-    { title: 'Use cases', href: '/use-cases', overview: 'All use cases', links: [...casesIndex.featuredByIndustry.map(slug => caseBySlug(slug)).filter(Boolean).map(item => ({ label: item!.name, href: `/use-cases/${item!.slug}` })), ...scenarios.map(item => ({ label: item.slug === 'remittance' ? 'Remittance app' : 'MostoBank PCI audit', href: `/use-cases/${item.slug}` }))] },
-    { title: 'Company', href: '/about', overview: 'About Exekova', links: companyNav },
+    { title: 'Use cases', href: '/use-cases', overview: 'All use cases', links: [{ label: remittanceReconciliationCase.name, href: `/use-cases/${remittanceReconciliationCase.slug}` }, { label: 'Insurance back office', href: '/insurance-back-office' }, ...insuranceBackOfficeCases.map(item => ({ label: item.name, href: `/use-cases/${item.slug}` })), ...casesIndex.featuredByIndustry.map(slug => caseBySlug(slug)).filter(Boolean).map(item => ({ label: item!.name, href: `/use-cases/${item!.slug}` })), ...scenarios.map(item => ({ label: item.slug === 'remittance' ? 'Remittance app' : 'MostoBank PCI audit', href: `/use-cases/${item.slug}` }))] },
+    { title: 'Company', href: '/about', overview: 'About Exekova', links: [...companyNav, ...postsByDate.map(post => ({ label: post.title, href: `/blogs/${post.slug}` }))] },
   ];
 }
 

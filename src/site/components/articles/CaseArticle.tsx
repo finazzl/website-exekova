@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Icon from '@/components/Icon';
 import { casesFor, casesIndex, type Case } from '../../data/cases';
+import { insuranceBackOfficeCases, insuranceCaseBySlug } from '../../data/insuranceBackOffice';
 import { REQUEST_ACCESS } from '../../nav';
 import PageHero from '../PageHero';
 import Heading from '../Heading';
@@ -13,7 +14,10 @@ import { caseFaq } from '../../lib/pageFaq';
 
 /** One use case: the problem, why it matters, the five stages, what comes back, what stays yours. */
 export default function CaseArticle({ item }: { item: Case }) {
-  const related = casesFor(item.origin.kind, item.origin.key).filter(entry => entry.slug !== item.slug);
+  // Back-office cases relate to each other; everything else relates within its own origin.
+  const backOffice = Boolean(insuranceCaseBySlug(item.slug));
+  const siblings = backOffice ? insuranceBackOfficeCases : casesFor(item.origin.kind, item.origin.key);
+  const related = siblings.filter(entry => entry.slug !== item.slug).slice(0, backOffice ? 3 : undefined);
   return <>
     <PageHero layout="split" eyebrow={`${item.origin.name.toUpperCase()} · USE CASE`} title={item.name} lede={item.problem}
       trail={[{ label: 'Use cases', href: '/use-cases' }, { label: item.origin.name, href: item.origin.href }, { label: item.name, href: `/use-cases/${item.slug}` }]}

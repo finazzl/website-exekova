@@ -410,8 +410,10 @@
 .beta-page :is(h1,h2) em { color:var(--wz-violet); }
 .beta-page h2 { font-size:64px; }
 .beta-page .beta-label { font-size:12px; letter-spacing:.065em; font-weight:400; }
-.beta-page .beta-button { background:var(--wz-lilac); color:var(--wz-ink); border:2px solid var(--wz-ink); border-radius:8px; box-shadow:none; min-height:52px; font-size:15px; font-weight:500; }
-.beta-page .beta-button:hover { background:color-mix(in srgb,var(--wz-lilac) 85%,var(--wz-violet)); box-shadow:none; transform:translateY(-2px); }
+/* Primary actions use the same brand tokens on homepage and interior routes. */
+.beta-page .beta-button { background:var(--wz-cta-background); color:var(--wz-cta-foreground); border:2px solid var(--wz-cta-background); border-radius:8px; box-shadow:none; min-height:52px; font-size:15px; font-weight:500; }
+.beta-page .beta-button:hover { background:var(--wz-cta-background-hover); border-color:var(--wz-cta-background-hover); color:var(--wz-cta-foreground); box-shadow:none; transform:translateY(-2px); }
+.beta-page .beta-button:focus-visible { outline:3px solid var(--wz-cta-background); outline-offset:4px; }
 .beta-hero { position:relative; padding:99px 0 0; background:var(--wz-paper); overflow:clip; }
 .hero-copy>.beta-label { color:var(--wz-ink-muted); font-size:13px; margin-bottom:29px; letter-spacing:.07em; }
 .hero-copy .beta-dot { display:none; }

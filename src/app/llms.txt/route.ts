@@ -1,8 +1,11 @@
 import { getAllPages, getSite } from '@/lib/content';
+import { postsByDate } from '@/site/data/blog';
 import { cases } from '@/site/data/cases';
 import { comparisons } from '@/site/data/compare';
 import { functions } from '@/site/data/functions';
 import { industries } from '@/site/data/industries';
+import { insuranceBackOfficeCases } from '@/site/data/insuranceBackOffice';
+import { remittanceReconciliationCase } from '@/site/data/remittanceReconciliation';
 import { integrationDetails, integrationsIndex } from '@/site/data/integrations';
 import { leaders } from '@/site/data/leaders';
 import { platformPages } from '@/site/data/platform';
@@ -53,10 +56,21 @@ export async function GET() {
     '',
     ...industries.map(item => row(`/industries/${item.slug}`, `${item.name} | Industries`, item.summary)),
     '',
+    '## Insurance back office',
+    '',
+    ...[known('/insurance-back-office')].filter(Boolean) as string[],
+    ...insuranceBackOfficeCases.map(item => row(`/use-cases/${item.slug}`, item.title, item.description)),
+    '',
     '## Use cases',
     '',
+    row(`/use-cases/${remittanceReconciliationCase.slug}`, remittanceReconciliationCase.title, remittanceReconciliationCase.description),
     ...scenarios.map(item => row(`/use-cases/${item.slug}`, item.title, item.description)),
     ...cases.map(item => row(`/use-cases/${item.slug}`, item.title, item.description)),
+    '',
+    '## Blog',
+    '',
+    ...[known('/blogs')].filter(Boolean) as string[],
+    ...postsByDate.map(post => row(`/blogs/${post.slug}`, post.title, post.description)),
     '',
     '## Integrations',
     '',

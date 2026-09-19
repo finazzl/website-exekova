@@ -1,0 +1,19 @@
+{
+  "slug": "/insurance-back-office",
+  "meta": {
+    "title": "Insurance back office, run by AI agents | exekova",
+    "description": "Commission reconciliation, statements, bordereaux, payouts, onboarding and leakage checks run by agents. exekova builds the software underneath, task by task.",
+    "keywords": [
+      "insurance back office",
+      "insurance AI agents",
+      "commission reconciliation",
+      "bordereaux processing",
+      "producer onboarding"
+    ],
+    "schema": [
+      "WebPage",
+      "FAQPage"
+    ]
+  },
+  "sections": []
+}

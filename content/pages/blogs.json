@@ -1,0 +1,20 @@
+{
+  "slug": "/blogs",
+  "meta": {
+    "title": "exekova blog | AI agents and finance operations",
+    "description": "Plain writing on AI agents for remittance reconciliation, insurance operations and finance workflows, with practical guidance on matching, exceptions and evidence.",
+    "keywords": [
+      "remittance reconciliation",
+      "AI finance operations",
+      "insurance back office",
+      "commission reconciliation",
+      "insurance AI agents",
+      "bordereaux processing"
+    ],
+    "schema": [
+      "WebPage",
+      "FAQPage"
+    ]
+  },
+  "sections": []
+}
