@@ -19,7 +19,8 @@ let commitDate = '';
 for (const line of stdout.split('\n')) {
   if (!line.trim()) continue;
   if (/^\d{4}-\d{2}-\d{2}T/.test(line)) commitDate = line.trim();
-  else if (!(line in dates) && (line.startsWith('src/') || line.startsWith('content/'))) dates[line] = commitDate;
+  // This file is the record itself, so dating it would churn on every regeneration.
+  else if (!(line in dates) && line !== 'content/lastmod.json' && (line.startsWith('src/') || line.startsWith('content/'))) dates[line] = commitDate;
 }
 
 const sorted = Object.fromEntries(Object.keys(dates).sort().map(file => [file, dates[file]]));
