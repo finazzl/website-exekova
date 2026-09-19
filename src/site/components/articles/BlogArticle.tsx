@@ -62,7 +62,7 @@ export default function BlogArticle({ post }: { post: Post }) {
         <section className="legal-contact" aria-labelledby="post-questions-title">
           <h2 id="post-questions-title">Common questions</h2>
           <p className="legal-definition">{DEFINITION} {post.provenance ?? 'This post describes patterns across insurance operations, not a named engagement.'}</p>
-          <div className="site-faq"><FaqAccordion groups={[{ title: post.title, items: post.faq }]} name="post-faq"/></div>
+          <div className="site-faq is-plain"><FaqAccordion groups={[{ title: post.title, items: post.faq }]} name="post-faq"/></div>
         </section>
 
         {upcoming && <p className="post-next"><span>Next post</span><Link prefetch={false} href={`/blogs/${upcoming.slug}`}>{upcoming.title}<Icon name="arrow" size={15}/></Link></p>}

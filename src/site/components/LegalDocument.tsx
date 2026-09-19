@@ -61,7 +61,7 @@ export default function LegalDocument({ doc }: { doc: LegalDoc }) {
           <h2 id={`${section.id}-title`}><small>Section {String(index + 1).padStart(2, '0')}</small>{section.heading}</h2>
           {section.blocks.map((block, blockIndex) => <Block block={block} key={blockIndex}/>)}
         </section>)}
-        <section className="legal-contact" aria-labelledby="legal-questions-title"><h2 id="legal-questions-title">Questions about this document</h2><p className="legal-definition">{DEFINITION} This document applies to exekova.com and the exekova service.</p><div className="site-faq"><FaqAccordion groups={[{ title: doc.title, items: legalFaq(doc) }]} name="legal-faq"/></div><p>{doc.contact.note}</p><a href={`mailto:${doc.contact.email}`} className="beta-secondary"><Icon name="mail" size={16}/>{doc.contact.email}</a></section>
+        <section className="legal-contact" aria-labelledby="legal-questions-title"><h2 id="legal-questions-title">Questions about this document</h2><p className="legal-definition">{DEFINITION} This document applies to exekova.com and the exekova service.</p><div className="site-faq is-plain"><FaqAccordion groups={[{ title: doc.title, items: legalFaq(doc) }]} name="legal-faq"/></div><p>{doc.contact.note}</p><a href={`mailto:${doc.contact.email}`} className="beta-secondary"><Icon name="mail" size={16}/>{doc.contact.email}</a></section>
       </article>
     </div>
   </>;
